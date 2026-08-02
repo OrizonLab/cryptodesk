@@ -1,0 +1,19 @@
+# ============================================================
+# CryptoDesk — docker-compose
+# Réseau externe nginx-proxy (NPM gère TLS + domaine)
+# ============================================================
+services:
+  cryptodesk:
+    build: .
+    image: cryptodesk:latest
+    container_name: cryptodesk
+    restart: unless-stopped
+    networks:
+      - nginx-proxy
+    # Pas de ports exposés publiquement — NPM route via le réseau interne
+    expose:
+      - "80"
+
+networks:
+  nginx-proxy:
+    external: true

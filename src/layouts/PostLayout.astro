@@ -1,0 +1,109 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import '../styles/prose.css';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  prev?: CollectionEntry<'posts'>;
+  next?: CollectionEntry<'posts'>;
+}
+
+const { post, prev, next } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, ogImage } = post.data;
+
+const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// JSON-LD Article
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  ...(updatedDate ? { dateModified: updatedDate.toISOString() } : {}),
+  author: { '@type': 'Organization', name: 'CryptoDesk', url: 'https://blog.auratrade.app/' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'CryptoDesk',
+    logo: { '@type': 'ImageObject', url: 'https://blog.auratrade.app/favicon.svg' },
+  },
+  mainEntityOfPage: `https://blog.auratrade.app/posts/${post.slug}/`,
+  inLanguage: 'fr-FR',
+  ...(ogImage ? { image: ogImage } : {}),
+  keywords: tags.join(', '),
+};
+
+// Breadcrumbs JSON-LD
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://blog.auratrade.app/' },
+    { '@type': 'ListItem', position: 2, name: title, item: `https://blog.auratrade.app/posts/${post.slug}/` },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} ogImage={ogImage}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <article class="container post">
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime={pubDate.toISOString()}>{dateFmt.format(pubDate)}</time>
+        {updatedDate && <span class="updated">· mis à jour {dateFmt.format(updatedDate)}</span>}
+      </div>
+      <h1 class="post-title">{title}</h1>
+      {tags.length > 0 && (
+        <div class="post-tags">
+          {tags.map((t) => <a class="tag" href={`/tags/${t}/`}>#{t}</a>)}
+        </div>
+      )}
+    </header>
+
+    <div class="prose">
+      <slot />
+    </div>
+
+    <nav class="post-nav" aria-label="Navigation entre articles">
+      {prev && <a class="nav-link prev" href={`/posts/${prev.slug}/`}>← {prev.data.title}</a>}
+      {next && <a class="nav-link next" href={`/posts/${next.slug}/`}>{next.data.title} →</a>}
+    </nav>
+  </article>
+
+  <style>
+    .post { padding-top: 2rem; }
+    .post-header { margin-bottom: 2rem; }
+    .post-meta { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.75rem; }
+    .post-title {
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.9rem;
+    }
+    .post-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .tag {
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 0.12rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      text-decoration: none;
+    }
+
+    .post-nav {
+      display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+    }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; max-width: 45%; }
+    .nav-link:hover { color: var(--accent); }
+    .nav-link.next { text-align: right; }
+
+    @media (max-width: 480px) {
+      .nav-link { max-width: 100%; }
+    }
+  </style>
+</BaseLayout>

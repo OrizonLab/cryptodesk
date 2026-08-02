@@ -1,0 +1,128 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('posts'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const featured = posts[0];
+const rest = posts.slice(1);
+
+// JSON-LD WebSite
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'CryptoDesk',
+  url: 'https://blog.auratrade.app/',
+  description: 'Analyses, actualités et décryptages sur les cryptomonnaies et les marchés financiers.',
+  inLanguage: 'fr-FR',
+};
+
+const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title={featured ? featured.data.title : undefined}
+  description={featured?.data.description}
+  canonical="https://blog.auratrade.app/"
+  ogType="website"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Cryptos & marchés financiers,<br />décryptés simplement.</h1>
+      <p class="hero-sub">
+        Analyses indépendantes, actualités et perspectives sur Bitcoin, les altcoins
+        et les marchés financiers. <strong>Pas de conseil en investissement</strong> — du contexte pour décider par toi-même.
+      </p>
+    </div>
+  </section>
+
+  <section class="container" id="articles">
+    <h2 class="section-title">Articles récents</h2>
+
+    {
+      featured && (
+        <a class="card featured" href={`/posts/${featured.slug}/`}>
+          <div class="card-meta">
+            <time datetime={featured.data.pubDate.toISOString()}>{dateFmt.format(featured.data.pubDate)}</time>
+            <span class="tags">
+              {featured.data.tags.slice(0, 3).map((t) => <span class="tag">#{t}</span>)}
+            </span>
+          </div>
+          <h3>{featured.data.title}</h3>
+          <p class="card-desc">{featured.data.description}</p>
+          <span class="read-more">Lire l'article →</span>
+        </a>
+      )
+    }
+
+    <div class="grid">
+      {
+        rest.map((post) => (
+          <a class="card" href={`/posts/${post.slug}/`}>
+            <div class="card-meta">
+              <time datetime={post.data.pubDate.toISOString()}>{dateFmt.format(post.data.pubDate)}</time>
+              {post.data.tags.slice(0, 2).map((t) => <span class="tag">#{t}</span>)}
+            </div>
+            <h3>{post.data.title}</h3>
+            <p class="card-desc">{post.data.description}</p>
+          </a>
+        ))
+      }
+    </div>
+
+    {
+      posts.length === 0 && (
+        <p class="empty">Les premiers articles arrivent bientôt.</p>
+      )
+    }
+  </section>
+
+  <style>
+    .hero { padding: 3.5rem 0 2.5rem; }
+    .hero-title {
+      font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .hero-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 60ch; }
+    .hero-sub strong { color: var(--text); }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 2rem 0 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+
+    .card {
+      display: block;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card.featured { border-left: 3px solid var(--accent); }
+    .card-meta {
+      display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+      color: var(--text-muted); font-size: 0.82rem; margin-bottom: 0.5rem;
+    }
+    .tag { opacity: 0.9; }
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.35; }
+    .card-desc { color: var(--text-muted); font-size: 0.95rem; }
+    .read-more { display: inline-block; margin-top: 0.75rem; color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+    .empty { color: var(--text-muted); padding: 2rem 0; }
+  </style>
+</BaseLayout>

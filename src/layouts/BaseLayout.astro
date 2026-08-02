@@ -1,0 +1,173 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
+  canonical?: string;
+}
+
+const { title, description, ogImage, ogType, canonical } = Astro.props;
+const pageTitle = title ? `${title} — CryptoDesk` : 'CryptoDesk — Cryptos & Marchés Financiers';
+const pageDesc = description ?? 'CryptoDesk — analyses, actualités et décryptages sur les cryptomonnaies et les marchés financiers.';
+const pageUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+const pageOgImage = ogImage ?? `${Astro.site}/og-default.png`;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{pageTitle}</title>
+
+    <!-- SEO de base -->
+    <meta name="description" content={pageDesc} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="CryptoDesk" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={pageUrl} />
+    <meta name="theme-color" content="#0f1115" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType ?? 'website'} />
+    <meta property="og:site_name" content="CryptoDesk" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:image" content={pageOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="CryptoDesk — Cryptos & Marchés Financiers" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDesc} />
+    <meta name="twitter:image" content={pageOgImage} />
+
+    <!-- Flux RSS -->
+    <link rel="alternate" type="application/rss+xml" title="CryptoDesk — RSS" href={`${Astro.site}/rss.xml`} />
+    <link rel="alternate" type="application/rss+xml" title="CryptoDesk — Atom" href={`${Astro.site}/rss.xml`} />
+
+    <!-- LLM SEO -->
+    <link rel="llms.txt" href={`${Astro.site}/llms.txt`} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Police system uniquement : rapide, pas de requête externe -->
+    <style>
+      /* Minimal inline theme guard to avoid FOUC */
+      html { color-scheme: light dark; }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Navigation principale">
+        <a href="/" class="brand" aria-label="CryptoDesk — accueil">
+          <span class="brand-mark">⌁</span>
+          <span class="brand-name">CryptoDesk</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>Accueil</a></li>
+          <li><a href="/#articles">Articles</a></li>
+          <li><a href="/rss.xml" class="rss-link" aria-label="Flux RSS">RSS</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© {new Date().getFullYear()} CryptoDesk — Cryptos & marchés financiers</p>
+        <p class="footer-note">Contenu informatif — pas un conseil en investissement.</p>
+      </div>
+    </footer>
+
+    <style>
+      :root {
+        --bg: #fafaf9;
+        --bg-alt: #f2f2ef;
+        --text: #1c1917;
+        --text-muted: #57534e;
+        --accent: #0f766e;
+        --accent-soft: #ccfbf1;
+        --border: #e7e5e4;
+        --card: #ffffff;
+        --radius: 12px;
+        --maxw: 720px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f1115;
+          --bg-alt: #171a21;
+          --text: #e7e5e4;
+          --text-muted: #a8a29e;
+          --accent: #2dd4bf;
+          --accent-soft: #134e4a;
+          --border: #26292f;
+          --card: #14171d;
+        }
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+      }
+      .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
+      main { flex: 1; }
+
+      .skip-link {
+        position: absolute; left: -999px; top: 0;
+        background: var(--accent); color: #fff; padding: 0.6rem 1rem;
+        border-radius: 0 0 8px 0; z-index: 100;
+      }
+      .skip-link:focus { left: 0; }
+
+      .site-header {
+        position: sticky; top: 0; z-index: 50;
+        background: color-mix(in srgb, var(--bg) 85%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav { display: flex; align-items: center; justify-content: space-between; padding-top: 0.8rem; padding-bottom: 0.8rem; }
+      .brand { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--text); font-weight: 700; font-size: 1.1rem; }
+      .brand-mark { color: var(--accent); font-size: 1.4rem; line-height: 1; }
+      .nav-links { display: flex; gap: 1.25rem; list-style: none; align-items: center; }
+      .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.15s; }
+      .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--accent); }
+      .rss-link {
+        border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 999px;
+        font-size: 0.8rem !important; font-weight: 600;
+      }
+      .rss-link:hover { border-color: var(--accent); }
+
+      .site-footer { border-top: 1px solid var(--border); margin-top: 4rem; }
+      .footer-inner { padding-top: 1.5rem; padding-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.2rem; }
+      .site-footer p { color: var(--text-muted); font-size: 0.85rem; }
+      .footer-note { font-size: 0.78rem; opacity: 0.8; }
+
+      @media (max-width: 480px) {
+        .nav { flex-direction: column; gap: 0.4rem; }
+        .brand-name { display: none; }
+        .nav-links { gap: 1rem; }
+      }
+    </style>
+  </body>
+</html>

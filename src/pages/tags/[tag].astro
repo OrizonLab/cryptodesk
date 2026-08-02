@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('posts')).filter((p) => !p.data.draft);
+  const tags = new Set<string>();
+  for (const post of posts) {
+    for (const tag of post.data.tags) tags.add(tag);
+  }
+  return Array.from(tags).map((tag) => ({
+    params: { tag },
+    props: { tag },
+  }));
+}
+
+const { tag } = Astro.props;
+const posts = (await getCollection('posts'))
+  .filter((p) => !p.data.draft && p.data.tags.includes(tag))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title={`Articles #${tag}`}
+  description={`Tous les articles CryptoDesk tagués #${tag}.`}
+>
+  <section class="container">
+    <h1 class="tag-title">#<span class="accent">{tag}</span></h1>
+    <p class="count">{posts.length} article(s)</p>
+    <div class="grid">
+      {
+        posts.map((post) => (
+          <a class="card" href={`/posts/${post.slug}/`}>
+            <div class="card-meta">
+              <time datetime={post.data.pubDate.toISOString()}>{dateFmt.format(post.data.pubDate)}</time>
+            </div>
+            <h3>{post.data.title}</h3>
+            <p class="card-desc">{post.data.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+  <style>
+    .tag-title { font-size: 1.8rem; font-weight: 800; padding-top: 2.5rem; }
+    .accent { color: var(--accent); }
+    .count { color: var(--text-muted); margin: 0.3rem 0 1.5rem; }
+    .grid { display: grid; gap: 1rem; }
+    .card {
+      display: block; background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
+      text-decoration: none; color: inherit;
+    }
+    .card:hover { border-color: var(--accent); }
+    .card-meta { color: var(--text-muted); font-size: 0.82rem; margin-bottom: 0.4rem; }
+    .card h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .card-desc { color: var(--text-muted); font-size: 0.92rem; }
+  </style>
+</BaseLayout>
