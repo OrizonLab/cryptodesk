@@ -67,6 +67,21 @@ const breadcrumbJsonLd = {
       <slot />
     </div>
 
+    <aside class="affiliate" aria-label="Exchanges partenaires">
+      <p class="affiliate-title">🏦 Nos exchanges partenaires</p>
+      <p class="affiliate-intro">
+        Tu veux acheter du crypto ? Passer par ces liens ne te coûte rien de plus
+        et soutient le blog :
+      </p>
+      <ul class="affiliate-list">
+        <li><a href="https://bitvavo.com/invite?a=5CC31560CE" target="_blank" rel="noopener sponsored nofollow">Bitvavo</a> — exchange européen, simple et régulé</li>
+        <li><a href="https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK" target="_blank" rel="noopener sponsored nofollow">Bitstack</a> — épargne Bitcoin au quotidien (bonus BTC)</li>
+        <li><a href="https://my.okx.com/fr-fr/join/77244970" target="_blank" rel="noopener sponsored nofollow">OKX</a> — jusqu'à 150 € de bonus (code 77244970)</li>
+        <li><a href="https://weex.com/register?vipCode=4flde" target="_blank" rel="noopener sponsored nofollow">WEEX</a> — dérivés & copy trading (code 4flde)</li>
+      </ul>
+      <p class="affiliate-note">Liens d'affiliation — transparence : <a href="/partenaires/">voir la page Partenaires</a></p>
+    </aside>
+
     <nav class="post-nav" aria-label="Navigation entre articles">
       {prev && <a class="nav-link prev" href={`/posts/${prev.slug}/`}>← {prev.data.title}</a>}
       {next && <a class="nav-link next" href={`/posts/${next.slug}/`}>{next.data.title} →</a>}
@@ -101,6 +116,23 @@ const breadcrumbJsonLd = {
     .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; max-width: 45%; }
     .nav-link:hover { color: var(--accent); }
     .nav-link.next { text-align: right; }
+
+    .affiliate {
+      margin-top: 3rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .affiliate-title { font-weight: 700; margin-bottom: 0.4rem; }
+    .affiliate-intro { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.6rem; }
+    .affiliate-list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+    .affiliate-list li { color: var(--text-muted); font-size: 0.9rem; }
+    .affiliate-list a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .affiliate-list a:hover { text-decoration: underline; }
+    .affiliate-note { margin-top: 0.75rem; font-size: 0.78rem; color: var(--text-muted); opacity: 0.8; }
+    .affiliate-note a { color: var(--text-muted); text-decoration: underline; }
 
     @media (max-width: 480px) {
       .nav-link { max-width: 100%; }

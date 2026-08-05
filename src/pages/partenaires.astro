@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const partners = [
+  {
+    name: 'Bitvavo',
+    tagline: 'Exchange européen, simple et régulé (Pays-Bas).',
+    bonus: 'Idéal pour débuter : interface claire, frais parmi les plus bas d\'Europe.',
+    url: 'https://bitvavo.com/invite?a=5CC31560CE',
+    cta: 'Créer un compte Bitvavo',
+    note: 'Parrainage : frais réduits pour toi et moi.',
+  },
+  {
+    name: 'Bitstack',
+    tagline: 'Épargner en Bitcoin au quotidien, simplement.',
+    bonus: 'Arrondis automatiques et épargne programmée : le moyen le plus simple d\'accumuler du BTC.',
+    url: 'https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK',
+    cta: 'Rejoindre Bitstack',
+    note: 'Bonus de bienvenue en Bitcoin à l\'inscription.',
+  },
+  {
+    name: 'OKX',
+    tagline: 'Exchange international : spot, produits dérivés, Web3.',
+    bonus: 'Jusqu\'à 150 € de bonus quand tu commences à trader (code parrainage 77244970).',
+    url: 'https://my.okx.com/fr-fr/join/77244970',
+    cta: 'Ouvrir un compte OKX',
+    note: 'Code de parrainage : 77244970.',
+  },
+  {
+    name: 'WEEX',
+    tagline: 'Exchange en forte croissance : contrats, copy trading.',
+    bonus: 'Accès aux produits dérivés avec des promotions régulières.',
+    url: 'https://weex.com/register?vipCode=4flde',
+    cta: 'S\'inscrire sur WEEX',
+    note: 'Code VIP : 4flde.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Partenaires & exchanges — CryptoDesk',
+  url: 'https://blog.auratrade.app/partenaires/',
+  description: 'Les exchanges crypto que CryptoDesk recommande : Bitvavo, Bitstack, OKX et WEEX.',
+  inLanguage: 'fr-FR',
+};
+---
+
+<BaseLayout
+  title="Partenaires — exchanges recommandés"
+  description="Les exchanges crypto recommandés par CryptoDesk : Bitvavo, Bitstack, OKX et WEEX. Liens d'affiliation — sans surcoût pour toi."
+  canonical="https://blog.auratrade.app/partenaires/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Exchanges & partenaires</h1>
+      <p class="hero-sub">
+        Les plateformes que nous utilisons et recommandons. En passant par ces liens,
+        <strong>tu ne paies pas plus cher</strong> et tu soutiens le blog.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="grid">
+      {
+        partners.map((p) => (
+          <div class="card">
+            <div class="card-head">
+              <h2>{p.name}</h2>
+              <span class="pill">Partenaire</span>
+            </div>
+            <p class="tagline">{p.tagline}</p>
+            <p class="bonus">{p.bonus}</p>
+            <a class="cta" href={p.url} target="_blank" rel="noopener sponsored nofollow">
+              {p.cta} →
+            </a>
+            <p class="note">{p.note}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="disclaimer">
+      <h3>Transparence</h3>
+      <p>
+        CryptoDesk perçoit une commission si tu ouvres un compte via ces liens d'affiliation.
+        Cela ne change <strong>rien à ton tarif</strong> : les frais sont les mêmes que tu
+        passes par ici ou par le site officiel. Ces revenus financent la rédaction du blog.
+      </p>
+      <p class="small">
+        ⚠️ Les exchanges sont des plateformes tierces — fais tes propres vérifications avant
+        de t'inscrire. Rien ici n'est un conseil en investissement.
+      </p>
+    </div>
+  </section>
+
+  <style>
+    .hero { padding: 3.5rem 0 2.5rem; }
+    .hero-title {
+      font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .hero-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 60ch; }
+    .hero-sub strong { color: var(--text); }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2.5rem; }
+    @media (min-width: 640px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .card-head { display: flex; align-items: center; justify-content: space-between; }
+    .card h2 { font-size: 1.3rem; font-weight: 800; }
+    .pill {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0.15rem 0.6rem;
+    }
+    .tagline { color: var(--text); font-weight: 600; }
+    .bonus { color: var(--text-muted); font-size: 0.95rem; }
+    .cta {
+      display: inline-block; margin-top: 0.5rem; align-self: flex-start;
+      background: var(--accent); color: #fff; font-weight: 700; font-size: 0.9rem;
+      padding: 0.55rem 1.1rem; border-radius: 999px; text-decoration: none;
+      transition: filter 0.15s, transform 0.15s;
+    }
+    .cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .note { color: var(--text-muted); font-size: 0.8rem; opacity: 0.85; }
+
+    .disclaimer {
+      background: var(--bg-alt); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem;
+    }
+    .disclaimer h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .disclaimer p { color: var(--text-muted); font-size: 0.92rem; }
+    .disclaimer .small { font-size: 0.82rem; margin-top: 0.75rem; opacity: 0.85; }
+  </style>
+</BaseLayout>
