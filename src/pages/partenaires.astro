@@ -90,7 +90,7 @@ const jsonLd = {
             </div>
             <p class="tagline">{p.tagline}</p>
             <p class="bonus">{p.bonus}</p>
-            <a class="cta" href={p.url} target="_blank" rel="noopener sponsored nofollow">
+            <a class="cta" href={p.url} target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate={p.name.toLowerCase()}>
               {p.cta} →
             </a>
             <p class="note">{p.note}</p>
