@@ -5,9 +5,17 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   canonical?: string;
+  /** Métadonnées d'article (OG + JSON-LD renforcé pour les IA) */
+  article?: {
+    publishedTime: string;
+    modifiedTime?: string;
+    tags?: string[];
+    authorName?: string;
+    authorUrl?: string;
+  };
 }
 
-const { title, description, ogImage, ogType, canonical } = Astro.props;
+const { title, description, ogImage, ogType, canonical, article } = Astro.props;
 const pageTitle = title ? `${title} — CryptoDesk` : 'CryptoDesk — Cryptos & Marchés Financiers';
 const pageDesc = description ?? 'CryptoDesk — analyses, actualités et décryptages sur les cryptomonnaies et les marchés financiers.';
 const pageUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
@@ -40,6 +48,17 @@ const pageOgImage = ogImage ?? `${Astro.site}/og-default.png`;
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="CryptoDesk — Cryptos & Marchés Financiers" />
+
+    {
+      article && (
+        <>
+          <meta property="article:published_time" content={article.publishedTime} />
+          {article.modifiedTime && <meta property="article:modified_time" content={article.modifiedTime} />}
+          <meta property="article:author" content={article.authorName ?? 'CryptoDesk'} />
+          {article.tags?.slice(0, 6).map((t) => <meta property="article:tag" content={t} />)}
+        </>
+      )
+    }
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />

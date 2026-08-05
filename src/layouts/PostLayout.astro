@@ -45,7 +45,19 @@ const breadcrumbJsonLd = {
 };
 ---
 
-<BaseLayout title={title} description={description} ogImage={ogImage}>
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  ogType="article"
+  article={{
+    publishedTime: pubDate.toISOString(),
+    ...(updatedDate ? { modifiedTime: updatedDate.toISOString() } : {}),
+    tags,
+    authorName: 'CryptoDesk',
+    authorUrl: 'https://blog.auratrade.app/a-propos/',
+  }}
+>
   <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
 
