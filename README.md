@@ -2,7 +2,7 @@
 
 **Blog sobre et indépendant sur les cryptomonnaies et les marchés financiers.**
 
-[blog.auratrade.app](https://blog.auratrade.app)
+[cryptodesk.fr](https://cryptodesk.fr)
 
 ## Vision
 
@@ -17,7 +17,7 @@ CryptoDesk publie des analyses, actualités et perspectives sur Bitcoin, les alt
 | SEO | sitemap, RSS, OpenGraph, JSON-LD (Article/WebSite/Breadcrumb), llms.txt |
 | Sécurité | nginx durci : CSP, HSTS, X-Frame-Options, Permissions-Policy, non-root |
 | Déploiement | Docker multi-stage → nginx, réseau `nginx-proxy` (NPM) |
-| Domaine | `blog.auratrade.app` (HTTPS via NPM/Let's Encrypt) |
+| Domaine | `cryptodesk.fr` (HTTPS via NPM/Let's Encrypt) |
 
 ## Structure
 
@@ -55,7 +55,7 @@ Contenu en Markdown...
 ```
 
 2. `git push` (le VPS fait `git pull` + rebuild automatique)
-3. L'article est en ligne : `https://blog.auratrade.app/posts/<slug>/`
+3. L'article est en ligne : `https://cryptodesk.fr/posts/<slug>/`
 
 ## Développement local
 
@@ -72,7 +72,7 @@ npm run build     # build statique → dist/
 cd /app/cryptodesk && git pull && docker compose up -d --build
 ```
 
-NPM (Nginx Proxy Manager) route `blog.auratrade.app` → conteneur `cryptodesk:80` via le réseau `nginx-proxy`.
+NPM (Nginx Proxy Manager) route `cryptodesk.fr` → conteneur `cryptodesk:80` via le réseau `nginx-proxy`.
 
 ## Documentation
 
