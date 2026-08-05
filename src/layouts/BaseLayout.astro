@@ -20,6 +20,17 @@ const pageTitle = title ? `${title} — CryptoDesk` : 'CryptoDesk — Cryptos & 
 const pageDesc = description ?? 'CryptoDesk — analyses, actualités et décryptages sur les cryptomonnaies et les marchés financiers.';
 const pageUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
 const pageOgImage = ogImage ?? `${Astro.site}/og-default.png`;
+
+const navItems = [
+  { href: '/', label: 'Accueil' },
+  { href: '/lexique/', label: 'Lexique' },
+  { href: '/themes/', label: 'Thèmes' },
+  { href: '/donnees/', label: 'Données' },
+  { href: '/comparateur/', label: 'Comparateur' },
+  { href: '/partenaires/', label: 'Partenaires' },
+  { href: '/a-propos/', label: 'À propos' },
+  { href: '/newsletter/', label: 'Newsletter', pill: true },
+];
 ---
 
 <!doctype html>
@@ -77,9 +88,8 @@ const pageOgImage = ogImage ?? `${Astro.site}/og-default.png`;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
-    <!-- Police system uniquement : rapide, pas de requête externe -->
     <style>
-      /* Minimal inline theme guard to avoid FOUC */
+      /* Anti-FOUC : applique le bon color-scheme avant le rendu */
       html { color-scheme: light dark; }
     </style>
   </head>
@@ -91,15 +101,23 @@ const pageOgImage = ogImage ?? `${Astro.site}/og-default.png`;
           <span class="brand-mark">⌁</span>
           <span class="brand-name">CryptoDesk</span>
         </a>
-        <ul class="nav-links">
-          <li><a href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>Accueil</a></li>
-          <li><a href="/lexique/" aria-current={Astro.url.pathname.startsWith('/lexique') ? 'page' : undefined}>Lexique</a></li>
-          <li><a href="/themes/" aria-current={Astro.url.pathname.startsWith('/themes') ? 'page' : undefined}>Thèmes</a></li>
-          <li><a href="/donnees/" aria-current={Astro.url.pathname.startsWith('/donnees') ? 'page' : undefined}>Données</a></li>
-          <li><a href="/comparateur/" aria-current={Astro.url.pathname.startsWith('/comparateur') ? 'page' : undefined}>Comparateur</a></li>
-          <li><a href="/partenaires/" aria-current={Astro.url.pathname.startsWith('/partenaires') ? 'page' : undefined}>Partenaires</a></li>
-          <li><a href="/a-propos/" aria-current={Astro.url.pathname.startsWith('/a-propos') ? 'page' : undefined}>À propos</a></li>
-          <li><a href="/newsletter/" class="rss-link" aria-current={Astro.url.pathname.startsWith('/newsletter') ? 'page' : undefined}>Newsletter</a></li>
+
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle>
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-menu">
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={[item.pill && 'rss-link']}
+                aria-current={Astro.url.pathname === item.href || (item.href !== '/' && Astro.url.pathname.startsWith(item.href)) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>
@@ -110,41 +128,106 @@ const pageOgImage = ogImage ?? `${Astro.site}/og-default.png`;
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© {new Date().getFullYear()} CryptoDesk — Cryptos & marchés financiers</p>
-        <p class="footer-note">Contenu informatif — pas un conseil en investissement.</p>
+        <div class="footer-grid">
+          <div>
+            <p class="footer-brand"><span class="brand-mark">⌁</span> CryptoDesk</p>
+            <p class="footer-desc">Analyses sobres et documentées sur les cryptomonnaies, la régulation et les marchés financiers.</p>
+          </div>
+          <div class="footer-links">
+            <a href="/lexique/">Lexique</a>
+            <a href="/themes/">Thèmes</a>
+            <a href="/donnees/">Données</a>
+            <a href="/comparateur/">Comparateur</a>
+            <a href="/partenaires/">Partenaires</a>
+            <a href="/newsletter/">Newsletter</a>
+          </div>
+          <div class="footer-links">
+            <a href="/a-propos/">À propos</a>
+            <a href="/rss.xml">Flux RSS</a>
+            <a href="/llms.txt">llms.txt</a>
+            <a href="/sitemap-index.xml">Sitemap</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© {new Date().getFullYear()} CryptoDesk — Cryptos & marchés financiers</p>
+          <p class="footer-note">⚠️ Contenu informatif — pas un conseil en investissement.</p>
+        </div>
       </div>
     </footer>
 
+    <script>
+      // Menu mobile : toggle + fermeture au clic sur un lien
+      const toggle = document.querySelector('[data-nav-toggle]');
+      const menu = document.getElementById('nav-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const open = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!open));
+          menu.classList.toggle('open');
+          document.body.classList.toggle('nav-open');
+        });
+        menu.querySelectorAll('a').forEach((a) =>
+          a.addEventListener('click', () => {
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.classList.remove('open');
+            document.body.classList.remove('nav-open');
+          })
+        );
+      }
+    </script>
+
     <style>
+      /* ============ DESIGN SYSTEM ============ */
       :root {
-        --bg: #fafaf9;
-        --bg-alt: #f2f2ef;
-        --text: #1c1917;
-        --text-muted: #57534e;
-        --accent: #0f766e;
+        /* Palette claire */
+        --bg: #f8fafc;
+        --bg-alt: #eef2f7;
+        --bg-gradient: radial-gradient(1200px 600px at 80% -10%, #d1fae5 0%, transparent 55%), radial-gradient(900px 500px at -10% 10%, #cffafe 0%, transparent 50%);
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --accent: #0d9488;
+        --accent-strong: #0f766e;
         --accent-soft: #ccfbf1;
-        --border: #e7e5e4;
+        --accent-glow: rgba(13, 148, 136, 0.14);
+        --border: #e2e8f0;
         --card: #ffffff;
-        --radius: 12px;
-        --maxw: 720px;
+        --card-hover: #ffffff;
+        --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+        --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.07);
+        --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.10);
+        --radius: 14px;
+        --radius-sm: 10px;
+        --maxw: 860px;
+        --maxw-wide: 1080px;
+        --header-h: 62px;
       }
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg: #0f1115;
-          --bg-alt: #171a21;
-          --text: #e7e5e4;
-          --text-muted: #a8a29e;
+          --bg: #0b0e14;
+          --bg-alt: #11151d;
+          --bg-gradient: radial-gradient(1200px 600px at 80% -10%, #134e4a 0%, transparent 55%), radial-gradient(900px 500px at -10% 10%, #1e3a5f 0%, transparent 50%);
+          --text: #e2e8f0;
+          --text-muted: #94a3b8;
           --accent: #2dd4bf;
+          --accent-strong: #5eead4;
           --accent-soft: #134e4a;
-          --border: #26292f;
-          --card: #14171d;
+          --accent-glow: rgba(45, 212, 191, 0.12);
+          --border: #1e2430;
+          --card: #121722;
+          --card-hover: #161d2a;
+          --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+          --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+          --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
         }
       }
+
       * { box-sizing: border-box; margin: 0; padding: 0; }
       html { scroll-behavior: smooth; }
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         background: var(--bg);
+        background-image: var(--bg-gradient);
+        background-attachment: fixed;
         color: var(--text);
         line-height: 1.7;
         -webkit-font-smoothing: antialiased;
@@ -154,6 +237,7 @@ const pageOgImage = ogImage ?? `${Astro.site}/og-default.png`;
         flex-direction: column;
       }
       .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
+      .container-wide { width: 100%; max-width: var(--maxw-wide); margin: 0 auto; padding: 0 1.25rem; }
       main { flex: 1; }
 
       .skip-link {
@@ -163,34 +247,82 @@ const pageOgImage = ogImage ?? `${Astro.site}/og-default.png`;
       }
       .skip-link:focus { left: 0; }
 
+      /* ============ HEADER ============ */
       .site-header {
         position: sticky; top: 0; z-index: 50;
-        background: color-mix(in srgb, var(--bg) 85%, transparent);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: color-mix(in srgb, var(--bg) 82%, transparent);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
         border-bottom: 1px solid var(--border);
       }
-      .nav { display: flex; align-items: center; justify-content: space-between; padding-top: 0.8rem; padding-bottom: 0.8rem; }
-      .brand { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--text); font-weight: 700; font-size: 1.1rem; }
-      .brand-mark { color: var(--accent); font-size: 1.4rem; line-height: 1; }
-      .nav-links { display: flex; gap: 1.25rem; list-style: none; align-items: center; }
-      .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.15s; }
-      .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--accent); }
+      .nav {
+        display: flex; align-items: center; justify-content: space-between;
+        padding-top: 0.75rem; padding-bottom: 0.75rem;
+        max-width: var(--maxw-wide); min-height: var(--header-h);
+      }
+      .brand { display: flex; align-items: center; gap: 0.55rem; text-decoration: none; color: var(--text); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; }
+      .brand-mark {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 30px; height: 30px; border-radius: 9px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+        color: #fff; font-size: 1.15rem; line-height: 1;
+        box-shadow: 0 2px 8px var(--accent-glow);
+      }
+      .nav-links { display: flex; gap: 0.25rem; list-style: none; align-items: center; }
+      .nav-links a {
+        color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 500;
+        padding: 0.4rem 0.75rem; border-radius: 8px; transition: color 0.15s, background 0.15s;
+      }
+      .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--accent); background: var(--accent-glow); }
       .rss-link {
-        border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 999px;
-        font-size: 0.8rem !important; font-weight: 600;
+        border: 1px solid var(--border); border-radius: 999px !important;
+        font-weight: 600; padding: 0.35rem 0.9rem !important;
       }
       .rss-link:hover { border-color: var(--accent); }
 
-      .site-footer { border-top: 1px solid var(--border); margin-top: 4rem; }
-      .footer-inner { padding-top: 1.5rem; padding-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.2rem; }
-      .site-footer p { color: var(--text-muted); font-size: 0.85rem; }
-      .footer-note { font-size: 0.78rem; opacity: 0.8; }
+      /* Burger */
+      .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+      .nav-toggle span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+      .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+      .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+      /* ============ FOOTER ============ */
+      .site-footer { border-top: 1px solid var(--border); margin-top: 4rem; background: color-mix(in srgb, var(--bg-alt) 60%, transparent); }
+      .footer-inner { padding-top: 2.5rem; padding-bottom: 1.5rem; }
+      .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+      .footer-brand { font-weight: 800; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+      .footer-desc { color: var(--text-muted); font-size: 0.88rem; max-width: 40ch; }
+      .footer-links { display: flex; flex-direction: column; gap: 0.45rem; }
+      .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; transition: color 0.15s; }
+      .footer-links a:hover { color: var(--accent); }
+      .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.25rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+      .site-footer p { color: var(--text-muted); font-size: 0.85rem; }
+      .footer-note { font-size: 0.78rem; opacity: 0.85; }
+
+      /* ============ RESPONSIVE ============ */
+      @media (max-width: 768px) {
+        .nav-toggle { display: flex; }
+        .nav-links {
+          position: fixed; top: var(--header-h); left: 0; right: 0;
+          flex-direction: column; align-items: stretch; gap: 0;
+          background: var(--bg); border-bottom: 1px solid var(--border);
+          padding: 0.5rem 1.25rem 1rem;
+          transform: translateY(-120%); opacity: 0; pointer-events: none;
+          transition: transform 0.25s ease, opacity 0.2s;
+          box-shadow: var(--shadow-lg);
+        }
+        .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .nav-links li { width: 100%; }
+        .nav-links a { display: block; padding: 0.7rem 0.9rem; font-size: 1rem; }
+        .rss-link { text-align: center; margin-top: 0.4rem; }
+        body.nav-open { overflow: hidden; }
+        .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+        .footer-bottom { flex-direction: column; }
+      }
       @media (max-width: 480px) {
-        .nav { flex-direction: column; gap: 0.4rem; }
-        .brand-name { display: none; }
-        .nav-links { gap: 1rem; }
+        .brand-name { font-size: 1.05rem; }
+        .container, .container-wide { padding: 0 1rem; }
       }
     </style>
   </body>

@@ -6,7 +6,7 @@
 - [x] SEO LLM : llms.txt dynamique
 - [x] Sécurité : nginx durci, headers, non-root, réseau NPM
 - [x] Docker multi-stage + docker-compose (réseau nginx-proxy)
-- [x] Déploiement blog.auratrade.app
+- [x] Déploiement cryptodesk.fr
 
 ## P2 — Contenu & rédaction
 - [ ] Premier article « Bienvenue » publié

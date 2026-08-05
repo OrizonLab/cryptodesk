@@ -20,6 +20,13 @@ const websiteJsonLd = {
 };
 
 const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const stats = [
+  { value: posts.length.toString(), label: 'Analyses publiées' },
+  { value: '66+', label: 'Termes du lexique' },
+  { value: '5', label: 'Exchanges comparés' },
+  { value: '100%', label: 'Indépendant' },
+];
 ---
 
 <BaseLayout
@@ -31,30 +38,53 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
   <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
 
   <section class="hero">
-    <div class="container">
-      <h1 class="hero-title">Cryptos & marchés financiers,<br />décryptés simplement.</h1>
+    <div class="container-wide">
+      <p class="hero-eyebrow">Analyses indépendantes · Régulation · DeFi · Marchés</p>
+      <h1 class="hero-title">
+        Cryptos & marchés financiers,<br />
+        <span class="gradient-text">décryptés simplement.</span>
+      </h1>
       <p class="hero-sub">
-        Analyses indépendantes, actualités et perspectives sur Bitcoin, les altcoins
-        et les marchés financiers. <strong>Pas de conseil en investissement</strong> — du contexte pour décider par toi-même.
+        Des analyses sobres et documentées sur Bitcoin, les altcoins et les marchés financiers.
+        <strong>Pas de conseil en investissement</strong> — du contexte pour décider par toi-même.
       </p>
+      <div class="hero-actions">
+        <a href="#articles" class="btn btn-primary">Lire les analyses →</a>
+        <a href="/lexique/" class="btn btn-ghost">Explorer le lexique</a>
+      </div>
+      <div class="hero-stats">
+        {stats.map((s) => (
+          <div class="stat">
+            <span class="stat-value">{s.value}</span>
+            <span class="stat-label">{s.label}</span>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="container" id="articles">
-    <h2 class="section-title">Articles récents</h2>
+  <section class="container-wide" id="articles">
+    <div class="section-head">
+      <h2 class="section-title">Articles récents</h2>
+      <a href="/themes/" class="section-link">Tous les thèmes →</a>
+    </div>
 
     {
       featured && (
         <a class="card featured" href={`/posts/${featured.slug}/`}>
-          <div class="card-meta">
-            <time datetime={featured.data.pubDate.toISOString()}>{dateFmt.format(featured.data.pubDate)}</time>
-            <span class="tags">
-              {featured.data.tags.slice(0, 3).map((t) => <span class="tag">#{t}</span>)}
-            </span>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge">À la une</span>
+              <time datetime={featured.data.pubDate.toISOString()}>{dateFmt.format(featured.data.pubDate)}</time>
+              <span class="tags">
+                {featured.data.tags.slice(0, 3).map((t) => <span class="tag">#{t}</span>)}
+              </span>
+            </div>
+            <h3>{featured.data.title}</h3>
+            <p class="card-desc">{featured.data.description}</p>
+            <span class="read-more">Lire l'article →</span>
           </div>
-          <h3>{featured.data.title}</h3>
-          <p class="card-desc">{featured.data.description}</p>
-          <span class="read-more">Lire l'article →</span>
+          <div class="card-accent" aria-hidden="true">⌁</div>
         </a>
       )
     }
@@ -69,6 +99,7 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
             </div>
             <h3>{post.data.title}</h3>
             <p class="card-desc">{post.data.description}</p>
+            <span class="read-more">Lire l'article →</span>
           </a>
         ))
       }
@@ -82,47 +113,121 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
   </section>
 
   <style>
-    .hero { padding: 3.5rem 0 2.5rem; }
-    .hero-title {
-      font-size: clamp(1.9rem, 4.5vw, 2.8rem);
-      line-height: 1.15;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
+    /* ============ HERO ============ */
+    .hero { padding: 4.5rem 0 3rem; position: relative; }
+    .hero-eyebrow {
+      display: inline-block;
+      color: var(--accent); font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      margin-bottom: 1.1rem;
+      padding: 0.3rem 0.9rem;
+      border: 1px solid var(--accent-glow);
+      background: var(--accent-glow);
+      border-radius: 999px;
     }
-    .hero-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 60ch; }
+    .hero-title {
+      font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+      line-height: 1.12; font-weight: 800;
+      letter-spacing: -0.025em; margin-bottom: 1.2rem;
+    }
+    .gradient-text {
+      background: linear-gradient(120deg, var(--accent), #38bdf8);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .hero-sub { color: var(--text-muted); font-size: 1.1rem; max-width: 60ch; margin-bottom: 2rem; }
     .hero-sub strong { color: var(--text); }
+    .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 3rem; }
 
-    .section-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin: 2rem 0 1.25rem;
-      padding-bottom: 0.5rem;
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.4rem; border-radius: 12px;
+      font-weight: 600; font-size: 0.95rem; text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #fff; box-shadow: 0 4px 14px var(--accent-glow);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px var(--accent-glow); }
+    .btn-ghost {
+      border: 1px solid var(--border); color: var(--text);
+      background: var(--card);
+    }
+    .btn-ghost:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+      padding: 1.4rem 0; border-top: 1px solid var(--border);
+    }
+    .stat { display: flex; flex-direction: column; gap: 0.15rem; }
+    .stat-value { font-size: 1.7rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+    .stat-label { color: var(--text-muted); font-size: 0.82rem; }
+
+    /* ============ SECTIONS ============ */
+    .section-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin: 2.5rem 0 1.25rem; padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--border);
     }
+    .section-title { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; }
+    .section-link { color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    .section-link:hover { text-decoration: underline; }
 
-    .grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    /* ============ CARTES ============ */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 1.1rem; }
 
     .card {
       display: block;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.15s, transform 0.15s;
+      padding: 1.4rem 1.6rem;
+      text-decoration: none; color: inherit;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s, background 0.18s;
     }
-    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .card.featured { border-left: 3px solid var(--accent); }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      background: var(--card-hover);
+    }
+    .card.featured {
+      display: flex; justify-content: space-between; align-items: stretch; gap: 1.5rem;
+      border: 1px solid var(--accent-glow);
+      background: linear-gradient(135deg, var(--card) 70%, var(--accent-glow));
+      overflow: hidden;
+    }
+    .card-body { flex: 1; }
+    .card-accent {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; color: var(--accent); opacity: 0.5;
+      padding: 0 0.5rem; min-width: 60px;
+    }
     .card-meta {
       display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
-      color: var(--text-muted); font-size: 0.82rem; margin-bottom: 0.5rem;
+      color: var(--text-muted); font-size: 0.82rem; margin-bottom: 0.6rem;
+    }
+    .badge {
+      background: var(--accent); color: #fff; font-weight: 700;
+      font-size: 0.72rem; padding: 0.15rem 0.6rem; border-radius: 999px;
+      letter-spacing: 0.03em; text-transform: uppercase;
     }
     .tag { opacity: 0.9; }
-    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.35; }
+    .card h3 { font-size: 1.18rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.35; }
     .card-desc { color: var(--text-muted); font-size: 0.95rem; }
     .read-more { display: inline-block; margin-top: 0.75rem; color: var(--accent); font-weight: 600; font-size: 0.9rem; }
     .empty { color: var(--text-muted); padding: 2rem 0; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 640px) {
+      .hero { padding: 3rem 0 2rem; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+      .card.featured { flex-direction: column; }
+      .card-accent { display: none; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; }
+    }
   </style>
 </BaseLayout>
