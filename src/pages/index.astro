@@ -14,7 +14,7 @@ const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'CryptoDesk',
-  url: 'https://blog.auratrade.app/',
+  url: 'https://cryptodesk.fr/',
   description: 'Analyses, actualités et décryptages sur les cryptomonnaies et les marchés financiers.',
   inLanguage: 'fr-FR',
 };
@@ -25,7 +25,7 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
 <BaseLayout
   title={featured ? featured.data.title : undefined}
   description={featured?.data.description}
-  canonical="https://blog.auratrade.app/"
+  canonical="https://cryptodesk.fr/"
   ogType="website"
 >
   <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />

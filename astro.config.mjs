@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://blog.auratrade.app',
+  site: 'https://cryptodesk.fr',
   compressHTML: true,
   trailingSlash: 'never',
   output: 'static',
@@ -15,7 +15,7 @@ export default defineConfig({
       lastmod: new Date(),
       serialize(item) {
         // Prioritize the homepage
-        if (item.url === 'https://blog.auratrade.app/') {
+        if (item.url === 'https://cryptodesk.fr/') {
           item.priority = 1.0;
         }
         return item;

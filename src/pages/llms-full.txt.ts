@@ -8,7 +8,7 @@ import type { APIContext } from 'astro';
  * Généré dynamiquement à chaque build.
  */
 export async function GET(context: APIContext) {
-  const site = context.site ?? new URL('https://blog.auratrade.app/');
+  const site = context.site ?? new URL('https://cryptodesk.fr/');
   const posts = (await getCollection('posts'))
     .filter((p) => !p.data.draft)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());

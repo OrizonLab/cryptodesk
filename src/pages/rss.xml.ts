@@ -10,7 +10,7 @@ export async function GET(context: APIContext) {
   return rss({
     title: 'CryptoDesk — Cryptos & Marchés Financiers',
     description: 'Analyses, actualités et décryptages sur les cryptomonnaies et les marchés financiers.',
-    site: context.site ?? 'https://blog.auratrade.app/',
+    site: context.site ?? 'https://cryptodesk.fr/',
     items: posts.map((post) => ({
       title: post.data.title,
       description: post.data.description,

@@ -22,13 +22,13 @@ const articleJsonLd = {
   description,
   datePublished: pubDate.toISOString(),
   ...(updatedDate ? { dateModified: updatedDate.toISOString() } : {}),
-  author: { '@type': 'Organization', name: 'CryptoDesk', url: 'https://blog.auratrade.app/' },
+  author: { '@type': 'Organization', name: 'CryptoDesk', url: 'https://cryptodesk.fr/' },
   publisher: {
     '@type': 'Organization',
     name: 'CryptoDesk',
-    logo: { '@type': 'ImageObject', url: 'https://blog.auratrade.app/favicon.svg' },
+    logo: { '@type': 'ImageObject', url: 'https://cryptodesk.fr/favicon.svg' },
   },
-  mainEntityOfPage: `https://blog.auratrade.app/posts/${post.slug}/`,
+  mainEntityOfPage: `https://cryptodesk.fr/posts/${post.slug}/`,
   inLanguage: 'fr-FR',
   ...(ogImage ? { image: ogImage } : {}),
   keywords: tags.join(', '),
@@ -39,8 +39,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://blog.auratrade.app/' },
-    { '@type': 'ListItem', position: 2, name: title, item: `https://blog.auratrade.app/posts/${post.slug}/` },
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://cryptodesk.fr/' },
+    { '@type': 'ListItem', position: 2, name: title, item: `https://cryptodesk.fr/posts/${post.slug}/` },
   ],
 };
 ---
@@ -55,7 +55,7 @@ const breadcrumbJsonLd = {
     ...(updatedDate ? { modifiedTime: updatedDate.toISOString() } : {}),
     tags,
     authorName: 'CryptoDesk',
-    authorUrl: 'https://blog.auratrade.app/a-propos/',
+    authorUrl: 'https://cryptodesk.fr/a-propos/',
   }}
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />

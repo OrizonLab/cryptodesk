@@ -25,4 +25,4 @@ User-agent: Google-Extended
 Allow: /
 Allow: /llms.txt
 
-Sitemap: https://blog.auratrade.app/sitemap-index.xml
+Sitemap: https://cryptodesk.fr/sitemap-index.xml

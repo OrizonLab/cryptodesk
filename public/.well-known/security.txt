@@ -4,5 +4,5 @@
 Contact: mailto:contact@auratrade.app
 Expires: 2027-01-01T00:00:00.000Z
 Preferred-Languages: fr, en
-Canonical: https://blog.auratrade.app/.well-known/security.txt
-Policy: https://blog.auratrade.app/security.txt
+Canonical: https://cryptodesk.fr/.well-known/security.txt
+Policy: https://cryptodesk.fr/security.txt
