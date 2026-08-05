@@ -28,6 +28,7 @@ Thumbs.db
 
 # Data (jamais de données locales dans le repo)
 data/
+!src/data/
 uploads/
 *.csv
 
