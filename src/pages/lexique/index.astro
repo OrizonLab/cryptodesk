@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CATEGORIES, LEXIQUE, lexiqueByCategory, type LexiqueTerm } from '../../data/lexique';
+
+const total = LEXIQUE.length;
+const pageTitle = 'Lexique crypto — ' + total + ' termes expliqués simplement';
+const pageDesc = 'Lexique crypto de A à Z : ' + total + ' termes expliqués en français simple — Bitcoin, altcoin, DeFi, staking, halving, blockchain et bien plus.';
+const catKeys: string[] = Object.keys(CATEGORIES);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet',
+  name: 'Lexique crypto — CryptoDesk',
+  url: 'https://blog.auratrade.app/lexique/',
+  description: 'Le lexique crypto de CryptoDesk : ' + total + ' termes expliqués simplement — Bitcoin, DeFi, trading, sécurité, blockchain.',
+  inLanguage: 'fr-FR',
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDesc}
+  canonical="https://blog.auratrade.app/lexique/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Lexique crypto</h1>
+      <p class="hero-sub">
+        {total} termes expliqués en français simple, sans jargon. Le vocabulaire
+        indispensable pour comprendre la crypto — de l'altcoin au yield farming.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <nav class="cat-nav" aria-label="Catégories du lexique">
+      {
+        catKeys.map((cat) => (
+          <a class="cat-pill" href={'#' + cat}>
+            {CATEGORIES[cat].emoji} {CATEGORIES[cat].name}
+            <span class="cat-count">{lexiqueByCategory[cat].length}</span>
+          </a>
+        ))
+      }
+    </nav>
+
+    {
+      catKeys.map((cat) => (
+        <div class="category" id={cat}>
+          <h2 class="category-title">{CATEGORIES[cat].emoji} {CATEGORIES[cat].name}</h2>
+          <p class="category-desc">{CATEGORIES[cat].desc}</p>
+          <ul class="term-list">
+            {lexiqueByCategory[cat].map((t) => (
+              <li>
+                <a href={'/lexique/' + t.slug + '/'}>
+                  <span class="term-name">{t.term}</span>
+                  <span class="term-short">{t.short}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+
+  <style>
+    .hero { padding: 3.5rem 0 2.5rem; }
+    .hero-title { font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .hero-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 60ch; }
+
+    .cat-nav { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+    .cat-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 0.4rem 0.9rem; font-size: 0.85rem; font-weight: 600;
+      color: var(--text-muted); text-decoration: none; transition: all 0.15s;
+    }
+    .cat-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .cat-count {
+      background: var(--bg-alt); border-radius: 999px; padding: 0.05rem 0.5rem;
+      font-size: 0.75rem; color: var(--text-muted);
+    }
+
+    .category { margin-bottom: 2.5rem; scroll-margin-top: 5rem; }
+    .category-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .category-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+
+    .term-list { list-style: none; display: grid; gap: 0.6rem; }
+    .term-list a {
+      display: flex; flex-direction: column; gap: 0.15rem;
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 0.85rem 1.1rem; text-decoration: none; color: inherit;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .term-list a:hover { border-color: var(--accent); transform: translateX(3px); }
+    .term-name { font-weight: 700; color: var(--text); }
+    .term-short { color: var(--text-muted); font-size: 0.85rem; }
+  </style>
+</BaseLayout>

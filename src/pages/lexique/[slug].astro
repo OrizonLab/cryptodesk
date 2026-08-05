@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { LEXIQUE, lexiqueBySlug, CATEGORIES } from '../../data/lexique';
+
+export async function getStaticPaths() {
+  return LEXIQUE.map((t) => ({ params: { slug: t.slug }, props: { term: t } }));
+}
+
+const { term } = Astro.props;
+const cat = CATEGORIES[term.category];
+
+// Bloc affilié contextuel selon la catégorie du terme
+const AFFILIATE: Record<string, { title: string; text: string; links: Array<{ name: string; url: string; label: string }> }> = {
+  bitcoin: {
+    title: 'Acheter du Bitcoin',
+    text: 'Pour acheter du Bitcoin ou épargner en BTC, voici les plateformes que nous utilisons :',
+    links: [
+      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Exchange européen régulé' },
+      { name: 'Bitstack', url: 'https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK', label: 'Épargne BTC au quotidien' },
+      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: "Jusqu'à 150 € de bonus" },
+    ],
+  },
+  defi: {
+    title: 'Explorer la DeFi',
+    text: 'Pour accéder à la DeFi (achat d\'ETH, stablecoins, protocoles), ces plateformes sont de bons points de départ :',
+    links: [
+      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Spot + Web3 intégré' },
+      { name: 'Bitget', url: 'https://www.bitgetapps.com/referral/register?clacCode=W8JDT92M', label: 'Large choix de tokens' },
+      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Simple et régulé' },
+    ],
+  },
+  trading: {
+    title: 'Passer à la pratique',
+    text: 'Pour trader (spot, futures, ordres avancés), voici les plateformes adaptées :',
+    links: [
+      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Futures & outils pro' },
+      { name: 'WEEX', url: 'https://weex.com/register?vipCode=4flde', label: 'Dérivés & copy trading' },
+      { name: 'Bitget', url: 'https://www.bitgetapps.com/referral/register?clacCode=W8JDT92M', label: 'Copy trading & futures' },
+    ],
+  },
+  securite: {
+    title: 'Sécuriser ses cryptos',
+    text: 'La sécurité commence par un bon exchange et de bonnes pratiques. Ces plateformes sont régulées et fiables :',
+    links: [
+      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Régulé (Pays-Bas), historique sain' },
+      { name: 'Bitstack', url: 'https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK', label: 'PSAN enregistré en France' },
+      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Programme de protection' },
+    ],
+  },
+  marche: {
+    title: 'Suivre le marché',
+    text: 'Pour acheter et suivre les actifs du marché, voici nos plateformes de référence :',
+    links: [
+      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Interface claire pour débuter' },
+      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Large choix d\'actifs' },
+      { name: 'Bitget', url: 'https://www.bitgetapps.com/referral/register?clacCode=W8JDT92M', label: 'Nouveaux tokens en premier' },
+    ],
+  },
+  technique: {
+    title: 'Comprendre en pratique',
+    text: 'La meilleure façon de comprendre la technologie, c\'est de l\'utiliser. Commencez avec :',
+    links: [
+      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Achat simple, retraits vers wallet' },
+      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Testez la DeFi et le Web3' },
+      { name: 'Bitstack', url: 'https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK', label: 'Premier pas avec le BTC' },
+    ],
+  },
+};
+
+const aff = AFFILIATE[term.category];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTerm',
+  name: term.term,
+  description: term.short,
+  url: `https://blog.auratrade.app/lexique/${term.slug}/`,
+  inLanguage: 'fr-FR',
+  ...(term.related?.length ? { termCode: term.related.map((r) => lexiqueBySlug.get(r)?.term).filter(Boolean) } : {}),
+};
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://blog.auratrade.app/' },
+    { '@type': 'ListItem', position: 2, name: 'Lexique', item: 'https://blog.auratrade.app/lexique/' },
+    { '@type': 'ListItem', position: 3, name: term.term, item: `https://blog.auratrade.app/lexique/${term.slug}/` },
+  ],
+};
+---
+
+<BaseLayout
+  title={`${term.term} — définition simple`}
+  description={term.short}
+  canonical={`https://blog.auratrade.app/lexique/${term.slug}/`}
+  ogType="article"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
+  <article class="container term-page">
+    <nav class="crumbs" aria-label="Fil d'Ariane">
+      <a href="/">Accueil</a> › <a href="/lexique/">Lexique</a> › <span>{term.term}</span>
+    </nav>
+
+    <header class="term-header">
+      <span class="cat-badge">{cat.emoji} {cat.name}</span>
+      <h1 class="term-title">{term.term}</h1>
+      <p class="term-short">{term.short}</p>
+    </header>
+
+    <div class="term-body">
+      {term.content.map((p) => <p>{p}</p>)}
+    </div>
+
+    {
+      term.related?.length ? (
+        <nav class="related" aria-label="Termes liés">
+          <h2>À lire aussi</h2>
+          <div class="related-grid">
+            {term.related.map((slug) => {
+              const r = lexiqueBySlug.get(slug);
+              return r ? (
+                <a class="related-card" href={`/lexique/${r.slug}/`}>
+                  <span class="related-name">{r.term}</span>
+                  <span class="related-short">{r.short}</span>
+                </a>
+              ) : null;
+            })}
+          </div>
+        </nav>
+      ) : null
+    }
+
+    <aside class="affiliate" aria-label="Partenaires">
+      <p class="affiliate-title">🏦 {aff.title}</p>
+      <p class="affiliate-intro">{aff.text}</p>
+      <ul class="affiliate-list">
+        {aff.links.map((l) => (
+          <li>
+            <a href={l.url} target="_blank" rel="noopener sponsored nofollow"><strong>{l.name}</strong></a>
+            <span> — {l.label}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="affiliate-note">
+        Liens d'affiliation — sans surcoût pour vous, ils soutiennent le blog.
+        <a href="/partenaires/"> Page Partenaires</a>
+      </p>
+    </aside>
+  </article>
+
+  <style>
+    .term-page { padding-top: 2rem; padding-bottom: 3rem; max-width: 68ch; }
+    .crumbs { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .crumbs a { color: var(--text-muted); text-decoration: none; }
+    .crumbs a:hover { color: var(--accent); }
+
+    .term-header { margin-bottom: 1.75rem; }
+    .cat-badge {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 0.15rem 0.6rem; color: var(--text-muted); margin-bottom: 0.75rem;
+    }
+    .term-title { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .term-short { color: var(--text-muted); font-size: 1.05rem; }
+
+    .term-body p { color: var(--text-muted); margin-bottom: 1.1rem; line-height: 1.75; }
+
+    .related { margin-top: 2.5rem; }
+    .related h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .related-grid { display: grid; grid-template-columns: 1fr; gap: 0.6rem; }
+    @media (min-width: 600px) { .related-grid { grid-template-columns: 1fr 1fr; } }
+    .related-card {
+      display: flex; flex-direction: column; gap: 0.15rem;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 0.8rem 1rem; text-decoration: none; color: inherit;
+      transition: border-color 0.15s;
+    }
+    .related-card:hover { border-color: var(--accent); }
+    .related-name { font-weight: 700; font-size: 0.92rem; }
+    .related-short { color: var(--text-muted); font-size: 0.8rem; }
+
+    .affiliate {
+      margin-top: 2.5rem;
+      background: var(--bg-alt); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
+    }
+    .affiliate-title { font-weight: 700; margin-bottom: 0.4rem; }
+    .affiliate-intro { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.6rem; }
+    .affiliate-list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+    .affiliate-list li { color: var(--text-muted); font-size: 0.9rem; }
+    .affiliate-list a { color: var(--accent); text-decoration: none; }
+    .affiliate-list a:hover { text-decoration: underline; }
+    .affiliate-note { margin-top: 0.75rem; font-size: 0.78rem; color: var(--text-muted); opacity: 0.8; }
+    .affiliate-note a { color: var(--text-muted); text-decoration: underline; }
+  </style>
+</BaseLayout>

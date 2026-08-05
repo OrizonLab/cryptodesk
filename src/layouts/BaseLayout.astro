@@ -74,6 +74,7 @@ const pageOgImage = ogImage ?? `${Astro.site}/og-default.png`;
         </a>
         <ul class="nav-links">
           <li><a href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>Accueil</a></li>
+          <li><a href="/lexique/" aria-current={Astro.url.pathname.startsWith('/lexique') ? 'page' : undefined}>Lexique</a></li>
           <li><a href="/themes/" aria-current={Astro.url.pathname.startsWith('/themes') ? 'page' : undefined}>Thèmes</a></li>
           <li><a href="/donnees/" aria-current={Astro.url.pathname.startsWith('/donnees') ? 'page' : undefined}>Données</a></li>
           <li><a href="/comparateur/" aria-current={Astro.url.pathname.startsWith('/comparateur') ? 'page' : undefined}>Comparateur</a></li>

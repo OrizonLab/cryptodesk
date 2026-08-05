@@ -21,7 +21,10 @@ export async function GET(context: APIContext) {
   lines.push('## CryptoDesk');
   lines.push('');
   lines.push(`- [Accueil](${site})`);
+  lines.push(`- [Lexique crypto](${new URL('lexique/', site)})`);
   lines.push(`- [Exchanges partenaires](${new URL('partenaires/', site)})`);
+  lines.push(`- [Comparateur d'exchanges](${new URL('comparateur/', site)})`);
+  lines.push(`- [Données du jour](${new URL('donnees/', site)})`);
   lines.push(`- [Flux RSS](${new URL('rss.xml', site)})`);
   lines.push(`- [Sitemap](${new URL('sitemap-index.xml', site)})`);
   lines.push(`- [Contenu complet des articles](${new URL('llms-full.txt', site)})`);
