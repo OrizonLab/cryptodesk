@@ -1,0 +1,141 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('posts')).filter((p) => !p.data.draft);
+
+// Thèmes éditoriaux → tags associés
+const themes = [
+  {
+    slug: 'reglementation',
+    name: 'Régulation',
+    emoji: '⚖️',
+    desc: 'Lois, agences, débats parlementaires : ce qui encadre (ou pas) la crypto.',
+    tags: ['reglementation', 'clarity-act', 'etats-unis', 'senat', 'france', 'europe'],
+  },
+  {
+    slug: 'bitcoin',
+    name: 'Bitcoin',
+    emoji: '🟠',
+    desc: 'BTC : marché, halving, ETF, adoption institutionnelle et réserve de valeur.',
+    tags: ['bitcoin', 'btc', 'etf'],
+  },
+  {
+    slug: 'defi',
+    name: 'DeFi & fondamentaux',
+    emoji: '🔷',
+    desc: 'Protocoles qui génèrent des revenus réels : frais, TVL, analyse fondamentale.',
+    tags: ['defi', 'ethereum', 'revenus', 'tvl', 'fundamentaux'],
+  },
+  {
+    slug: 'marches',
+    name: 'Marchés & analyse',
+    emoji: '📈',
+    desc: 'Analyse technique, niveaux, sentiment et marchés de prédiction.',
+    tags: ['marches', 'analyse', 'technique', 'polymarket', 'sentiment'],
+  },
+  {
+    slug: 'portefeuille',
+    name: 'Portefeuille & risques',
+    emoji: '💼',
+    desc: 'Gestion, diversification, DCA et bonnes pratiques.',
+    tags: ['portefeuille', 'dca', 'risques'],
+  },
+];
+
+const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Associe chaque thème à ses articles (via tags)
+const themed = themes.map((t) => ({
+  ...t,
+  articles: posts
+    .filter((p) => p.data.tags.some((tag) => t.tags.includes(tag)))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+}));
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Thèmes — CryptoDesk',
+  url: 'https://blog.auratrade.app/themes/',
+  description: 'Les grands thèmes couverts par CryptoDesk : régulation, Bitcoin, DeFi, marchés et gestion de portefeuille.',
+  inLanguage: 'fr-FR',
+};
+---
+
+<BaseLayout
+  title="Thèmes"
+  description="Les grands thèmes de CryptoDesk : régulation crypto, Bitcoin, DeFi et fondamentaux, analyse des marchés, gestion de portefeuille."
+  canonical="https://blog.auratrade.app/themes/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Explorer par thème</h1>
+      <p class="hero-sub">
+        La crypto vue par grands angles : régulation, Bitcoin, DeFi, marchés et gestion.
+        Choisissez une porte d'entrée.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="themes">
+      {
+        themed.map((t) => (
+          <div class="theme" id={t.slug}>
+            <div class="theme-head">
+              <h2><span class="emoji">{t.emoji}</span> {t.name}</h2>
+              <span class="count">{t.articles.length} article{t.articles.length > 1 ? 's' : ''}</span>
+            </div>
+            <p class="theme-desc">{t.desc}</p>
+            {
+              t.articles.length > 0 ? (
+                <div class="grid">
+                  {t.articles.map((post) => (
+                    <a class="card" href={`/posts/${post.slug}/`}>
+                      <div class="card-meta">
+                        <time datetime={post.data.pubDate.toISOString()}>{dateFmt.format(post.data.pubDate)}</time>
+                      </div>
+                      <h3>{post.data.title}</h3>
+                      <p class="card-desc">{post.data.description}</p>
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p class="empty">Aucun article pour ce thème pour le moment.</p>
+              )
+            }
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <style>
+    .hero { padding: 3.5rem 0 2.5rem; }
+    .hero-title { font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .hero-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 60ch; }
+    .hero-sub strong { color: var(--text); }
+
+    .themes { display: flex; flex-direction: column; gap: 3rem; padding-bottom: 3rem; }
+    .theme { scroll-margin-top: 5rem; }
+    .theme-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.4rem; }
+    .theme-head h2 { font-size: 1.5rem; font-weight: 800; }
+    .emoji { margin-right: 0.3rem; }
+    .count { color: var(--text-muted); font-size: 0.85rem; }
+    .theme-desc { color: var(--text-muted); margin-bottom: 1.25rem; }
+    .grid { display: grid; gap: 1rem; }
+    .card {
+      display: block; background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.1rem 1.4rem;
+      text-decoration: none; color: inherit; transition: border-color 0.15s, transform 0.15s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card-meta { color: var(--text-muted); font-size: 0.82rem; margin-bottom: 0.4rem; }
+    .card h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+    .card-desc { color: var(--text-muted); font-size: 0.92rem; }
+    .empty { color: var(--text-muted); }
+  </style>
+</BaseLayout>

@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'À propos — CryptoDesk',
+  url: 'https://blog.auratrade.app/a-propos/',
+  description: 'CryptoDesk est un blog francophone indépendant qui décrypte les cryptomonnaies et les marchés financiers.',
+  inLanguage: 'fr-FR',
+};
+---
+
+<BaseLayout
+  title="À propos"
+  description="CryptoDesk : un blog francophone indépendant qui décrypte les cryptomonnaies et les marchés financiers. Méthode, indépendance, et ce que vous trouverez (et ne trouverez pas) ici."
+  canonical="https://blog.auratrade.app/a-propos/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">À propos de CryptoDesk</h1>
+      <p class="hero-sub">
+        Un blog francophone <strong>indépendant</strong> qui décrypte les cryptomonnaies et
+        les marchés financiers — sans jargon inutile, sans promesses de richesse.
+      </p>
+    </div>
+  </section>
+
+  <section class="container prose-page">
+    <h2>Pourquoi ce blog existe</h2>
+    <p>
+      L'information crypto en français est souvent partagée entre deux extrêmes :
+      la promotion déguisée d'un côté, le jargon technique incompréhensible de l'autre.
+      CryptoDesk veut occuper le terrain du milieu : <strong>des analyses sobres, documentées
+      et honnêtes</strong>, qui donnent du contexte pour décider par soi-même.
+    </p>
+
+    <h2>Ce que vous trouverez ici</h2>
+    <ul>
+      <li><strong>Actualité réglementaire</strong> — suivi du CLARITY Act, évolutions législatives (USA, UE, France)</li>
+      <li><strong>Analyses de marché</strong> — Bitcoin, altcoins, fondamentaux, signaux techniques</li>
+      <li><strong>Marchés de prédiction</strong> — les probabilités Polymarket décodées</li>
+      <li><strong>Une « crypto du jour »</strong> — des projets solides, avec niveaux d'accumulation et de vente</li>
+      <li><strong>Fondamentaux DeFi</strong> — frais, revenus, TVL : les protocoles qui génèrent réellement de la valeur</li>
+    </ul>
+
+    <h2>Ce que vous ne trouverez pas ici</h2>
+    <ul>
+      <li>❌ Des memecoins et des « 100x » promis à la légère</li>
+      <li>❌ Des conseils en investissement personnalisés</li>
+      <li>❌ Du FOMO ou de la peur artificielle</li>
+      <li>❌ Des articles rédigés pour faire plaisir à un projet</li>
+    </ul>
+
+    <h2>Notre méthode</h2>
+    <p>
+      Chaque article s'appuie sur des <strong>sources vérifiables</strong> (presse spécialisée,
+      documents officiels, données on-chain) citées dans le texte. Les marchés de prédiction
+      sont utilisés comme indicateur de sentiment — jamais comme une vérité absolue.
+      En cas d'erreur, nous corrigeons et le signalons.
+    </p>
+
+    <h2>Indépendance & transparence</h2>
+    <p>
+      Le blog est financé par des <a href="/partenaires/">liens d'affiliation</a> vers des exchanges
+      crypto. Ces liens ne changent <strong>rien au prix pour vous</strong> et n'influencent pas nos analyses :
+      un projet ne peut pas « acheter » un article favorable.
+    </p>
+    <p class="disclaimer">
+      ⚠️ Contenu informatif — rien sur ce site n'est un conseil en investissement.
+      La crypto est un actif volatil : n'investissez que ce que vous pouvez vous permettre de perdre.
+    </p>
+  </section>
+
+  <style>
+    .hero { padding: 3.5rem 0 2.5rem; }
+    .hero-title { font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .hero-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 60ch; }
+    .hero-sub strong { color: var(--text); }
+
+    .prose-page { max-width: 68ch; padding-bottom: 3rem; }
+    .prose-page h2 { font-size: 1.3rem; font-weight: 700; margin: 2rem 0 0.75rem; }
+    .prose-page p { color: var(--text-muted); margin-bottom: 1rem; }
+    .prose-page ul { color: var(--text-muted); padding-left: 1.4rem; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .prose-page a { color: var(--accent); }
+    .disclaimer {
+      margin-top: 2rem; padding: 1.25rem 1.5rem;
+      background: var(--bg-alt); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+      border-radius: var(--radius); font-size: 0.92rem;
+    }
+  </style>
+</BaseLayout>
