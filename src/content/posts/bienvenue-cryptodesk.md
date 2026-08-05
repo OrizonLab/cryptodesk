@@ -3,6 +3,7 @@ title: "Bienvenue sur CryptoDesk"
 description: "CryptoDesk est né : un blog sobre et indépendant pour décrypter les cryptomonnaies et les marchés financiers. Voici ce que vous trouverez ici, et ce que vous n'y trouverez pas."
 pubDate: 2026-08-02
 tags: ["blog", "presentation", "crypto"]
+enSlug: "welcome-cryptodesk"
 ---
 
 <div class="summary"><strong>En résumé :</strong> CryptoDesk publie des analyses, des actualités et des perspectives sur les cryptos et les marchés financiers — en français, sans jargon inutile, et sans conflit d'intérêt.</div>

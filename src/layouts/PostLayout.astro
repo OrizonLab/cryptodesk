@@ -10,9 +10,13 @@ interface Props {
 }
 
 const { post, prev, next } = Astro.props;
-const { title, description, pubDate, updatedDate, tags, ogImage } = post.data;
+const { title, description, pubDate, updatedDate, tags, ogImage, enSlug } = post.data;
 
 const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+// Heure de publication affichée en petit dans le meta (ordre chronologique des analyses)
+const timeFmt = new Intl.DateTimeFormat('fr-FR', { hour: '2-digit', minute: '2-digit' });
+const pubTime = timeFmt.format(pubDate);
+const enHref = enSlug ? `https://cryptodesk.fr/en/posts/${enSlug}/` : undefined;
 
 // JSON-LD Article
 const articleJsonLd = {
@@ -57,6 +61,7 @@ const breadcrumbJsonLd = {
     authorName: 'CryptoDesk',
     authorUrl: 'https://cryptodesk.fr/a-propos/',
   }}
+  alternateHref={enHref}
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
@@ -64,8 +69,13 @@ const breadcrumbJsonLd = {
   <article class="container post">
     <header class="post-header">
       <div class="post-meta">
-        <time datetime={pubDate.toISOString()}>{dateFmt.format(pubDate)}</time>
+        <time datetime={pubDate.toISOString()}>{dateFmt.format(pubDate)} · {pubTime}</time>
         {updatedDate && <span class="updated">· mis à jour {dateFmt.format(updatedDate)}</span>}
+        {enHref && (
+          <span class="lang-switch">
+            · <a href={enHref} hreflang="en">🇺🇸 Read in English</a>
+          </span>
+        )}
       </div>
       <h1 class="post-title">{title}</h1>
       {tags.length > 0 && (
@@ -114,6 +124,8 @@ const breadcrumbJsonLd = {
       margin-bottom: 1rem;
     }
     .post-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .lang-switch a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .lang-switch a:hover { text-decoration: underline; }
     .tag {
       color: var(--accent);
       background: var(--accent-glow);

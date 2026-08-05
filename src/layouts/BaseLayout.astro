@@ -7,6 +7,10 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   canonical?: string;
+  /** Langue de la page ('fr' par défaut) — ajuste og:locale */
+  lang?: 'fr' | 'en';
+  /** URL de la version dans l'autre langue (hreflang) */
+  alternateHref?: string;
   /** Métadonnées d'article (OG + JSON-LD renforcé pour les IA) */
   article?: {
     publishedTime: string;
@@ -17,11 +21,13 @@ interface Props {
   };
 }
 
-const { title, description, ogImage, ogType, canonical, article } = Astro.props;
+const { title, description, ogImage, ogType, canonical, article, lang = 'fr', alternateHref } = Astro.props;
+const isEn = lang === 'en';
 const pageTitle = title ? `${title} — CryptoDesk` : 'CryptoDesk — Cryptos & Marchés Financiers';
 const pageDesc = description ?? 'CryptoDesk — analyses, actualités et décryptages sur les cryptomonnaies et les marchés financiers.';
 const pageUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
-const pageOgImage = ogImage ?? `${Astro.site}/og-default.png`;
+// Normalise l'URL de l'image OG (évite le double slash quand Astro.site finit par /)
+const pageOgImage = ogImage ? new URL(ogImage, Astro.site).href : new URL('/og-default.png', Astro.site).href;
 
 const navItems = [
   { href: '/', label: 'Accueil' },
@@ -36,7 +42,7 @@ const navItems = [
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={isEn ? 'en' : 'fr'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -56,11 +62,21 @@ const navItems = [
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDesc} />
     <meta property="og:url" content={pageUrl} />
-    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale" content={isEn ? 'en_US' : 'fr_FR'} />
     <meta property="og:image" content={pageOgImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="CryptoDesk — Cryptos & Marchés Financiers" />
+
+    {
+      alternateHref && (
+        <>
+          {/* hreflang : signale à Google la version dans l'autre langue */}
+          <link rel="alternate" hreflang={isEn ? 'fr' : 'en'} href={alternateHref} />
+          <link rel="alternate" hreflang="x-default" href={isEn ? pageUrl : alternateHref} />
+        </>
+      )
+    }
 
     {
       article && (
@@ -100,6 +116,14 @@ const navItems = [
     <style>
       /* Anti-FOUC : applique le bon color-scheme avant le rendu */
       html { color-scheme: light dark; }
+      /* Bandeau de langue (injecté par JS si le navigateur est dans l'autre langue) */
+      .lang-banner {
+        position: sticky; top: 0; z-index: 100;
+        background: var(--accent); color: #fff;
+        text-align: center; font-size: 0.9rem; font-weight: 600;
+        padding: 0.55rem 1rem;
+      }
+      .lang-banner a { color: #fff; text-decoration: underline; }
     </style>
   </head>
   <body>
@@ -182,6 +206,24 @@ const navItems = [
             document.body.classList.remove('nav-open');
           })
         );
+      }
+
+      // Bandeau de langue : si le navigateur est dans l'autre langue et qu'une
+      // version existe, propose le lien (PAS de redirection auto — meilleur SEO)
+      const altHref = document.querySelector('link[rel="alternate"][hreflang]')?.getAttribute('href');
+      const pageLang = document.documentElement.lang || 'fr';
+      if (altHref) {
+        const navLang = (navigator.language || '').toLowerCase().slice(0, 2);
+        const wantsOther = pageLang === 'fr' ? navLang === 'en' : navLang === 'fr';
+        if (wantsOther) {
+          const banner = document.createElement('div');
+          banner.className = 'lang-banner';
+          banner.innerHTML =
+            pageLang === 'fr'
+              ? `🌐 This article is available in <a href="${altHref}" hreflang="en">English →</a>`
+              : `🌐 Cet article est disponible en <a href="${altHref}" hreflang="fr">français →</a>`;
+          document.body.prepend(banner);
+        }
       }
     </script>
   </body>

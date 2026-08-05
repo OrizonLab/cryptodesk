@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content';
+import PostLayoutEn from '../../../layouts/PostLayoutEn.astro';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('postsEn')).filter((p) => !p.data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'postsEn'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Article précédent / suivant par date (parcours EN)
+const all = (await getCollection('postsEn'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const idx = all.findIndex((p) => p.slug === post.slug);
+const next = idx > 0 ? all[idx - 1] : undefined;
+const prev = idx >= 0 && idx < all.length - 1 ? all[idx + 1] : undefined;
+---
+
+<PostLayoutEn post={post} prev={prev} next={next}>
+  <Content />
+</PostLayoutEn>

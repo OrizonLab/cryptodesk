@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('postsEn'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const featured = posts[0];
+const rest = posts.slice(1);
+
+const dateFmt = new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+const timeFmt = new Intl.DateTimeFormat('en-US', {
+  hour: '2-digit',
+  minute: '2-digit',
+  timeZone: 'America/New_York',
+});
+---
+
+<BaseLayout
+  lang="en"
+  title={featured ? featured.data.title : undefined}
+  description={featured?.data.description ?? 'CryptoDesk — US-market crypto analysis: Bitcoin, regulation, DeFi and financial markets, published after the US close.'}
+  canonical="https://cryptodesk.fr/en/"
+  ogType="website"
+>
+  <section class="hero">
+    <div class="container-wide">
+      <p class="hero-eyebrow">US-market analysis · Regulation · DeFi · Markets</p>
+      <h1 class="hero-title">
+        Crypto &amp; financial markets,<br />
+        <span class="gradient-text">explained in plain English.</span>
+      </h1>
+      <p class="hero-sub">
+        Sober, well-documented analysis on Bitcoin, altcoins and financial markets —
+        published after the US market close. <strong>Not investment advice</strong>.
+      </p>
+      <div class="hero-actions">
+        <a href="#articles" class="btn btn-primary">Read the analysis →</a>
+        <a href="https://cryptodesk.fr/" class="btn btn-ghost" hreflang="fr">🇫🇷 Version française</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-wide" id="articles">
+    <div class="section-head">
+      <h2 class="section-title">Latest articles</h2>
+      <a href="https://cryptodesk.fr/" class="section-link" hreflang="fr">French edition →</a>
+    </div>
+
+    {
+      featured && (
+        <a class="card featured" href={`/en/posts/${featured.slug}/`}>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge">Featured</span>
+              <time datetime={featured.data.pubDate.toISOString()}>
+                {dateFmt.format(featured.data.pubDate)} · {timeFmt.format(featured.data.pubDate)} ET
+              </time>
+            </div>
+            <h3>{featured.data.title}</h3>
+            <p class="card-desc">{featured.data.description}</p>
+            <span class="read-more">Read the article →</span>
+          </div>
+          <div class="card-accent" aria-hidden="true">⌁</div>
+        </a>
+      )
+    }
+
+    <div class="grid">
+      {
+        rest.map((post) => (
+          <a class="card" href={`/en/posts/${post.slug}/`}>
+            <div class="card-meta">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {dateFmt.format(post.data.pubDate)} · {timeFmt.format(post.data.pubDate)} ET
+              </time>
+              {post.data.tags.slice(0, 2).map((t) => <span class="tag">#{t}</span>)}
+            </div>
+            <h3>{post.data.title}</h3>
+            <p class="card-desc">{post.data.description}</p>
+            <span class="read-more">Read →</span>
+          </a>
+        ))
+      }
+    </div>
+
+    {posts.length === 0 && (
+      <p class="empty">No English articles yet — the first US-market analysis is coming soon.</p>
+    )}
+  </section>
+
+  <style>
+    .hero { margin-bottom: 1rem; }
+    .empty { color: var(--text-muted); padding: 2rem 0; }
+  </style>
+</BaseLayout>
