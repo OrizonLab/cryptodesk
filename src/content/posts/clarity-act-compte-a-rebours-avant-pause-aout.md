@@ -1,7 +1,7 @@
 ---
 title: "CLARITY Act : le compte à rebours de 72 heures est lancé, les chances de vote fondent"
 description: "Le CLARITY Act a disparu du calendrier du Sénat lundi, à quelques jours de la pause d'août. Warren saisit la SEC sur le memecoin $TRUMP, les probabilités de passage chutent à 27-31 % et Bernstein redoute une nouvelle vague de ventes. Suivi complet, signaux des marchés de prédiction et niveaux sur Ethereum."
-pubDate: 2026-08-04
+pubDate: 2026-08-04T18:00:00Z
 tags: ["reglementation", "etats-unis", "clarity-act", "senat", "marches"]
 draft: false
 ---

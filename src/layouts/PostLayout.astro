@@ -13,9 +13,11 @@ const { post, prev, next } = Astro.props;
 const { title, description, pubDate, updatedDate, tags, ogImage, enSlug } = post.data;
 
 const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
-// Heure de publication affichée en petit dans le meta (ordre chronologique des analyses)
-const timeFmt = new Intl.DateTimeFormat('fr-FR', { hour: '2-digit', minute: '2-digit' });
-const pubTime = timeFmt.format(pubDate);
+// Heure de publication affichée en petit dans le meta — forcée sur Paris
+// (le site est statique : sans timeZone, le build UTC afficherait l'heure UTC)
+const timeFmt = new Intl.DateTimeFormat('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' });
+const hasTime = pubDate.getUTCHours() !== 0 || pubDate.getUTCMinutes() !== 0;
+const pubTime = hasTime ? timeFmt.format(pubDate) : null;
 const enHref = enSlug ? `https://cryptodesk.fr/en/posts/${enSlug}/` : undefined;
 
 // JSON-LD Article
@@ -69,7 +71,7 @@ const breadcrumbJsonLd = {
   <article class="container post">
     <header class="post-header">
       <div class="post-meta">
-        <time datetime={pubDate.toISOString()}>{dateFmt.format(pubDate)} · {pubTime}</time>
+        <time datetime={pubDate.toISOString()}>{dateFmt.format(pubDate)}{pubTime ? ` · ${pubTime}` : ''}</time>
         {updatedDate && <span class="updated">· mis à jour {dateFmt.format(updatedDate)}</span>}
         {enHref && (
           <span class="lang-switch">

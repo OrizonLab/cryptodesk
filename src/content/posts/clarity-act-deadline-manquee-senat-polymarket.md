@@ -1,7 +1,7 @@
 ---
 title: "CLARITY Act : la deadline du 5 août est passée, les chances s'effondrent à 14 % sur Polymarket"
 description: "Le CLARITY Act manque la fenêtre du Sénat : absent de l'agenda du 5 août, le texte voit ses chances de promulguation tomber à 14,5 % sur Polymarket. Thune promet un vote avant la pause, Warren saisit la SEC. Analyse Solana et signaux des marchés de prédiction."
-pubDate: 2026-08-05
+pubDate: 2026-08-05T18:14:00Z
 tags: ["reglementation", "etats-unis", "clarity-act", "senat", "polymarket", "solana"]
 draft: false
 ---

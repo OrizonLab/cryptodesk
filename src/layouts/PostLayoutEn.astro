@@ -19,7 +19,8 @@ const timeFmt = new Intl.DateTimeFormat('en-US', {
   minute: '2-digit',
   timeZone: 'America/New_York',
 });
-const pubTime = timeFmt.format(pubDate);
+const hasTime = pubDate.getUTCHours() !== 0 || pubDate.getUTCMinutes() !== 0;
+const pubTime = hasTime ? timeFmt.format(pubDate) : null;
 const frHref = frSlug ? `https://cryptodesk.fr/posts/${frSlug}/` : undefined;
 
 // JSON-LD Article
@@ -63,7 +64,7 @@ const articleJsonLd = {
   <article class="container post">
     <header class="post-header">
       <div class="post-meta">
-        <time datetime={pubDate.toISOString()}>{dateFmt.format(pubDate)} · {pubTime} ET</time>
+        <time datetime={pubDate.toISOString()}>{dateFmt.format(pubDate)}{pubTime ? ` · ${pubTime} ET` : ''}</time>
         {updatedDate && <span class="updated">· updated {dateFmt.format(updatedDate)}</span>}
         {frHref && (
           <span class="lang-switch">
