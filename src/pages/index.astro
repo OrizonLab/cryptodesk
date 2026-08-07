@@ -223,7 +223,7 @@ const stats = [
     /* ============ RESPONSIVE ============ */
     @media (max-width: 640px) {
       .hero { padding: 3rem 0 2rem; }
-      .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+      .hero-stats { display: none; }  /* stats inutiles sur mobile avant d'avoir lu */
       .card.featured { flex-direction: column; }
       .card-accent { display: none; }
       .hero-actions { flex-direction: column; align-items: stretch; }
