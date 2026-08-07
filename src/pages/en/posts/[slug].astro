@@ -25,8 +25,21 @@ const all = (await getCollection('postsEn'))
 const idx = all.findIndex((p) => p.slug === post.slug);
 const next = idx > 0 ? all[idx - 1] : undefined;
 const prev = idx >= 0 && idx < all.length - 1 ? all[idx + 1] : undefined;
+
+// Articles liés : même tag que l'article courant, hors lui-même, max 2
+const related = all
+  .filter(p => p.slug !== post.slug)
+  .filter(p => (p.data.tags ?? []).some((t: string) => (post.data.tags ?? []).includes(t)))
+  .slice(0, 2);
+const enNeeded = 2 - related.length;
+if (enNeeded > 0) {
+  const recent = all
+    .filter(p => p.slug !== post.slug && !related.some(r => r.slug === p.slug))
+    .slice(0, enNeeded);
+  related.push(...recent);
+}
 ---
 
-<PostLayoutEn post={post} prev={prev} next={next}>
+<PostLayoutEn post={post} prev={prev} next={next} related={related}>
   <Content />
 </PostLayoutEn>
