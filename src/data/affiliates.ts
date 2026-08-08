@@ -4,11 +4,13 @@
 // Ce fichier alimente :
 //   • la page /partenaires/  (src/pages/partenaires.astro)
 //   • le bloc affiliés en bas des articles  (src/layouts/PostLayout.astro)
+//   • le comparateur d'exchanges  (src/pages/comparateur.astro)
 //
 // Champs :
 //   promo     → « offre du moment » affichée en badge (null = pas d'offre)
 //   featured  → mise en avant dans la section « Offres du moment »
 //   active    → false = masqué partout (partenariat terminé)
+//   type/pays/regulation/frais/fraisClasse/ideal → ligne du comparateur
 //
 // MISE À JOUR AUTOMATIQUE : le cron « Veille offres affiliation » (hebdo)
 // revoit les offres du moment et met à jour promo/featured/active ici,
@@ -26,6 +28,13 @@ export type Affiliate = {
   promo: string | null;
   featured: boolean;
   active: boolean;
+  // Champs comparateur (optionnels — page /comparateur/)
+  type?: string;
+  pays?: string;
+  regulation?: string;
+  frais?: string;
+  fraisClasse?: 'faible' | 'moyen' | 'eleve';
+  ideal?: string;
 };
 
 export const affiliates: Affiliate[] = [
@@ -40,6 +49,12 @@ export const affiliates: Affiliate[] = [
     promo: 'Frais parmi les plus bas d’Europe',
     featured: true,
     active: true,
+    type: 'Exchange centralisé',
+    pays: 'Pays-Bas 🇳🇱',
+    regulation: 'Régulé (DNB)',
+    frais: '0,25 % (maker/taker)',
+    fraisClasse: 'faible',
+    ideal: 'Débutants',
   },
   {
     name: 'Bitstack',
@@ -52,6 +67,12 @@ export const affiliates: Affiliate[] = [
     promo: 'Bonus de bienvenue en Bitcoin',
     featured: false,
     active: true,
+    type: 'Épargne BTC',
+    pays: 'France 🇫🇷',
+    regulation: 'PSAN (AMF)',
+    frais: '1,49 % (achat)',
+    fraisClasse: 'moyen',
+    ideal: 'Épargne régulière',
   },
   {
     name: 'OKX',
@@ -64,6 +85,12 @@ export const affiliates: Affiliate[] = [
     promo: "Jusqu'à 150 € de bonus (code 77244970)",
     featured: true,
     active: true,
+    type: 'Exchange international',
+    pays: 'Global 🌍',
+    regulation: 'Licences multiples',
+    frais: '0,10 % (spot)',
+    fraisClasse: 'faible',
+    ideal: 'Traders actifs',
   },
   {
     name: 'WEEX',
@@ -76,6 +103,12 @@ export const affiliates: Affiliate[] = [
     promo: 'Promotions régulières sur les dérivés',
     featured: false,
     active: true,
+    type: 'Exchange dérivés',
+    pays: 'Global 🌍',
+    regulation: 'Licences multiples',
+    frais: '0,06 % (futures)',
+    fraisClasse: 'faible',
+    ideal: 'Futures & copy trading',
   },
   {
     name: 'Bitget',
@@ -88,6 +121,12 @@ export const affiliates: Affiliate[] = [
     promo: 'Bonus de parrainage pour les nouveaux inscrits',
     featured: false,
     active: true,
+    type: 'Exchange international',
+    pays: 'Global 🌍',
+    regulation: 'Licences multiples',
+    frais: '0,10 % (spot)',
+    fraisClasse: 'faible',
+    ideal: 'Copy trading & futures',
   },
   {
     name: 'Aave',
@@ -100,6 +139,12 @@ export const affiliates: Affiliate[] = [
     promo: null,
     featured: false,
     active: true,
+    type: 'Protocole DeFi',
+    pays: 'Décentralisé 🌐',
+    regulation: 'Open source',
+    frais: 'Frais de protocole',
+    fraisClasse: 'moyen',
+    ideal: 'Prêt & épargne DeFi',
   },
   {
     name: 'Kraken Pro',
@@ -112,6 +157,12 @@ export const affiliates: Affiliate[] = [
     promo: 'Récompenses de parrainage à l’inscription (code t9rfwd87)',
     featured: true,
     active: true,
+    type: 'Exchange international',
+    pays: 'Global 🌍',
+    regulation: 'Régulé (multiples juridictions)',
+    frais: '0,16 % / 0,26 % (spot)',
+    fraisClasse: 'faible',
+    ideal: 'Traders & sécurité',
   },
 ];
 

@@ -1,88 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { activeAffiliates } from '../data/affiliates';
 
-const partners = [
-  {
-    name: 'Bitvavo',
-    type: 'Exchange centralisé',
-    pays: 'Pays-Bas 🇳🇱',
-    regulation: 'Régulé (DNB)',
-    frais: '0,25 % (maker/taker)',
-    fraisClasse: 'faible',
-    bonus: 'Frais réduits via le lien',
-    ideal: 'Débutants',
-    url: 'https://bitvavo.com/invite?a=5CC31560CE',
-  },
-  {
-    name: 'Bitstack',
-    type: 'Épargne BTC',
-    pays: 'France 🇫🇷',
-    regulation: 'PSAN (AMF)',
-    frais: '1,49 % (achat)',
-    fraisClasse: 'moyen',
-    bonus: 'Bonus de bienvenue en Bitcoin',
-    ideal: 'Épargne régulière',
-    url: 'https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK',
-  },
-  {
-    name: 'OKX',
-    type: 'Exchange international',
-    pays: 'Global 🌍',
-    regulation: 'Licences multiples',
-    frais: '0,10 % (spot)',
-    fraisClasse: 'faible',
-    bonus: "Jusqu'à 150 € de bonus",
-    ideal: 'Traders actifs',
-    url: 'https://my.okx.com/fr-fr/join/77244970',
-  },
-  {
-    name: 'WEEX',
-    type: 'Exchange dérivés',
-    pays: 'Global 🌍',
-    regulation: 'Licences multiples',
-    frais: '0,06 % (futures)',
-    fraisClasse: 'faible',
-    bonus: 'Promotions régulières',
-    ideal: 'Futures & copy trading',
-    url: 'https://weex.com/register?vipCode=4flde',
-  },
-  {
-    name: 'Bitget',
-    type: 'Exchange international',
-    pays: 'Global 🌍',
-    regulation: 'Licences multiples',
-    frais: '0,10 % (spot)',
-    fraisClasse: 'faible',
-    bonus: 'Programme de parrainage',
-    ideal: 'Copy trading & futures',
-    url: 'https://www.bitgetapps.com/referral/register?clacCode=W8JDT92M',
-  },
-  {
-    name: 'Aave',
-    type: 'Protocole DeFi',
-    pays: 'Décentralisé 🌐',
-    regulation: 'Open source',
-    frais: 'Frais de protocole',
-    fraisClasse: 'moyen',
-    bonus: 'Accès anticipé V4',
-    ideal: 'Prêt & épargne DeFi',
-    url: 'https://aave.com/r/2BA113',
-  },
-];
+const partners = activeAffiliates.filter((p) => p.type && p.frais);
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'Comparateur d\'exchanges crypto — CryptoDesk',
+  name: "Comparateur d'exchanges crypto — CryptoDesk",
   url: 'https://cryptodesk.fr/comparateur/',
-  description: 'Comparez les exchanges crypto recommandés par CryptoDesk : frais, régulation, bonus et public cible.',
+  description: "Comparez les exchanges crypto recommandés par CryptoDesk : frais, régulation, bonus et public cible.",
   inLanguage: 'fr-FR',
 };
 ---
 
 <BaseLayout
   title="Comparateur d'exchanges crypto"
-  description="Comparez les exchanges crypto recommandés par CryptoDesk : Bitvavo, Bitstack, OKX, WEEX et Bitget — frais, régulation, bonus et public cible."
+  description="Comparez les exchanges crypto recommandés par CryptoDesk : Bitvavo, Bitstack, OKX, WEEX, Bitget, Kraken Pro — frais, régulation, bonus et public cible."
   canonical="https://cryptodesk.fr/comparateur/"
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

@@ -119,6 +119,25 @@ const breadcrumbJsonLd = {
       <p class="affiliate-note">Liens d'affiliation — transparence : <a href="/partenaires/">voir la page Partenaires</a> · offres mises à jour automatiquement</p>
     </aside>
 
+    <section class="newsletter-box" aria-label="Newsletter">
+      <h3 class="nl-title">📬 Le Desk — la newsletter hebdo</h3>
+      <p class="nl-intro">Les 5 chiffres qui ont bougé, le signal réglementaire et 3 dates à surveiller. Chaque semaine, en 5 minutes.</p>
+      <form class="newsletter-form nl-form">
+        <div class="nl-row">
+          <input type="email" name="email" placeholder="vous@exemple.fr" autocomplete="email" required aria-label="Adresse email" />
+          <button type="submit" class="nl-btn">S'abonner</button>
+        </div>
+        <div class="nl-lang" role="radiogroup" aria-label="Langue">
+          <label><input type="radio" name="lang" value="fr" checked /> 🇫🇷</label>
+          <label><input type="radio" name="lang" value="en" /> 🇺🇸</label>
+        </div>
+        <label class="nl-consent">
+          <input type="checkbox" required /> J'accepte de recevoir la newsletter. Désinscription en un clic.
+        </label>
+        <p class="newsletter-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
     {related.length > 0 && (
       <nav class="read-next" aria-label="À lire ensuite">
         <p class="read-next-title">📰 À lire ensuite</p>
@@ -242,8 +261,49 @@ const breadcrumbJsonLd = {
     .affiliate-note { margin-top: 0.75rem; font-size: 0.78rem; color: var(--text-muted); opacity: 0.8; }
     .affiliate-note a { color: var(--text-muted); text-decoration: underline; }
 
+    /* ── Newsletter « Le Desk » ── */
+    .newsletter-box {
+      margin-top: 1.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .nl-title { font-weight: 700; margin-bottom: 0.3rem; font-size: 1.05rem; }
+    .nl-intro { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.8rem; }
+    .nl-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .nl-row input[type="email"] {
+      flex: 1; min-width: 200px; padding: 0.55rem 0.9rem;
+      border: 1px solid var(--border); border-radius: 999px; background: var(--bg);
+      color: var(--text); font-size: 0.9rem;
+    }
+    .nl-row input[type="email"]:focus { outline: 2px solid var(--accent); border-color: transparent; }
+    .nl-btn {
+      background: var(--accent); color: #fff; font-weight: 700; font-size: 0.85rem;
+      padding: 0.55rem 1.1rem; border: none; border-radius: 999px; cursor: pointer;
+      transition: filter 0.15s;
+    }
+    .nl-btn:hover { filter: brightness(1.1); }
+    .nl-btn:disabled { opacity: 0.6; cursor: wait; }
+    .nl-lang { display: flex; gap: 0.6rem; margin: 0.6rem 0 0.4rem; font-size: 0.85rem; }
+    .nl-lang label { display: inline-flex; align-items: center; gap: 0.2rem; cursor: pointer; color: var(--text-muted); }
+    .nl-lang label:has(input:checked) { color: var(--text); font-weight: 600; }
+    .nl-lang input { accent-color: var(--accent); }
+    .nl-consent {
+      display: flex; gap: 0.45rem; align-items: flex-start;
+      font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin-top: 0.2rem;
+    }
+    .nl-consent input { accent-color: var(--accent); margin-top: 0.15rem; }
+    .newsletter-status { min-height: 1.1rem; font-size: 0.85rem; margin-top: 0.4rem; }
+    .newsletter-status.ok { color: var(--accent); }
+    .newsletter-status.err { color: #f87171; }
+
     @media (max-width: 480px) {
       .nav-link { max-width: 100%; }
     }
   </style>
+
+  <script src="/js/newsletter.js" defer></script>
 </BaseLayout>

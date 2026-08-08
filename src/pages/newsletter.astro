@@ -1,84 +1,76 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Identifiant Buttondown — remplacer par le vrai quand le compte est créé.
-// Sans identifiant, le formulaire s'affiche en mode "mailto" (copie d'adresse).
-const BUTTONDOWN_ID = '';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: 'Newsletter — CryptoDesk',
   url: 'https://cryptodesk.fr/newsletter/',
-  description: 'Recevez chaque jour les analyses et la crypto du jour de CryptoDesk par email. Gratuit, sans spam.',
+  description: 'Recevez chaque semaine « Le Desk » : les 5 chiffres qui ont bougé, le signal réglementaire, le graphique à retenir et 3 dates à surveiller. Gratuit, sans spam.',
   inLanguage: 'fr-FR',
 };
 ---
 
 <BaseLayout
-  title="Newsletter"
-  description="La newsletter CryptoDesk : chaque jour, l'essentiel de la crypto — analyse, crypto du jour, marchés de prédiction. Gratuite et sans spam."
+  title="Newsletter — Le Desk"
+  description="« Le Desk » — la newsletter hebdo CryptoDesk : les 5 chiffres qui ont bougé, le signal réglementaire, le graphique à retenir et 3 dates à surveiller. Gratuite et sans spam."
   canonical="https://cryptodesk.fr/newsletter/"
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <section class="hero">
     <div class="container">
-      <h1 class="hero-title">Newsletter CryptoDesk</h1>
+      <h1 class="hero-title">Le Desk — la newsletter hebdo</h1>
       <p class="hero-sub">
-        Chaque jour, l'essentiel de la crypto dans votre boîte mail : l'analyse du jour,
-        la <strong>crypto du moment</strong> avec ses niveaux, et les mouvements des
-        marchés de prédiction. <strong>Gratuit, sans spam.</strong>
+        Chaque semaine, l'essentiel qui a <strong>réellement changé</strong> dans la crypto :
+        les 5 chiffres qui ont bougé, le signal réglementaire, le graphique à retenir,
+        ce que le marché croit (Polymarket) et 3 dates à surveiller.
+        <strong>Gratuit, sans spam, désinscription en un clic.</strong>
       </p>
     </div>
   </section>
 
   <section class="container">
     <div class="newsletter-card">
-      {
-        BUTTONDOWN_ID ? (
-          <form
-            class="form"
-            action={`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_ID}`}
-            method="post"
-            target="popupwindow"
-          >
-            <input type="hidden" name="embed" value="1" />
-            <label for="email">Votre adresse email</label>
-            <div class="form-row">
-              <input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="vous@exemple.fr"
-                required
-              />
-              <button type="submit" class="cta">S'abonner</button>
-            </div>
-            <p class="hint">Une fois par jour, désinscription en un clic.</p>
-          </form>
-        ) : (
-          <div class="form">
-            <p class="fallback">
-              📬 La newsletter arrive bientôt. En attendant, suivez-nous sur
-              <a href="https://bsky.app/profile/crypto-desk.bsky.social" target="_blank" rel="noopener"> Bluesky</a>
-              ou via le <a href="/rss.xml">flux RSS</a>.
-            </p>
-          </div>
-        )
-      }
+      <form class="newsletter-form form">
+        <label for="nl-email">Votre adresse email</label>
+        <div class="form-row">
+          <input
+            id="nl-email"
+            type="email"
+            name="email"
+            placeholder="vous@exemple.fr"
+            autocomplete="email"
+            required
+          />
+          <button type="submit" class="cta">S'abonner</button>
+        </div>
+        <div class="lang-row" role="radiogroup" aria-label="Langue de la newsletter">
+          <label class="lang-pill"><input type="radio" name="lang" value="fr" checked /> 🇫🇷 Français</label>
+          <label class="lang-pill"><input type="radio" name="lang" value="en" /> 🇺🇸 English</label>
+        </div>
+        <label class="consent">
+          <input type="checkbox" required />
+          J'accepte de recevoir la newsletter CryptoDesk. Désinscription en un clic à tout moment.
+        </label>
+        <p class="hint">Une édition utile par semaine — pas de spam, promis.</p>
+        <p class="newsletter-status" role="status" aria-live="polite"></p>
+      </form>
 
       <div class="promises">
-        <div class="promise"><strong>1 email / jour</strong><span>pas de spam, promis</span></div>
-        <div class="promise"><strong>Analyse + crypto du jour</strong><span>l'essentiel en 5 min</span></div>
+        <div class="promise"><strong>1 édition / semaine</strong><span>5 minutes de lecture</span></div>
+        <div class="promise"><strong>Signaux, pas de bruit</strong><span>5 chiffres + 1 graphique + 3 dates</span></div>
         <div class="promise"><strong>Désinscription facile</strong><span>en un clic, à tout moment</span></div>
       </div>
     </div>
   </section>
 
+  <script src="/js/newsletter.js" defer></script>
+
   <style>
     .hero { padding: 3.5rem 0 2.5rem; }
     .hero-title { font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
-    .hero-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 60ch; }
+    .hero-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 62ch; }
     .hero-sub strong { color: var(--text); }
 
     .newsletter-card {
@@ -99,9 +91,24 @@ const jsonLd = {
       transition: filter 0.15s, transform 0.15s;
     }
     .cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .cta:disabled { opacity: 0.6; cursor: wait; }
     .hint { color: var(--text-muted); font-size: 0.8rem; margin-top: 0.6rem; }
-    .fallback { color: var(--text-muted); }
-    .fallback a { color: var(--accent); }
+    .lang-row { display: flex; gap: 0.5rem; margin: 0.9rem 0; }
+    .lang-pill {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      border: 1px solid var(--border); border-radius: 999px; padding: 0.35rem 0.85rem;
+      font-size: 0.85rem; cursor: pointer; color: var(--text-muted);
+    }
+    .lang-pill:has(input:checked) { border-color: var(--accent); color: var(--text); font-weight: 600; }
+    .lang-pill input { accent-color: var(--accent); }
+    .consent {
+      display: flex !important; gap: 0.5rem; align-items: flex-start;
+      font-weight: 400 !important; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;
+    }
+    .consent input { accent-color: var(--accent); margin-top: 0.15rem; }
+    .newsletter-status { min-height: 1.2rem; font-size: 0.88rem; margin-top: 0.5rem; }
+    .newsletter-status.ok { color: var(--accent); }
+    .newsletter-status.err { color: #f87171; }
 
     .promises { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin-top: 1.8rem; }
     @media (min-width: 600px) { .promises { grid-template-columns: repeat(3, 1fr); } }
