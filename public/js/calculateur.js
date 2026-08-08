@@ -52,10 +52,10 @@
   }
 
   function run() {
-    const amount = parseFloat(form.amount.value || '0');
-    const method = form.method.value;
-    const asset = form.asset.value;
-    const withdraw = form.withdraw.value;
+    const amount = parseFloat(form.elements.namedItem('amount').value || '0');
+    const method = form.elements.namedItem('method').value;
+    const asset = form.elements.namedItem('asset').value;
+    const withdraw = form.elements.namedItem('withdraw').value;
     if (!amount || amount <= 0) {
       resultsEl.innerHTML = '<p class="calc-empty">Entrez un montant pour voir le coût réel par plateforme.</p>';
       return;
@@ -103,9 +103,16 @@
   }
   } // fin init
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  // Bootstrap immédiat : le script est en fin de body, le formulaire existe déjà.
+  // (Garde anti-double-exécution si DOMContentLoaded se déclenche aussi.)
+  var booted = false;
+  function boot() {
+    if (booted) return;
+    booted = true;
     init();
   }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  }
+  boot();
 })();
