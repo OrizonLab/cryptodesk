@@ -13,8 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fmtPct = (v) => (v == null ? '—' : v.toFixed(2) + ' %');
   const fmtBtc = (v) => (v == null ? '—' : v.toFixed(6) + ' BTC');
 
-  function netFor(p, amount, method, asset, withdraw) {
-    const f = p.fees;
+  function netFor(f, amount, method, asset, withdraw) {
     if (f.card_pct == null) return null; // pas d'achat fiat (DeFi)
     const fiatPct = method === 'card' ? f.card_pct : f.transfer_pct;
     if (fiatPct == null) return null;
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const net = Math.max(0, remaining);
     const totalFees = amount - net;
-    return { p, lines, net, totalFees, pct: amount > 0 ? (totalFees / amount) * 100 : 0 };
+    return { p: f, lines, net, totalFees, pct: amount > 0 ? (totalFees / amount) * 100 : 0 };
   }
 
   function run() {
@@ -62,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const rows = [];
     Object.entries(fees.platforms || {}).forEach(([key, f]) => {
-      const r = netFor(key, amount, method, asset, withdraw);
+      const r = netFor(f, amount, method, asset, withdraw);
       if (!r) return;
       rows.push(r);
     });
@@ -96,5 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', (e) => { e.preventDefault(); run(); });
   form.addEventListener('change', run);
-  run();
+  try {
+    run();
+  } catch (err) {
+    console.error('calculateur:', err);
+  }
 });
