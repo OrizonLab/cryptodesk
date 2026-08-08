@@ -1,0 +1,106 @@
+{
+  "updated": "2026-08-08",
+  "intro": "Le Regulation Clock suit les 5 dossiers réglementaires qui changent le plus concrètement la vie des investisseurs crypto. Chaque dossier affiche son statut, la dernière action officielle, la prochaine étape datée et les sources primaires. Un moniteur automatique vérifie les sources officielles (Congress.gov, Federal Register, EUR-Lex) et signale les changements — il n'interprète jamais seul.",
+  "dossiers": [
+    {
+      "slug": "clarity-act",
+      "name": "CLARITY Act",
+      "emoji": "🏛️",
+      "scope": "États-Unis",
+      "status": "En pause — vote reporté à septembre",
+      "statusLevel": "paused",
+      "lastAction": { "date": "2026-08-07", "text": "Le Sénat reporte le vote à septembre (Thune) — faute de 60 voix." },
+      "nextStep": { "date": "Septembre 2026", "text": "Reprise du vote au Sénat. Le texte peut ressortir amendé." },
+      "whatChanges": "Un cadre fédéral clair pour les actifs numériques : définitions, régulation des échanges et des stablecoins, statut légal. S'il est adopté, les plateformes US sortent du flou juridique actuel — et les poursuites de la SEC contre certains acteurs perdent leur fondement.",
+      "polymarket": { "title": "CLARITY Act promulgué en 2026", "proba": 13.5, "url": "https://polymarket.com/market/clarity-act-promulgated-by-end-of-2026" },
+      "timeline": [
+        { "date": "2026-08-04", "event": "Compte à rebours de 72 h avant la pause d'août, chances de vote qui fondent." },
+        { "date": "2026-08-05", "event": "Deadline du 5 août passée — les chances s'effondrent à 14 % sur Polymarket." },
+        { "date": "2026-08-06", "event": "Tim Scott promet un vote « sans aucune question » avant la pause." },
+        { "date": "2026-08-07", "event": "Le Sénat reporte officiellement le vote à septembre." }
+      ],
+      "sources": [
+        { "label": "Congress.gov — S.1360", "url": "https://www.congress.gov/bill/119th-congress/senate-bill/1360" },
+        { "label": "Polymarket — CLARITY Act", "url": "https://polymarket.com/market/clarity-act-promulgated-by-end-of-2026" }
+      ],
+      "changes": [
+        { "date": "2026-08-07", "from": "Vote imminent avant la pause", "to": "En pause — vote reporté à septembre" }
+      ]
+    },
+    {
+      "slug": "stablecoins-us",
+      "name": "Stablecoins US",
+      "emoji": "🪙",
+      "scope": "États-Unis",
+      "status": "Suivi en cours — statut à confirmer par le moniteur",
+      "statusLevel": "monitoring",
+      "lastAction": { "date": "À confirmer", "text": "Le cadre législatif des stablecoins (projet GENIUS Act) est en discussion au Congrès. Dernière étape officielle à vérifier." },
+      "nextStep": { "date": "À déterminer", "text": "Prochaine lecture ou vote à confirmer via les sources primaires." },
+      "whatChanges": "Un régime fédéral pour les stablecoins : exigences de réserves, autorisation des émetteurs, règles de transparence. Ça change directement quels stablecoins sont sûrs à détenir et quelles plateformes peuvent les distribuer en Europe comme aux US.",
+      "polymarket": null,
+      "timeline": [],
+      "sources": [
+        { "label": "Congress.gov — GENIUS Act (S.795)", "url": "https://www.congress.gov/bill/119th-congress/senate-bill/795" }
+      ],
+      "changes": []
+    },
+    {
+      "slug": "sec-cftc",
+      "name": "SEC / CFTC",
+      "emoji": "⚖️",
+      "scope": "États-Unis",
+      "status": "Suivi en cours — enforcement et réforme des mandats",
+      "statusLevel": "monitoring",
+      "lastAction": { "date": "À confirmer", "text": "La SEC a lancé sa Crypto Task Force (Hester Peirce) ; la frontière des compétences SEC/CFTC reste un chantier ouvert." },
+      "nextStep": { "date": "À déterminer", "text": "Prochaines orientations réglementaires ou décisions d'enforcement à confirmer." },
+      "whatChanges": "Qui régule quoi : la SEC (valeurs mobilières) et la CFTC (matières premières) se disputent la frontière. Chaque clarification change le risque juridique des plateformes et des jetons que vous détenez.",
+      "polymarket": null,
+      "timeline": [],
+      "sources": [
+        { "label": "SEC — Crypto Task Force", "url": "https://www.sec.gov/crypto" },
+        { "label": "CFTC — Digital Assets", "url": "https://www.cftc.gov/digitalassets/index.htm" }
+      ],
+      "changes": []
+    },
+    {
+      "slug": "mica",
+      "name": "MiCA (Europe)",
+      "emoji": "🇪🇺",
+      "scope": "Union européenne",
+      "status": "En application — phase de revue 2026",
+      "statusLevel": "active",
+      "lastAction": { "date": "Juin 2025", "text": "Application complète du règlement MiCA aux prestataires de services sur actifs numériques (PSAN européens)." },
+      "nextStep": { "date": "2026", "text": "Rapport de revue MiCA attendu (article 141) — premières évaluations d'impact et ajustements possibles." },
+      "whatChanges": "Le passeport européen unique pour les exchanges : une plateforme agréée dans un État membre peut servir tout le marché UE. Les stablecoins non conformes sont retirés de l'UE. C'est LE cadre qui détermine où vous pouvez investir en Europe.",
+      "polymarket": null,
+      "timeline": [
+        { "date": "2024-12-30", "event": "Entrée en application des règles MiCA sur les stablecoins (ART/EMT)." },
+        { "date": "2025-06-30", "event": "Application complète aux prestataires de services (PSAN → MiCA)." },
+        { "date": "2026", "event": "Rapport de revue MiCA (article 141) attendu." }
+      ],
+      "sources": [
+        { "label": "EUR-Lex — MiCA (règlement 2023/1114)", "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32023R1114" },
+        { "label": "ESMA — MiCA", "url": "https://www.esma.europa.eu/regulation/markets/mica" }
+      ],
+      "changes": []
+    },
+    {
+      "slug": "plateformes",
+      "name": "Plateformes & enforcement",
+      "emoji": "🛡️",
+      "scope": "Global",
+      "status": "Suivi en cours — procédures et agréments",
+      "statusLevel": "monitoring",
+      "lastAction": { "date": "À confirmer", "text": "Décisions d'enforcement et évolutions d'agrément des grandes plateformes (US et UE) à suivre." },
+      "nextStep": { "date": "À déterminer", "text": "Prochaines décisions de justice ou sanctions à confirmer." },
+      "whatChanges": "Chaque sanction ou agrément détermine les plateformes fiables où investir : gel de comptes, retraits bloqués, obligations de reporting. Suivre ce dossier protège votre capital.",
+      "polymarket": null,
+      "timeline": [],
+      "sources": [
+        { "label": "AMF — registre PSAN/DASP", "url": "https://www.amf-france.org/fr/psan" },
+        { "label": "Federal Register — crypto assets", "url": "https://www.federalregister.gov/search?conditions%5Bterm%5D=crypto+asset" }
+      ],
+      "changes": []
+    }
+  ]
+}

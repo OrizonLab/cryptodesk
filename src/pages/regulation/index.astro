@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import dossiersData from '../../data/regulation-dossiers.json';
+
+const dossiers = dossiersData.dossiers;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Regulation Clock — CryptoDesk',
+  url: 'https://cryptodesk.fr/regulation/',
+  description: "Le suivi des 5 dossiers réglementaires qui changent le plus concrètement la vie des investisseurs crypto : statut, dernière action officielle, prochaine étape datée et sources primaires.",
+  inLanguage: 'fr-FR',
+};
+
+const levelLabel: Record<string, { label: string; css: string }> = {
+  active: { label: 'En application', css: 'lv-active' },
+  paused: { label: 'En pause', css: 'lv-paused' },
+  monitoring: { label: 'Suivi en cours', css: 'lv-monitor' },
+};
+
+const fmtDate = (d: string) => {
+  const m = d.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return d;
+  return `${m[3]}/${m[2]}/${m[1]}`;
+};
+---
+
+<BaseLayout title="Regulation Clock — CryptoDesk" description={jsonLd.description}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="container">
+    <div class="hero">
+      <h1 class="hero-title">🏛️ Regulation Clock</h1>
+      <p class="hero-sub">
+        Les <strong>5 dossiers réglementaires</strong> qui changent le plus concrètement la vie des
+        investisseurs crypto — statut, dernière action officielle, prochaine étape datée.
+        Un moniteur vérifie les sources primaires et <strong>signale</strong> les changements,
+        sans jamais interpréter seul.
+      </p>
+      <p class="hero-meta">
+        Dernière mise à jour : {fmtDate(dossiersData.updated)} · <a href="/regulation/rss.xml" class="rss-link">Flux RSS du dossier réglementaire</a>
+      </p>
+    </div>
+
+    <div class="grid">
+      {
+        dossiers.map((d) => {
+          const lv = levelLabel[d.statusLevel] ?? levelLabel.monitoring;
+          return (
+            <a class="dossier" href={`/regulation/${d.slug}/`}>
+              <div class="dossier-top">
+                <span class="dossier-emoji">{d.emoji}</span>
+                <span class={`lv ${lv.css}`}>{lv.label}</span>
+              </div>
+              <h2 class="dossier-name">{d.name}</h2>
+              <p class="dossier-scope">{d.scope}</p>
+              <div class="dossier-status">{d.status}</div>
+              <div class="dossier-action">
+                <span class="dossier-label">Dernière action</span>
+                <span class="dossier-date">{d.lastAction.date}</span>
+              </div>
+              <p class="dossier-action-text">{d.lastAction.text}</p>
+              {
+                d.polymarket && (
+                  <div class="dossier-pm">
+                    📊 {d.polymarket.title} : <strong>{d.polymarket.proba} %</strong>
+                  </div>
+                )
+              }
+              <div class="dossier-next">
+                <span class="dossier-label">Prochaine étape</span>
+                <span class="dossier-date">{d.nextStep.date}</span>
+              </div>
+              <p class="dossier-action-text">{d.nextStep.text}</p>
+              <span class="dossier-cta">Ouvrir le dossier →</span>
+            </a>
+          );
+        })
+      }
+    </div>
+
+    <div class="method">
+      <h2>Comment ça marche ?</h2>
+      <p>
+        Le Regulation Clock ne devine rien : chaque statut provient d'une <strong>action officielle</strong>
+        (vote, publication au Federal Register, texte EUR-Lex…). Un moniteur automatique vérifie
+        périodiquement les sources primaires, détecte les nouveautés et <strong>vous les signale</strong>.
+        Il n'interprète jamais seul — toute modification de statut est fondée sur un document officiel
+        et sourcée.
+      </p>
+      <p>
+        Les probabilités Polymarket sont affichées à titre indicatif : elles reflètent ce que le marché
+        croit, pas une prédiction de CryptoDesk.
+      </p>
+    </div>
+  </section>
+
+  <style>
+    .hero { padding: 3.5rem 0 1.5rem; }
+    .hero-title { font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .hero-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 68ch; }
+    .hero-sub strong { color: var(--text); }
+    .hero-meta { color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem; }
+    .rss-link { color: var(--accent); text-decoration: none; }
+    .rss-link:hover { text-decoration: underline; }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; margin: 2rem 0 2.5rem; }
+    @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+    .dossier {
+      display: block; background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem 1.5rem; text-decoration: none;
+      color: var(--text); box-shadow: var(--shadow-sm);
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .dossier:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .dossier-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+    .dossier-emoji { font-size: 1.6rem; }
+    .lv { font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 999px; letter-spacing: 0.02em; }
+    .lv-active { background: var(--accent-glow); color: var(--accent); border: 1px solid var(--accent); }
+    .lv-paused { background: #fef3c7; color: #b45309; border: 1px solid #f59e0b; }
+    [data-theme="dark"] .lv-paused { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .lv-monitor { background: var(--bg-alt); color: var(--text-muted); border: 1px solid var(--border); }
+    .dossier-name { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.15rem; }
+    .dossier-scope { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.7rem; }
+    .dossier-status { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.9rem; }
+    .dossier-action { display: flex; justify-content: space-between; align-items: baseline; }
+    .dossier-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .dossier-date { font-size: 0.78rem; font-weight: 700; color: var(--accent); }
+    .dossier-action-text { color: var(--text-muted); font-size: 0.85rem; line-height: 1.45; margin: 0.3rem 0 0.9rem; }
+    .dossier-pm {
+      font-size: 0.85rem; background: var(--accent-glow); border: 1px solid var(--accent);
+      border-radius: 10px; padding: 0.5rem 0.8rem; margin-bottom: 0.9rem;
+    }
+    .dossier-pm strong { color: var(--accent); }
+    .dossier-next { display: flex; justify-content: space-between; align-items: baseline; }
+    .dossier-cta { color: var(--accent); font-weight: 700; font-size: 0.85rem; display: inline-block; margin-top: 0.8rem; }
+
+    .method { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.8rem; margin-bottom: 3rem; }
+    .method h2 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .method p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.6rem; }
+  </style>
+</BaseLayout>
