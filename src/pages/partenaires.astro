@@ -1,70 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { activeAffiliates, featuredOffers } from '../data/affiliates';
 
-const partners = [
-  {
-    name: 'Bitvavo',
-    tagline: 'Exchange européen, simple et régulé (Pays-Bas).',
-    bonus: 'Idéal pour débuter : interface claire, frais parmi les plus bas d\'Europe.',
-    url: 'https://bitvavo.com/invite?a=5CC31560CE',
-    cta: 'Créer un compte Bitvavo',
-    note: 'Parrainage : frais réduits pour toi et moi.',
-  },
-  {
-    name: 'Bitstack',
-    tagline: 'Épargner en Bitcoin au quotidien, simplement.',
-    bonus: 'Arrondis automatiques et épargne programmée : le moyen le plus simple d\'accumuler du BTC.',
-    url: 'https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK',
-    cta: 'Rejoindre Bitstack',
-    note: 'Bonus de bienvenue en Bitcoin à l\'inscription.',
-  },
-  {
-    name: 'OKX',
-    tagline: 'Exchange international : spot, produits dérivés, Web3.',
-    bonus: 'Jusqu\'à 150 € de bonus quand tu commences à trader (code parrainage 77244970).',
-    url: 'https://my.okx.com/fr-fr/join/77244970',
-    cta: 'Ouvrir un compte OKX',
-    note: 'Code de parrainage : 77244970.',
-  },
-  {
-    name: 'WEEX',
-    tagline: 'Exchange en forte croissance : contrats, copy trading.',
-    bonus: 'Accès aux produits dérivés avec des promotions régulières.',
-    url: 'https://weex.com/register?vipCode=4flde',
-    cta: 'S\'inscrire sur WEEX',
-    note: 'Code VIP : 4flde.',
-  },
-  {
-    name: 'Bitget',
-    tagline: 'Exchange mondial : copy trading, futures, earn.',
-    bonus: 'Programme de parrainage avec bonus pour les nouveaux inscrits.',
-    url: 'https://www.bitgetapps.com/referral/register?clacCode=W8JDT92M&from=%2Fevents%2Freferral-all-program&source=events&utmSource=PremierInviter',
-    cta: 'Ouvrir un compte Bitget',
-    note: 'Code parrainage : W8JDT92M.',
-  },
-  {
-    name: 'Aave',
-    tagline: 'Protocole DeFi de prêt et d\'épargne — accès anticipé V4.',
-    bonus: 'Invitation à l\'accès anticipé du protocole Aave V4 et de l\'application dédiée.',
-    url: 'https://aave.com/r/2BA113',
-    cta: 'Accéder à Aave V4',
-    note: 'Lien d\'invitation accès anticipé.',
-  },
-];
+const partners = activeAffiliates;
+const offers = featuredOffers;
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: 'Partenaires & exchanges — CryptoDesk',
   url: 'https://cryptodesk.fr/partenaires/',
-  description: 'Les exchanges crypto que CryptoDesk recommande : Bitvavo, Bitstack, OKX et WEEX.',
+  description: 'Les exchanges crypto que CryptoDesk recommande : Bitvavo, Bitstack, OKX, WEEX, Bitget, Kraken Pro.',
   inLanguage: 'fr-FR',
 };
 ---
 
 <BaseLayout
   title="Partenaires — exchanges recommandés"
-  description="Les exchanges crypto recommandés par CryptoDesk : Bitvavo, Bitstack, OKX et WEEX. Liens d'affiliation — sans surcoût pour toi."
+  description="Les exchanges crypto recommandés par CryptoDesk : Bitvavo, Bitstack, OKX, WEEX, Bitget, Kraken Pro. Liens d'affiliation — sans surcoût pour toi."
   canonical="https://cryptodesk.fr/partenaires/"
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -78,6 +31,24 @@ const jsonLd = {
       </p>
     </div>
   </section>
+
+  {offers.length > 0 && (
+    <section class="container">
+      <div class="offers">
+        <h2 class="offers-title">🔥 Offres du moment</h2>
+        <p class="offers-sub">Les promotions de parrainage actives en ce moment — mises à jour automatiquement.</p>
+        <div class="offers-grid">
+          {offers.map((p) => (
+            <a class="offer-card" href={p.url} target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate={p.umami}>
+              <span class="offer-name">{p.name}</span>
+              <span class="offer-promo">{p.promo}</span>
+              <span class="offer-cta">{p.cta} →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="container">
     <div class="grid">
@@ -129,6 +100,28 @@ const jsonLd = {
     @media (min-width: 640px) {
       .grid { grid-template-columns: 1fr 1fr; }
     }
+
+    .offers { margin-bottom: 2.5rem; }
+    .offers-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .offers-sub { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1rem; }
+    .offers-grid { display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
+    @media (min-width: 640px) {
+      .offers-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    }
+    .offer-card {
+      display: flex; flex-direction: column; gap: 0.4rem;
+      background: var(--card);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.3rem;
+      text-decoration: none; color: inherit;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .offer-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .offer-name { font-weight: 800; font-size: 1.05rem; color: var(--text); }
+    .offer-promo { color: var(--text-muted); font-size: 0.9rem; flex: 1; }
+    .offer-cta { color: var(--accent); font-weight: 700; font-size: 0.85rem; }
 
     .card {
       background: var(--card);

@@ -2,6 +2,9 @@
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import '../styles/prose.css';
+import { activeAffiliates, featuredOffers } from '../data/affiliates';
+
+const topOffer = featuredOffers[0] ?? null;
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -103,15 +106,17 @@ const breadcrumbJsonLd = {
         Tu veux acheter du crypto ? Passer par ces liens ne te coûte rien de plus
         et soutient le blog :
       </p>
+      {topOffer && (
+        <p class="affiliate-promo">
+          🔥 Offre du moment : <a href={topOffer.url} target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate={topOffer.umami}>{topOffer.name}</a> — {topOffer.promo}
+        </p>
+      )}
       <ul class="affiliate-list">
-        <li><a href="https://bitvavo.com/invite?a=5CC31560CE" target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate="bitvavo">Bitvavo</a> — exchange européen, simple et régulé</li>
-        <li><a href="https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK" target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate="bitstack">Bitstack</a> — épargne Bitcoin au quotidien (bonus BTC)</li>
-        <li><a href="https://my.okx.com/fr-fr/join/77244970" target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate="okx">OKX</a> — jusqu'à 150 € de bonus (code 77244970)</li>
-        <li><a href="https://weex.com/register?vipCode=4flde" target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate="weex">WEEX</a> — dérivés & copy trading (code 4flde)</li>
-        <li><a href="https://www.bitgetapps.com/referral/register?clacCode=W8JDT92M" target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate="bitget">Bitget</a> — copy trading & futures (code W8JDT92M)</li>
-        <li><a href="https://aave.com/r/2BA113" target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate="aave">Aave</a> — accès anticipé au protocole V4</li>
+        {activeAffiliates.map((p) => (
+          <li><a href={p.url} target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate={p.umami}>{p.name}</a> — {p.note}</li>
+        ))}
       </ul>
-      <p class="affiliate-note">Liens d'affiliation — transparence : <a href="/partenaires/">voir la page Partenaires</a></p>
+      <p class="affiliate-note">Liens d'affiliation — transparence : <a href="/partenaires/">voir la page Partenaires</a> · offres mises à jour automatiquement</p>
     </aside>
 
     {related.length > 0 && (
@@ -218,6 +223,18 @@ const breadcrumbJsonLd = {
     }
     .affiliate-title { font-weight: 700; margin-bottom: 0.4rem; font-size: 1.05rem; }
     .affiliate-intro { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.6rem; }
+    .affiliate-promo {
+      background: var(--accent-glow);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .affiliate-promo a { color: var(--accent); text-decoration: none; }
+    .affiliate-promo a:hover { text-decoration: underline; }
     .affiliate-list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
     .affiliate-list li { color: var(--text-muted); font-size: 0.9rem; }
     .affiliate-list a { color: var(--accent); font-weight: 600; text-decoration: none; }
