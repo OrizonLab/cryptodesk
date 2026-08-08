@@ -64,7 +64,7 @@
     Object.entries(fees.platforms || {}).forEach(([key, f]) => {
       const r = netFor(f, amount, method, asset, withdraw);
       if (!r) return;
-      rows.push(r);
+      rows.push(Object.assign({ key: key }, r));
     });
     rows.sort((a, b) => a.totalFees - b.totalFees);
 
@@ -82,7 +82,7 @@
       });
       html += '<li class="calc-total"><span>Total des frais</span><span>' + fmt.format(r.totalFees) + ' (' + r.pct.toFixed(1) + ' %)</span></li>';
       html += '</ul>';
-      const link = fees.links && fees.links[key];
+      const link = fees.links && fees.links[r.key];
       if (link) {
         html += '<a class="calc-cta" href="' + link.url + '" target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate="' + link.umami + '">' + link.cta + ' →</a>';
       }
