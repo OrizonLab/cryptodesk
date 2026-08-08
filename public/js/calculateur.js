@@ -70,17 +70,17 @@
 
     const best = rows[0];
     let html = '<div class="calc-best">Le moins coûteux pour ce scénario : <strong>' + best.p.name + '</strong> — ' +
-      fmt(best.totalFees) + ' de frais (' + best.pct.toFixed(1) + ' %), soit ' + fmt(best.net) + ' de crypto nette.</div>';
+      fmt.format(best.totalFees) + ' de frais (' + best.pct.toFixed(1) + ' %), soit ' + fmt.format(best.net) + ' de crypto nette.</div>';
     html += '<div class="calc-list">';
     rows.forEach((r) => {
       const p = r.p;
       html += '<div class="calc-row' + (r === best ? ' best' : '') + '">';
-      html += '<div class="calc-row-head"><strong>' + p.name + '</strong><span>' + fmt(r.net) + ' nets</span></div>';
+      html += '<div class="calc-row-head"><strong>' + p.name + '</strong><span>' + fmt.format(r.net) + ' nets</span></div>';
       html += '<ul class="calc-detail">';
       r.lines.forEach((l) => {
-        html += '<li><span>' + l.label + '</span><span>' + (typeof l.value === 'number' ? fmt(l.value) : l.value) + '</span></li>';
+        html += '<li><span>' + l.label + '</span><span>' + (typeof l.value === 'number' ? fmt.format(l.value) : l.value) + '</span></li>';
       });
-      html += '<li class="calc-total"><span>Total des frais</span><span>' + fmt(r.totalFees) + ' (' + r.pct.toFixed(1) + ' %)</span></li>';
+      html += '<li class="calc-total"><span>Total des frais</span><span>' + fmt.format(r.totalFees) + ' (' + r.pct.toFixed(1) + ' %)</span></li>';
       html += '</ul>';
       const link = fees.links && fees.links[key];
       if (link) {
