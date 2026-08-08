@@ -1,8 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { activeAffiliates } from '../data/affiliates';
+import fees from '../data/exchange-fees.json';
 
 const partners = activeAffiliates.filter((p) => p.type && p.frais);
+
+// Liens affiliés par plateforme (CTA du simulateur)
+const feeLinks: Record<string, { url: string; cta: string; umami: string }> = {};
+activeAffiliates.forEach((a) => { feeLinks[a.umami] = { url: a.url, cta: a.cta, umami: a.umami }; });
+
+// Prix BTC/ETH au build (conversion des frais de retrait en €)
+async function fetchPrice(id: string): Promise<number> {
+  try {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 6000);
+    const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=eur`, { signal: ctrl.signal });
+    clearTimeout(t);
+    if (!res.ok) return 0;
+    const data = await res.json();
+    return data[id]?.eur ?? 0;
+  } catch {
+    return 0;
+  }
+}
+const [btcPrice, ethPrice] = await Promise.all([fetchPrice('bitcoin'), fetchPrice('ethereum')]);
+const calcData = JSON.stringify({ platforms: fees.platforms, updated: fees.updated, links: feeLinks });
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -33,6 +55,43 @@ const jsonLd = {
   </section>
 
   <section class="container">
+    <div class="calc" id="simulateur">
+      <h2 class="calc-title">🧮 Combien ça coûte vraiment ?</h2>
+      <p class="calc-sub">
+        Le frais affiché par les exchanges (maker/taker) ne dit pas tout. Ce simulateur estime le
+        <strong>coût complet</strong> : dépôt, trading, spread et retrait — pour ton scénario précis.
+      </p>
+      <form id="cost-calculator" class="calc-form" data-fees={calcData} data-btc-price={btcPrice} data-eth-price={ethPrice}>
+        <div class="calc-grid">
+          <label>Montant investi (€)
+            <input type="number" name="amount" min="10" step="10" value="100" required />
+          </label>
+          <label>Méthode de dépôt
+            <select name="method">
+              <option value="transfer">Virement (SEPA)</option>
+              <option value="card">Carte bancaire</option>
+            </select>
+          </label>
+          <label>Actif acheté
+            <select name="asset">
+              <option value="btc">Bitcoin (BTC)</option>
+              <option value="eth">Ethereum (ETH)</option>
+            </select>
+          </label>
+          <label>Après l'achat
+            <select name="withdraw">
+              <option value="platform">Je garde sur la plateforme</option>
+              <option value="wallet">Je retire vers mon wallet</option>
+            </select>
+          </label>
+        </div>
+        <p class="calc-hint">
+          Prix de référence au build : BTC ≈ {btcPrice ? btcPrice.toLocaleString('fr-FR') + ' €' : 'n/a'} · ETH ≈ {ethPrice ? ethPrice.toLocaleString('fr-FR') + ' €' : 'n/a'}
+        </p>
+        <div id="calc-results"></div>
+      </form>
+    </div>
+
     <div class="table-wrap">
       <table class="compare">
         <thead>
@@ -79,11 +138,59 @@ const jsonLd = {
     </div>
   </section>
 
+  <script src="/js/calculateur.js" is:inline></script>
+
   <style>
     .hero { padding: 3.5rem 0 2.5rem; }
     .hero-title { font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
     .hero-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 65ch; }
     .hero-sub strong { color: var(--text); }
+
+    /* ── Simulateur de coût réel ── */
+    .calc {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.8rem 2rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);
+    }
+    .calc-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .calc-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.3rem; max-width: 65ch; }
+    .calc-sub strong { color: var(--text); }
+    .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+    .calc-grid label { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+    .calc-grid input, .calc-grid select {
+      padding: 0.6rem 0.8rem; border: 1px solid var(--border); border-radius: 10px;
+      background: var(--bg); color: var(--text); font-size: 0.95rem;
+    }
+    .calc-grid input:focus, .calc-grid select:focus { outline: 2px solid var(--accent); border-color: transparent; }
+    .calc-hint { color: var(--text-muted); font-size: 0.78rem; margin-top: 0.8rem; }
+    .calc-empty { color: var(--text-muted); margin-top: 1.2rem; }
+    .calc-best {
+      margin-top: 1.3rem; padding: 0.8rem 1.1rem; border-radius: 10px;
+      background: var(--accent-glow); border: 1px solid var(--accent);
+      font-size: 0.95rem; color: var(--text);
+    }
+    .calc-best strong { color: var(--accent); }
+    .calc-list { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin-top: 1rem; }
+    @media (min-width: 700px) { .calc-list { grid-template-columns: 1fr 1fr; } }
+    .calc-row {
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 1rem 1.1rem; background: var(--bg-alt);
+    }
+    .calc-row.best { border-color: var(--accent); }
+    .calc-row-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+    .calc-row-head strong { color: var(--text); }
+    .calc-row-head span { color: var(--accent); font-weight: 700; font-size: 0.95rem; }
+    .calc-detail { list-style: none; display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 0.6rem; }
+    .calc-detail li { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); }
+    .calc-total { border-top: 1px dashed var(--border); padding-top: 0.3rem; margin-top: 0.2rem; font-weight: 700; color: var(--text); }
+    .calc-cta {
+      display: inline-block; margin-top: 0.4rem;
+      background: var(--accent); color: #fff; font-weight: 700; font-size: 0.82rem;
+      padding: 0.45rem 1rem; border-radius: 999px; text-decoration: none;
+      transition: filter 0.15s;
+    }
+    .calc-cta:hover { filter: brightness(1.1); }
+    .calc-note { color: var(--text-muted); font-size: 0.75rem; margin-top: 0.5rem; opacity: 0.9; }
+    .calc-disclaimer { color: var(--text-muted); font-size: 0.75rem; margin-top: 1rem; opacity: 0.85; }
 
     .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; border: 1px solid var(--border); border-radius: var(--radius); }
     .compare { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 720px; background: var(--card); }

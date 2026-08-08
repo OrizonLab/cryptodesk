@@ -1,0 +1,92 @@
+{
+  "updated": "2026-08-08",
+  "disclaimer": "Frais indicatifs — vérifier sur le site officiel. Le simulateur affiche des estimations transparentes, pas une promesse de coût exact.",
+  "sources": {
+    "bitvavo": "https://bitvavo.com/fr/frais",
+    "bitstack": "https://bitstack-app.com/tarifs",
+    "okx": "https://www.okx.com/fr/fees",
+    "weex": "https://weex.com/fr/fees",
+    "bitget": "https://www.bitget.com/fr/fees",
+    "kraken": "https://www.kraken.com/fr-fr/fees",
+    "aave": null
+  },
+  "platforms": {
+    "bitvavo": {
+      "name": "Bitvavo",
+      "type": "Exchange centralisé",
+      "card_pct": 0.5,
+      "transfer_pct": 0.0,
+      "trading_pct": 0.25,
+      "spread_pct": 0.15,
+      "withdrawal_btc_btc": 0.0001,
+      "withdrawal_eth_eth": 0.0005,
+      "note": "Virement SEPA gratuit, carte ~0,5 %. Idéal débutants."
+    },
+    "bitstack": {
+      "name": "Bitstack",
+      "type": "Épargne BTC",
+      "card_pct": 1.49,
+      "transfer_pct": 1.49,
+      "trading_pct": 0.0,
+      "spread_pct": 0.3,
+      "withdrawal_btc_btc": 0.0,
+      "withdrawal_eth_eth": null,
+      "note": "Frais d'achat inclus (1,49 %). Retrait BTC gratuit au-delà d'un seuil."
+    },
+    "okx": {
+      "name": "OKX",
+      "type": "Exchange international",
+      "card_pct": 1.5,
+      "transfer_pct": 0.0,
+      "trading_pct": 0.1,
+      "spread_pct": 0.2,
+      "withdrawal_btc_btc": 0.0002,
+      "withdrawal_eth_eth": 0.0005,
+      "note": "Achat carte ~1,5 %, virement gratuit. Trading spot 0,10 %."
+    },
+    "weex": {
+      "name": "WEEX",
+      "type": "Exchange dérivés",
+      "card_pct": 1.5,
+      "transfer_pct": 0.0,
+      "trading_pct": 0.06,
+      "spread_pct": 0.2,
+      "withdrawal_btc_btc": 0.0002,
+      "withdrawal_eth_eth": 0.0005,
+      "note": "Futures à 0,06 %. Frais de dépôt carte à vérifier."
+    },
+    "bitget": {
+      "name": "Bitget",
+      "type": "Exchange international",
+      "card_pct": 1.5,
+      "transfer_pct": 0.0,
+      "trading_pct": 0.1,
+      "spread_pct": 0.2,
+      "withdrawal_btc_btc": 0.0002,
+      "withdrawal_eth_eth": 0.0005,
+      "note": "Spot 0,10 %. Copy trading & futures."
+    },
+    "kraken": {
+      "name": "Kraken Pro",
+      "type": "Exchange international",
+      "card_pct": 1.0,
+      "transfer_pct": 0.0,
+      "trading_pct": 0.26,
+      "spread_pct": 0.15,
+      "withdrawal_btc_btc": 0.00015,
+      "withdrawal_eth_eth": 0.0004,
+      "note": "Virement gratuit, carte ~1 %. Spot 0,16/0,26 % selon volume."
+    },
+    "aave": {
+      "name": "Aave",
+      "type": "Protocole DeFi",
+      "card_pct": null,
+      "transfer_pct": null,
+      "trading_pct": null,
+      "spread_pct": null,
+      "withdrawal_btc_btc": null,
+      "withdrawal_eth_eth": null,
+      "note": "Protocole DeFi — pas d'achat fiat direct. Non inclus dans le simulateur."
+    }
+  }
+}
