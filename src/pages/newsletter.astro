@@ -1,5 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const editions = (await getCollection('newsletter'))
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -63,6 +68,25 @@ const jsonLd = {
         <div class="promise"><strong>Désinscription facile</strong><span>en un clic, à tout moment</span></div>
       </div>
     </div>
+
+    {editions.length > 0 && (
+      <div class="archive">
+        <h2 class="archive-title">📚 Éditions passées</h2>
+        <ul class="archive-list">
+          {editions.map((e) => (
+            <li>
+              <a href={`/newsletter/${e.slug}/`}>
+                <span class="archive-lang">{e.data.lang === 'en' ? '🇺🇸 EN' : '🇫🇷 FR'}</span>
+                <span class="archive-title-text">{e.data.title}</span>
+                <time datetime={e.data.pubDate.toISOString()}>
+                  {new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(e.data.pubDate)}
+                </time>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
   </section>
 
   <script src="/js/newsletter.js" defer></script>
@@ -109,6 +133,23 @@ const jsonLd = {
     .newsletter-status { min-height: 1.2rem; font-size: 0.88rem; margin-top: 0.5rem; }
     .newsletter-status.ok { color: var(--accent); }
     .newsletter-status.err { color: #f87171; }
+
+    .archive { max-width: 560px; margin-bottom: 3rem; }
+    .archive-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.9rem; }
+    .archive-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .archive-list a {
+      display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap;
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.7rem 1rem; text-decoration: none; color: inherit;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .archive-list a:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .archive-lang {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em;
+      color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0.1rem 0.5rem;
+    }
+    .archive-title-text { flex: 1; font-weight: 600; font-size: 0.92rem; color: var(--text); }
+    .archive-list time { color: var(--text-muted); font-size: 0.8rem; }
 
     .promises { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin-top: 1.8rem; }
     @media (min-width: 600px) { .promises { grid-template-columns: repeat(3, 1fr); } }

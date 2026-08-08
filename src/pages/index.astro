@@ -105,6 +105,29 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
     }
   </section>
 
+  <section class="container-wide">
+    <div class="nl-cta">
+      <div class="nl-cta-text">
+        <h2>📬 Le Desk — la newsletter hebdo</h2>
+        <p>Les 5 chiffres qui ont bougé, le signal réglementaire, le graphique à retenir et 3 dates à surveiller. Chaque semaine, en 5 minutes.</p>
+      </div>
+      <form class="newsletter-form nl-cta-form">
+        <div class="nl-row">
+          <input type="email" name="email" placeholder="vous@exemple.fr" autocomplete="email" required aria-label="Adresse email" />
+          <button type="submit" class="btn btn-primary">S'abonner</button>
+        </div>
+        <div class="nl-lang" role="radiogroup" aria-label="Langue">
+          <label><input type="radio" name="lang" value="fr" checked /> 🇫🇷 Français</label>
+          <label><input type="radio" name="lang" value="en" /> 🇺🇸 English</label>
+        </div>
+        <label class="nl-consent"><input type="checkbox" required /> J'accepte de recevoir la newsletter. Désinscription en un clic.</label>
+        <p class="newsletter-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <script src="/js/newsletter.js" defer></script>
+
   <style>
     /* ============ HERO ============ */
     .hero { padding: 4.5rem 0 3rem; position: relative; }
@@ -158,6 +181,38 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
     .hero-stats {
       display: none;
     }
+
+    /* ============ CTA NEWSLETTER ============ */
+    .nl-cta {
+      display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+      background: linear-gradient(135deg, var(--card) 60%, var(--accent-glow));
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 2rem 2.2rem; margin: 3rem 0 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .nl-cta-text { flex: 1; min-width: 260px; }
+    .nl-cta-text h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .nl-cta-text p { color: var(--text-muted); font-size: 0.92rem; }
+    .nl-cta-form { flex: 1; min-width: 280px; }
+    .nl-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .nl-row input[type="email"] {
+      flex: 1; min-width: 200px; padding: 0.6rem 1rem;
+      border: 1px solid var(--border); border-radius: 12px; background: var(--bg);
+      color: var(--text); font-size: 0.92rem;
+    }
+    .nl-row input[type="email"]:focus { outline: 2px solid var(--accent); border-color: transparent; }
+    .nl-lang { display: flex; gap: 0.7rem; margin: 0.7rem 0 0.4rem; font-size: 0.88rem; }
+    .nl-lang label { display: inline-flex; align-items: center; gap: 0.25rem; cursor: pointer; color: var(--text-muted); }
+    .nl-lang label:has(input:checked) { color: var(--text); font-weight: 600; }
+    .nl-lang input { accent-color: var(--accent); }
+    .nl-consent {
+      display: flex; gap: 0.45rem; align-items: flex-start;
+      font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;
+    }
+    .nl-consent input { accent-color: var(--accent); margin-top: 0.15rem; }
+    .newsletter-status { min-height: 1.1rem; font-size: 0.85rem; margin-top: 0.4rem; }
+    .newsletter-status.ok { color: var(--accent); }
+    .newsletter-status.err { color: #f87171; }
 
     /* ============ SECTIONS ============ */
     .section-head {

@@ -38,4 +38,16 @@ const postsEn = defineCollection({
   }),
 });
 
-export const collections = { posts, postsEn };
+// Collection des éditions de la newsletter « Le Desk » (archive publique)
+const newsletter = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    pubDate: z.coerce.date(),
+    lang: z.enum(['fr', 'en']).default('fr'),
+    description: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { posts, postsEn, newsletter };

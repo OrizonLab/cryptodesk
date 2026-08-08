@@ -1,0 +1,60 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const editions = (await getCollection('newsletter'))
+    .filter((e) => !e.data.draft)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  return editions.map((edition) => ({
+    params: { slug: edition.slug },
+    props: { edition },
+  }));
+}
+
+const { edition } = Astro.props;
+const { Content } = await render(edition);
+const dateFmt = new Intl.DateTimeFormat(edition.data.lang === 'en' ? 'en-US' : 'fr-FR', {
+  day: 'numeric', month: 'long', year: 'numeric',
+});
+const isEn = edition.data.lang === 'en';
+const pageUrl = `https://cryptodesk.fr/newsletter/${edition.slug}/`;
+---
+
+<BaseLayout
+  title={edition.data.title}
+  description={edition.data.description ?? `Édition « Le Desk » du ${dateFmt.format(edition.data.pubDate)}`}
+  canonical={pageUrl}
+  lang={isEn ? 'en' : 'fr'}
+>
+  <article class="post container">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="badge">📬 Le Desk — {isEn ? 'weekly edition' : 'édition hebdo'}</span>
+        <time datetime={edition.data.pubDate.toISOString()}>{dateFmt.format(edition.data.pubDate)}</time>
+      </div>
+      <h1 class="post-title">{edition.data.title}</h1>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    <div class="archive-back">
+      <a href="/newsletter/">← {isEn ? 'All editions' : 'Toutes les éditions'}</a>
+    </div>
+  </article>
+
+  <style>
+    .post { padding-top: 2.5rem; }
+    .post-header { margin-bottom: 2rem; }
+    .post-meta { display: flex; align-items: center; gap: 0.6rem; color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    .badge {
+      color: var(--accent); border: 1px solid var(--accent); border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+      padding: 0.2rem 0.7rem;
+    }
+    .post-title { font-size: clamp(1.6rem, 4.2vw, 2.3rem); line-height: 1.18; font-weight: 800; letter-spacing: -0.02em; }
+    .archive-back { margin-top: 2.5rem; }
+    .archive-back a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .archive-back a:hover { text-decoration: underline; }
+  </style>
+</BaseLayout>
