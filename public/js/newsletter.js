@@ -1,6 +1,7 @@
 // Newsletter CryptoDesk — formulaire double opt-in (proxy /api/newsletter/)
 // Fichier externe car la CSP du blog (script-src 'self') bloque les inline.
-document.addEventListener('DOMContentLoaded', () => {
+(function () {
+  function init() {
   document.querySelectorAll('form.newsletter-form').forEach((form) => {
     const status = form.querySelector('.newsletter-status');
     const btn = form.querySelector('button[type="submit"]');
@@ -45,4 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-});
+  } // fin init
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
