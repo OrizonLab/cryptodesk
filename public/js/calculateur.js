@@ -1,6 +1,7 @@
 // Calculateur « coût réel d'un achat crypto » — CryptoDesk
 // Fichier externe (CSP script-src 'self'). Calcul 100% côté navigateur.
-document.addEventListener('DOMContentLoaded', () => {
+(function () {
+  function init() {
   const form = document.querySelector('#cost-calculator');
   if (!form) return;
 
@@ -100,4 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch (err) {
     console.error('calculateur:', err);
   }
-});
+  } // fin init
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
