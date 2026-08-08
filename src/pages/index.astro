@@ -45,6 +45,14 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
         <a href="#articles" class="btn btn-primary">Lire les analyses →</a>
         <a href="/lexique/" class="btn btn-ghost">Explorer le lexique</a>
       </div>
+      <img
+        class="hero-banner"
+        src="/banner.png"
+        alt="CryptoDesk — L'actu crypto, clairement"
+        width="1280"
+        height="426"
+        loading="eager"
+      />
     </div>
   </section>
 
@@ -123,6 +131,12 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
     .hero-sub { color: var(--text-muted); font-size: 1.1rem; max-width: 60ch; margin-bottom: 2rem; }
     .hero-sub strong { color: var(--text); }
     .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .hero-banner {
+      display: block; width: 100%; height: auto; margin-top: 2.2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+    }
 
     .btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
