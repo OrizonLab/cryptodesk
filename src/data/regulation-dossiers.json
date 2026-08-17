@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-08",
+  "updated": "2026-08-17",
   "intro": "Le Regulation Clock suit les 5 dossiers réglementaires qui changent le plus concrètement la vie des investisseurs crypto. Chaque dossier affiche son statut, la dernière action officielle, la prochaine étape datée et les sources primaires. Un moniteur automatique vérifie les sources officielles (Congress.gov, Federal Register, EUR-Lex) et signale les changements — il n'interprète jamais seul.",
   "dossiers": [
     {
@@ -51,14 +51,19 @@
       "scope": "États-Unis",
       "status": "Suivi en cours — enforcement et réforme des mandats",
       "statusLevel": "monitoring",
-      "lastAction": { "date": "À confirmer", "text": "La SEC a lancé sa Crypto Task Force (Hester Peirce) ; la frontière des compétences SEC/CFTC reste un chantier ouvert." },
-      "nextStep": { "date": "À déterminer", "text": "Prochaines orientations réglementaires ou décisions d'enforcement à confirmer." },
+      "lastAction": { "date": "2026-08-12", "text": "La CFTC renouvelle son Innovation Advisory Committee (IAC), comité consultatif couvrant actifs numériques, IA et marchés de prédiction (Federal Register 2026-16423)." },
+      "nextStep": { "date": "2026-08-20", "text": "Réunion publique de l'IAC (13h-16h EDT, participation à distance possible) : actifs numériques, IA, marchés de prédiction (Federal Register 2026-16328)." },
       "whatChanges": "Qui régule quoi : la SEC (valeurs mobilières) et la CFTC (matières premières) se disputent la frontière. Chaque clarification change le risque juridique des plateformes et des jetons que vous détenez.",
       "polymarket": null,
-      "timeline": [],
+      "timeline": [
+        { "date": "2026-08-11", "event": "La CFTC annonce la réunion de l'IAC du 20 août (actifs numériques, IA, marchés de prédiction)." },
+        { "date": "2026-08-12", "event": "La CFTC renouvelle l'Innovation Advisory Committee (Federal Register 2026-16423)." }
+      ],
       "sources": [
         { "label": "SEC — Crypto Task Force", "url": "https://www.sec.gov/crypto" },
-        { "label": "CFTC — Digital Assets", "url": "https://www.cftc.gov/digitalassets/index.htm" }
+        { "label": "CFTC — Digital Assets", "url": "https://www.cftc.gov/digitalassets/index.htm" },
+        { "label": "Federal Register — Renouvellement IAC (2026-16423)", "url": "https://www.federalregister.gov/documents/2026/08/12/2026-16423/renewal-of-the-innovation-advisory-committee" },
+        { "label": "Federal Register — Réunion IAC (2026-16328)", "url": "https://www.federalregister.gov/documents/2026/08/11/2026-16328/innovation-advisory-committee" }
       ],
       "changes": []
     },
