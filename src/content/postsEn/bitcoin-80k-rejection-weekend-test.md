@@ -1,0 +1,48 @@
+---
+title: "Bitcoin Brushed $80,000, Then Traders Slashed the Odds — the Weekend Test Is On"
+description: "Bitcoin closed its best week since 2023 at $77,000 after touching $79,500 on Friday. Prediction-market traders just cut the odds of a return above $78,000 by 15 points in 24 hours, and with ETFs and the Treasury closed until Monday, the weekend will decide whether the rally is a regime shift or a squeeze."
+pubDate: 2026-08-22T22:45:00Z
+tags: ["bitcoin", "prediction-markets", "etf", "stablecoins", "clarity-act"]
+draft: false
+frSlug: "bitcoin-80000-weekend-sans-etf"
+---
+
+It is Saturday evening in New York, and Bitcoin is trading hands at **$77,000** — about **1.5% lower** on the day, having spent Friday probing **$79,400–79,500** before sliding back, according to Binance and CoinGecko data. That pullback is not the story. The story is what happened in the prediction markets while price was drifting: in the last 24 hours, traders **slashed the probability that Bitcoin trades above $78,000 on August 28 by 15 percentage points, to 40.5%**, and cut the odds of holding above $80,000 to just **23.5%** — down 15 points from 38.5%. After the best week since 2023, the crowd that just watched a historic squeeze is refusing to buy the sequel. With spot ETFs and the U.S. Treasury both closed until Monday, the weekend is a live experiment: does the rally hold on spot demand alone, or was it a liquidity event wearing a bull-market costume?
+
+## The $80,000 rejection, in numbers
+
+The tape from this week is already well documented: Monday opened below **$65,000**, Wednesday's White House summit with Coinbase, Ripple, Nasdaq and CME executives lit the fuse, Thursday delivered the year's most violent short squeeze — roughly **$2.7 billion** in liquidated positions, more than $1.2 billion in a single 24-hour window — and Friday pushed price to its **highest level since mid-May**, a whisker from the round $80,000 number before sellers stepped in.
+
+Saturday's drift to **$77,000** (daily range: $76,500–$78,828) leaves the move technically intact but psychologically tested. Bitcoin has reclaimed its **200-day moving average for the first time since November** — a classic regime signal — yet it remains **about 39% below its all-time high of $126,198** (October 2025) and below its 2026 peak of $94,820. The macro escort is real: gold hit **14-week highs at $4,632 an ounce** (+2.2% on Friday, +16% on the month), and the Kobeissi Letter attributes the simultaneous gold-and-Bitcoin surge to record deficit spending and the Treasury's pledge to at least double long-bond buybacks to **$4 billion per operation** — the exact trade we detailed [last Thursday](/en/posts/treasury-buybacks-bessent-bitcoin-72k/). QCP Capital flags a notable divergence: Treasuries rallied after Bessent's announcement, then gave most of it back — Bitcoin and gold did not retrace. That is what a debasement trade looks like in real time.
+
+## Institutional money is still arriving
+
+The flow data, through Thursday's close, shows institutions were buyers all week. U.S. spot Bitcoin ETFs absorbed **$297.6M (Mon), $189.3M (Tue), $517.2M (Wed)** and **$608.3M (Thu)** — the best day since early May — lifting the weekly total above **$1.6 billion** and pushing August net inflows to **$2.07 billion**, already a 2026 monthly record ahead of April's $1.97 billion, per SoSoValue data compiled by Cointelegraph. Cumulative net inflows now stand at **$53.4 billion**. Ether ETFs did their part too: **$220.8M on Thursday**, their largest single-day intake since October 2025, bringing their total net assets to $13.58 billion.
+
+Strategy (formerly MicroStrategy) is back in the green: its Bitcoin treasury crossed back above its average acquisition cost as price passed $77,000, putting the company on **$1.4 billion of paper profit** after a $13 billion drawdown earlier this year — a swing that neatly summarizes how violent this year's cycle has been.
+
+The catch, for American investors: all of this — ETF flows, Treasury buybacks, bond-market liquidity — **shuts down on weekends**. Saturday and Sunday are the only two sessions where Bitcoin trades without either pillar. If spot demand holds above $75,000 without the funds, the rally has foundations; a slide back toward $70,000 would suggest the squeeze, not a regime change, did the heavy lifting.
+
+## Prediction markets: burned once, refusing the sequel
+
+Here is where our own data adds texture. A Saturday snapshot of Polymarket's August Bitcoin markets shows the **floor is intact**: the probability Bitcoin stays above $62,000 on August 23 is **100%**. Above $68,000 and $70,000 on August 28, traders still assign roughly **95–97%**. But everything above that got hit hard in 24 hours: **$76K: 71% → 60.5% · $78K: 55.5% → 40.5% · $80K: 38.5% → 23.5% · $82K: 25% → 13.5% · $84K: 14.5% → 7%**.
+
+The skepticism is not new — it is a repeat of the pattern Decrypt documented this week: on Myriad, traders were leaning roughly **70% toward a dump to $55,000** days before the rally, and only flipped to a coin flip (52% bullish toward $84,000) after price had already moved; Kalshi gave Bitcoin just **54% to clear $67,500 in August** and **31% at $70,000** — thresholds the rally blew through on Wednesday. As of last week, Polymarket's flagship 2026 contract still priced a **56% chance Bitcoin touches $55,000 before year-end**; the odds of reaching **$90,000 before 2027** stand at **48%**, up sharply since the week began per Cointelegraph.
+
+Read together, the message is "high consolidation, not melt-up": the market expects Bitcoin to hold $70,000–76,000 over the next week while treating $80,000 as a ceiling to be earned, not granted. Prediction markets measure perceived probability, not certainty — the numbers are indicative and do not constitute investment advice.
+
+## The weekend technicals to watch
+
+At $77,000, Bitcoin is sitting almost exactly on its **50-week exponential moving average ($77,232)** — the trend line it rejected in January, as analyst Rekt Capital pointed out. A weekly close above it would confirm a new macro uptrend; a rejection would extend the series of lower highs that has defined 2026. Below, the first line of defense is **$75,000–76,000**, then **$70,000**. Above, the path is clear but narrow: **$79,500**, then the round number the whole market is watching. Thin weekend liquidity cuts both ways — CoinDesk's own Daybook flagged it as the key variable: it can amplify a push through $80,000 or accelerate a reversal.
+
+## Meanwhile, Musk's X is studying stablecoin payouts
+
+One story this week deserves its own spotlight for what it says about where crypto's *other* rally — the one in payments — is heading. **X is exploring paying content creators in stablecoins, including Circle's USDC**, according to a person familiar with the discussions, as the platform overhauls its creator monetization with a new Original Content Rewards Program. No launch date, no confirmed asset list, and the talks are ongoing — but the logic is clear: dollar-pegged tokens would let X settle creator royalties **instantly and cheaply across borders**, without banking rails, for a creator base that is global by definition. The person familiar with the matter also works with **other social media companies testing stablecoin influencer payouts** — this is a trend, not a one-off.
+
+The Musk connection gives the story weight. **SpaceX already collects cross-border payments from Starlink customers in stablecoins**, and X's March hire of Benji Taylor — formerly head of design at Coinbase's Base network — put a crypto-native executive across X, xAI and SpaceX. Meanwhile the stablecoin economy keeps hardening: market-wide capitalization now exceeds **$300 billion**, and Tether passed its **first full external audit this month, reporting a $6.8 billion reserve surplus**. And the legal scaffolding just arrived: the Treasury published the first **GENIUS Act** implementing rules for U.S. stablecoin issuers [last week](/en/posts/genius-act-treasury-first-rules-stablecoins/) — the framework any X-style payout program would have to live under. For American readers, this is the rare crypto story that touches the everyday: the largest attention platform in the West, dollar-backed digital cash, and a federal rulebook arriving just in time.
+
+## The calendar that actually matters: September 15
+
+None of this changes the binary event looming over the market. The Senate remains in recess until **September 14**, with the CLARITY Act's **cloture vote scheduled for September 15** — a 60-vote threshold that still hinges on the Democrats' ethics-disclosure provision and the fate of the Tillis-Gallego counterproposal. CFTC Chair Michael Selig has put his staff on notice to build a "crypto asset market" regime by regulation if the bill fails ([our analysis](/en/posts/cftc-plan-b-bitcoin-77500/)), and the SEC's new Reg Crypto Assets framework is in its 60-day comment window. Galaxy Research still puts passage odds near **10%**; Polymarket's year-end contract hovers around **26%**.
+
+The weekend, then, is the appetizer. If Bitcoin holds $75,000+ through Sunday night, Monday's ETF reopen will show whether institutional demand survived the pause. And if the 50-week EMA reclaims on the weekly close, the next two weeks — $80,000, then September 15 — become a straight-line test of whether this week's squeeze was the beginning of something structural. Either way, the numbers to watch are simple: **$75,000 on the downside, $79,500–80,000 on the upside, and 60 votes in the Senate.** Data in this article is indicative and does not constitute investment advice.
