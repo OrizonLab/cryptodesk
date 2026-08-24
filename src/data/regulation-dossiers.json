@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-17",
+  "updated": "2026-08-24",
   "intro": "Le Regulation Clock suit les 5 dossiers réglementaires qui changent le plus concrètement la vie des investisseurs crypto. Chaque dossier affiche son statut, la dernière action officielle, la prochaine étape datée et les sources primaires. Un moniteur automatique vérifie les sources officielles (Congress.gov, Federal Register, EUR-Lex) et signale les changements — il n'interprète jamais seul.",
   "dossiers": [
     {
@@ -32,40 +32,49 @@
       "name": "Stablecoins US",
       "emoji": "🪙",
       "scope": "États-Unis",
-      "status": "Suivi en cours — statut à confirmer par le moniteur",
+      "status": "Mise en œuvre — règles d'application proposées par le Trésor",
       "statusLevel": "monitoring",
-      "lastAction": { "date": "À confirmer", "text": "Le cadre législatif des stablecoins (projet GENIUS Act) est en discussion au Congrès. Dernière étape officielle à vérifier." },
-      "nextStep": { "date": "À déterminer", "text": "Prochaine lecture ou vote à confirmer via les sources primaires." },
+      "lastAction": { "date": "2026-08-18", "text": "Le Trésor publie au Federal Register (2026-16796) ses règles proposées pour mettre en œuvre l'article 3 du GENIUS Act : interdictions et exigences applicables à l'émission, l'offre et la vente de stablecoins de paiement." },
+      "nextStep": { "date": "À suivre", "text": "Finalisation des règles du Trésor et entrée en vigueur des exigences pour les émetteurs de stablecoins." },
       "whatChanges": "Un régime fédéral pour les stablecoins : exigences de réserves, autorisation des émetteurs, règles de transparence. Ça change directement quels stablecoins sont sûrs à détenir et quelles plateformes peuvent les distribuer en Europe comme aux US.",
       "polymarket": null,
-      "timeline": [],
-      "sources": [
-        { "label": "Congress.gov — GENIUS Act (S.795)", "url": "https://www.congress.gov/bill/119th-congress/senate-bill/795" }
+      "timeline": [
+        { "date": "2026-08-18", "event": "Le Trésor publie ses règles proposées d'application du GENIUS Act (Federal Register 2026-16796)." }
       ],
-      "changes": []
+      "sources": [
+        { "label": "Congress.gov — GENIUS Act (S.795)", "url": "https://www.congress.gov/bill/119th-congress/senate-bill/795" },
+        { "label": "Federal Register — Règles GENIUS Act (2026-16796)", "url": "https://www.federalregister.gov/documents/2026/08/18/2026-16796/genius-act-regulations-on-payment-stablecoin-issuance-offer-and-sale" }
+      ],
+      "changes": [
+        { "date": "2026-08-24", "from": "Suivi en cours — statut à confirmer par le moniteur", "to": "Mise en œuvre — règles d'application proposées par le Trésor" }
+      ]
     },
     {
       "slug": "sec-cftc",
       "name": "SEC / CFTC",
       "emoji": "⚖️",
       "scope": "États-Unis",
-      "status": "Suivi en cours — enforcement et réforme des mandats",
+      "status": "Réforme en cours — régime d'offre proposé par la SEC",
       "statusLevel": "monitoring",
-      "lastAction": { "date": "2026-08-12", "text": "La CFTC renouvelle son Innovation Advisory Committee (IAC), comité consultatif couvrant actifs numériques, IA et marchés de prédiction (Federal Register 2026-16423)." },
-      "nextStep": { "date": "2026-08-20", "text": "Réunion publique de l'IAC (13h-16h EDT, participation à distance possible) : actifs numériques, IA, marchés de prédiction (Federal Register 2026-16328)." },
+      "lastAction": { "date": "2026-08-21", "text": "La SEC propose au Federal Register (2026-17183) un régime d'offre dédié (tailored offering regime) pour certains contrats d'investissement portant sur des actifs crypto." },
+      "nextStep": { "date": "À suivre", "text": "Période de commentaires publique sur la proposition SEC, puis adoption d'une règle finale." },
       "whatChanges": "Qui régule quoi : la SEC (valeurs mobilières) et la CFTC (matières premières) se disputent la frontière. Chaque clarification change le risque juridique des plateformes et des jetons que vous détenez.",
       "polymarket": null,
       "timeline": [
         { "date": "2026-08-11", "event": "La CFTC annonce la réunion de l'IAC du 20 août (actifs numériques, IA, marchés de prédiction)." },
-        { "date": "2026-08-12", "event": "La CFTC renouvelle l'Innovation Advisory Committee (Federal Register 2026-16423)." }
+        { "date": "2026-08-12", "event": "La CFTC renouvelle l'Innovation Advisory Committee (Federal Register 2026-16423)." },
+        { "date": "2026-08-21", "event": "La SEC publie sa proposition de régime d'offre dédié aux actifs crypto (Federal Register 2026-17183)." }
       ],
       "sources": [
         { "label": "SEC — Crypto Task Force", "url": "https://www.sec.gov/crypto" },
         { "label": "CFTC — Digital Assets", "url": "https://www.cftc.gov/digitalassets/index.htm" },
         { "label": "Federal Register — Renouvellement IAC (2026-16423)", "url": "https://www.federalregister.gov/documents/2026/08/12/2026-16423/renewal-of-the-innovation-advisory-committee" },
-        { "label": "Federal Register — Réunion IAC (2026-16328)", "url": "https://www.federalregister.gov/documents/2026/08/11/2026-16328/innovation-advisory-committee" }
+        { "label": "Federal Register — Réunion IAC (2026-16328)", "url": "https://www.federalregister.gov/documents/2026/08/11/2026-16328/innovation-advisory-committee" },
+        { "label": "Federal Register — Régime d'offre crypto SEC (2026-17183)", "url": "https://www.federalregister.gov/documents/2026/08/21/2026-17183/regulation-crypto-assets" }
       ],
-      "changes": []
+      "changes": [
+        { "date": "2026-08-24", "from": "Suivi en cours — enforcement et réforme des mandats", "to": "Réforme en cours — régime d'offre proposé par la SEC" }
+      ]
     },
     {
       "slug": "mica",
