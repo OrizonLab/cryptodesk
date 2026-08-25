@@ -1,0 +1,53 @@
+---
+title: "Bitcoin à 79 000 $ : +24 % en une semaine, un rally qui surperforme tout — et que les marchés lisent comme un vote contre le dollar"
+description: "Le bitcoin s'échange à la lisière des 79 000 $, en hausse de 24 % sur la semaine — sa meilleure performance depuis 2023. Pendant ce temps, les altcoins décrochent et la dominance du bitcoin grimpe vers 60 %. Décryptage d'un rally porté par le Trésor américain, un record de l'or et un short squeeze de 4 milliards de dollars."
+pubDate: 2026-08-25T17:00:00Z
+tags: ["bitcoin", "macro", "dollar", "or", "marches"]
+draft: false
+---
+
+<div class="summary"><strong>En résumé :</strong> Le bitcoin s'échange autour de <strong>79 000 $</strong> ce mardi 25 août, en hausse de <strong>24 % sur la semaine</strong> — sa meilleure performance depuis 2023. Mais ce rally ne profite qu'à lui : la dominance du bitcoin frôle les <strong>60 %</strong>, l'indice des altcoins hors BTC et ETH est en baisse sur la semaine, et l'indice « altcoin season » de CoinMarketCap reste à 46. Le moteur du mouvement est macro : le Trésor américain double ses rachats d'obligations longues, le dollar faiblit, l'or s'envole à <strong>4 661 $</strong>, et plus de <strong>4 milliards de dollars</strong> de positions shorts ont été liquidées. À Washington, Donald Trump pousse le Congrès à adopter le CLARITY Act pendant que la CFTC prépare des règles alternatives. Données indicatives, pas un conseil d'investissement.</div>
+
+Le bitcoin évolue à la lisière des <strong>79 000 $</strong> ce mardi 25 août, après une semaine qui restera dans les annales : <strong>+24 % en sept jours</strong>, du jamais-vu depuis 2023. Le mouvement a commencé mercredi dernier par une sortie brutale d'une range de consolidation qui durait depuis des semaines (62 000 – 67 000 $), et s'est poursuivi sans discontinuer : vendredi, le cours franchissait 77 000 $ ; ce week-end, il a tenu au-dessus de 77 000 $ sans l'aide des ETF ni du Trésor ; lundi, il s'est installé à la lisière des 78 000 $ ; mardi, il s'échange autour de 79 100 $ (+0,5 % sur 24 heures). Les marchés de prédiction, qui ne donnaient que 28 % de chances à un retour au-dessus de 78 000 $ il y a trois jours, accordent désormais 100 % à ce seuil pour aujourd'hui — mais seulement 0,1 % à un passage au-dessus des 80 000 $. Le plus remarquable, dans ce rally, c'est ce qu'il laisse derrière lui : le reste du marché crypto.
+
+## Un rally qui laisse les altcoins sur le quai
+
+Les altcoins sont censés être la partie la plus volatile du marché, celle qui monte plus fort que le bitcoin quand la tendance s'emballe. Cette semaine, l'inverse s'est produit. Selon les données compilées par Decrypt, l'ether — la plus grosse capitalisation alternative — a bien progressé d'environ <strong>30 %</strong> sur la semaine et s'échange au-dessus de 2 470 $, mais il fait figure d'exception.
+
+L'indice Total3, qui isole le reste du marché hors bitcoin et ether, s'est refroidi après un sursaut initial et stagne autour de <strong>753 milliards de dollars</strong> — en baisse sur la semaine, pendant que le bitcoin poussait vers 80 000 $. Le Total2 (l'ensemble du marché des altcoins) raconte la même histoire : après avoir bondi de plus de 24 % entre le 19 et le 22 août, au-dessus de 1 000 milliards de dollars, il s'échange autour de 1 050 milliards et recule depuis deux jours, tandis que le bitcoin continue de grimper.
+
+Le symptôme le plus visible de cette divergence est la <strong>dominance du bitcoin</strong> — sa part de la capitalisation totale du marché crypto. Elle est montée jusqu'à 61 % cette semaine, avant de se replier vers <strong>59 %</strong>, son plus haut niveau de l'année. L'indice « altcoin season » de CoinMarketCap, qui mesure combien de pièces du top 100 battent le bitcoin sur 90 jours (au-dessus de 75 : saison des altcoins ; vers 25 : saison du bitcoin), reste à <strong>46</strong> : la plupart des altcoins perdent la course. En clair : le rally de cette semaine est un rally du bitcoin, pas un rally crypto.
+
+## Le déclencheur : le Trésor américain double ses rachats d'obligations
+
+Ce qui a mis le feu aux poudres, c'est une annonce de politique monétaire discrète mais lourde de sens. Mercredi 19 août, le <strong>Trésor américain a annoncé qu'il doublait ses rachats d'obligations longues</strong> — des achats de sa propre dette destinés à soutenir la demande et à apaiser les coûts d'emprunt —, de 2 à <strong>4 milliards de dollars par opération</strong>, à partir du 9 septembre. Les observateurs y ont vu un « mini-QE », un soutien discret à un marché obligataire sous tension : les rendements à 30 ans évoluent à leurs plus hauts niveaux depuis près de vingt ans.
+
+L'effet a été immédiat sur le dollar, qui s'est affaibli, et sur les actifs refuges. L'or, déjà porté par une année record, a grimpé à <strong>4 661 $</strong> selon les données du CME. Le bitcoin, lui, a été poussé vers le haut par le même raisonnement : quand l'État imprime et rachète sa propre dette, la monnaie se dilue, et les actifs rares — or, bitcoin — deviennent des refuges contre l'inflation et l'érosion du pouvoir d'achat. C'est le retour du fameux « debasement trade », le pari sur la dépréciation de la monnaie fiduciaire, qui avait déjà porté le bitcoin lors des cycles d'assouplissement précédents.
+
+## Un short squeeze de 4 milliards de dollars
+
+La cassure des 67 000 $ a eu un effet mécanique amplificateur. Des semaines de consolidation avaient laissé s'accumuler un mur de positions vendeuses à effet de levier, pariées sur un nouveau recul. Quand le cours est sorti par le haut, ces traders ont été contraints de racheter du bitcoin à perte pour fermer leurs positions — un <strong>short squeeze</strong> classique. Selon les données de CoinGlass citées par Decrypt, <strong>plus de 4 milliards de dollars de positions shorts ont été liquidées</strong> pendant le rally, alimentant la hausse dans une spirale auto-entretenue : chaque liquidation force un achat, qui pousse le prix plus haut, qui déclenche de nouvelles liquidations.
+
+Cette mécanique explique la brutalité du mouvement — +24 % en sept jours — mais elle interroge aussi sur sa solidité : une partie de la hausse est le produit de positions contraintes, pas d'un flux d'achats « organiques » durable.
+
+## Washington en toile de fond : Trump, le CLARITY Act et la CFTC
+
+Le rally ne se joue pas que dans les carnets d'ordres. Vendredi, <strong>Donald Trump a reçu des dirigeants crypto à la Maison Blanche</strong> et a appelé le Congrès à adopter une « version équitable » du <strong>CLARITY Act</strong>, le texte qui doit trancher quel régulateur américain — SEC ou CFTC — supervise quel actif numérique. Le Sénat est en pause jusqu'au 14 septembre, et le vote de procédure (cloture) du texte est attendu le <strong>15 septembre</strong>, avec un seuil de 60 voix qui reste incertain.
+
+En parallèle, le président de la CFTC, <strong>Michael Selig, a indiqué que son agence préparait des règles de structure de marché</strong> applicables aux crypto-actifs, au cas où la législation stagnerait. C'est un signal important pour l'industrie : même sans loi, le régulateur des matières premières américain entend avancer — une forme de plan B réglementaire qui, s'il se matérialisait, dessinerait un cadre de facto là où le Congrès n'a pas encore tranché. Pour les acteurs européens, l'enjeu est direct : si Washington combine un cadre fédéral unifié et un marché en pleine forme, la compétitivité de MiCA, le règlement européen, sera testée comme jamais.
+
+## « Vote contre le dollar » : les analystes restent divisés
+
+La hausse conjointe du bitcoin et de l'or pendant que le dollar faiblit a relancé le débat : s'agit-il d'un vrai « vote contre le dollar » ? Pour <strong>Lacie Zhang</strong>, analyste recherche chez Bitget Wallet, « le bitcoin partage de plus en plus l'espace narratif avec l'or, comme protection numérique contre la débasement structurel des monnaies fiduciaires ». L'association inhabituelle de rendements obligataires élevés avec des gains simultanés sur l'or et le bitcoin suggère, selon elle, une inquiétude croissante sur la trajectoire budgétaire américaine.
+
+D'autres restent prudents. <strong>Jake Kennis</strong>, analyste senior chez Nansen, rappelle que « bitcoin et or qui montent ensemble pendant que le dollar s'affaiblit est cohérent avec les craintes de débasement et de crédibilité budgétaire — le classique pari sur les actifs durs ». Mais, ajoute-t-il, « un dollar plus faible accompagné de rendements élevés peut aussi refléter une prime de terme plus élevée, une incertitude sur l'inflation ou des attentes de croissance changeantes : la corrélation est suggestive, pas probante ». Autrement dit : le marché pourrait aussi bien célébrer la fin d'un cycle de resserrement qu'anticiper une dégradation de la note américaine.
+
+## Et maintenant ? La résistance des 80 000 $
+
+Le prochain test psychologique est celui des <strong>80 000 $</strong>, un niveau que le bitcoin n'a pas touché depuis des mois. Les marchés de prédiction n'y croient guère à très court terme : la probabilité d'un passage au-dessus de 80 000 $ ce mardi est tombée à <strong>0,1 %</strong> (contre 23,5 % il y a 24 heures), tandis que le maintien au-dessus de 78 000 $ mercredi est estimé à 68 %. Le calendrier, en revanche, joue en faveur des acheteurs : les rachats du Trésor débutent le 9 septembre, le Sénat revient le 14, et le vote du CLARITY Act occupera Wall Street le 15.
+
+Pour l'épargnant européen, le point d'attention est ailleurs : la trajectoire du dollar et de l'or, qui conditionnent le prix de l'énergie et des importations libellées en dollars, et la capacité de l'Europe à rester attractive dans un monde où les États-Unis — loi ou pas — accélèrent sur la crypto. Le rally de cette semaine dit autant de la santé du bitcoin que des doutes sur la monnaie de réserve mondiale. Reste à savoir si la tendance tiendra au-delà du squeeze.
+
+---
+
+<div class="disclaimer">⚠️ Article informatif et éducatif — ne constitue pas un conseil en investissement. Les probabilités citées (marchés de prédiction) sont des estimations subjectives et indicatives. Données de prix : CoinGecko et Binance au 25 août 2026 (bitcoin ≈ 79 100 $, ether ≈ 2 470 $) ; or : CME via Decrypt (4 661 $) ; liquidations : CoinGlass via Decrypt (plus de 4 Md $) ; indices de marché : CoinMarketCap et Total3/Total2 via Decrypt. Les informations reflètent l'état des marchés et des négociations au 25 août 2026 et peuvent évoluer rapidement. Sources : Decrypt (25 août 2026, « Bitcoin Rally Is Outrunning the Rest of the Market », et 24 août 2026, « Why the Bitcoin Rally Looks Like a Vote Against the Dollar »), données de liquidations CoinGlass, données CME.</div>
