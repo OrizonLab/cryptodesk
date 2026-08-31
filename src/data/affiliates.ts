@@ -82,7 +82,7 @@ export const affiliates: Affiliate[] = [
     cta: 'Ouvrir un compte OKX',
     note: 'Code de parrainage : 77244970.',
     umami: 'okx',
-    promo: 'Bonus de dépôt 8 % jusqu’à 5 000 € (jusqu’au 31 août)',
+    promo: 'Jusqu’à 400 € en BTC offerts aux nouveaux inscrits (missions de dépôt & trading)',
     featured: true,
     active: true,
     type: 'Exchange international',
