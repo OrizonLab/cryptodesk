@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24",
+  "updated": "2026-09-07",
   "intro": "Le Regulation Clock suit les 5 dossiers réglementaires qui changent le plus concrètement la vie des investisseurs crypto. Chaque dossier affiche son statut, la dernière action officielle, la prochaine étape datée et les sources primaires. Un moniteur automatique vérifie les sources officielles (Congress.gov, Federal Register, EUR-Lex) et signale les changements — il n'interprète jamais seul.",
   "dossiers": [
     {
@@ -54,23 +54,25 @@
       "name": "SEC / CFTC",
       "emoji": "⚖️",
       "scope": "États-Unis",
-      "status": "Réforme en cours — régime d'offre proposé par la SEC",
+      "status": "Réforme en cours — propositions SEC en commentaires (régime d'offre, transfer agents)",
       "statusLevel": "monitoring",
-      "lastAction": { "date": "2026-08-21", "text": "La SEC propose au Federal Register (2026-17183) un régime d'offre dédié (tailored offering regime) pour certains contrats d'investissement portant sur des actifs crypto." },
-      "nextStep": { "date": "À suivre", "text": "Période de commentaires publique sur la proposition SEC, puis adoption d'une règle finale." },
+      "lastAction": { "date": "2026-09-04", "text": "La SEC publie au Federal Register (2026-18190) une proposition de règles modernisant les agents de transfert (transfer agents), couvrant explicitement les agents « onchain », la tenue de registres sur blockchain (DLT) et les titres tokenisés." },
+      "nextStep": { "date": "À suivre", "text": "Périodes de commentaires publiques sur les propositions SEC (régime d'offre crypto et règles transfer agents), puis adoption des règles finales." },
       "whatChanges": "Qui régule quoi : la SEC (valeurs mobilières) et la CFTC (matières premières) se disputent la frontière. Chaque clarification change le risque juridique des plateformes et des jetons que vous détenez.",
       "polymarket": null,
       "timeline": [
         { "date": "2026-08-11", "event": "La CFTC annonce la réunion de l'IAC du 20 août (actifs numériques, IA, marchés de prédiction)." },
         { "date": "2026-08-12", "event": "La CFTC renouvelle l'Innovation Advisory Committee (Federal Register 2026-16423)." },
-        { "date": "2026-08-21", "event": "La SEC publie sa proposition de régime d'offre dédié aux actifs crypto (Federal Register 2026-17183)." }
+        { "date": "2026-08-21", "event": "La SEC publie sa proposition de régime d'offre dédié aux actifs crypto (Federal Register 2026-17183)." },
+        { "date": "2026-09-04", "event": "La SEC propose de nouvelles règles pour les transfer agents — agents « onchain », tenue de registres sur DLT, titres tokenisés (Federal Register 2026-18190)." }
       ],
       "sources": [
         { "label": "SEC — Crypto Task Force", "url": "https://www.sec.gov/crypto" },
         { "label": "CFTC — Digital Assets", "url": "https://www.cftc.gov/digitalassets/index.htm" },
         { "label": "Federal Register — Renouvellement IAC (2026-16423)", "url": "https://www.federalregister.gov/documents/2026/08/12/2026-16423/renewal-of-the-innovation-advisory-committee" },
         { "label": "Federal Register — Réunion IAC (2026-16328)", "url": "https://www.federalregister.gov/documents/2026/08/11/2026-16328/innovation-advisory-committee" },
-        { "label": "Federal Register — Régime d'offre crypto SEC (2026-17183)", "url": "https://www.federalregister.gov/documents/2026/08/21/2026-17183/regulation-crypto-assets" }
+        { "label": "Federal Register — Régime d'offre crypto SEC (2026-17183)", "url": "https://www.federalregister.gov/documents/2026/08/21/2026-17183/regulation-crypto-assets" },
+        { "label": "Federal Register — Transfer Agent Rules SEC (2026-18190)", "url": "https://www.federalregister.gov/documents/2026/09/04/2026-18190/transfer-agent-rules" }
       ],
       "changes": [
         { "date": "2026-08-24", "from": "Suivi en cours — enforcement et réforme des mandats", "to": "Réforme en cours — régime d'offre proposé par la SEC" }
