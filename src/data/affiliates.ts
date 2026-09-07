@@ -118,7 +118,7 @@ export const affiliates: Affiliate[] = [
     cta: 'Ouvrir un compte Bitget',
     note: 'Code parrainage : W8JDT92M.',
     umami: 'bitget',
-    promo: 'Jusqu’à 20 % de réduction à vie sur les frais de trading',
+    promo: 'Pack de bienvenue jusqu’à 6 200 USDT pour les nouveaux inscrits',
     featured: true,
     active: true,
     type: 'Exchange international',
