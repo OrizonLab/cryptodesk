@@ -43,7 +43,7 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
       </p>
       <div class="hero-actions">
         <a href="#articles" class="btn btn-primary">Lire les analyses →</a>
-        <a href="/lexique/" class="btn btn-ghost">Explorer le lexique</a>
+        <a href="#outils" class="btn btn-ghost">Les outils gratuits</a>
       </div>
       <img
         class="hero-banner"
@@ -53,6 +53,55 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
         height="426"
         loading="eager"
       />
+    </div>
+  </section>
+
+  <section class="container-wide" id="outils">
+    <div class="section-head">
+      <h2 class="section-title">Les outils, gratuits et sans inscription</h2>
+      <a href="/a-propos/" class="section-link">Notre ligne →</a>
+    </div>
+    <div class="tools-grid">
+      <a class="tool-card" href="/comparateur/">
+        <span class="tool-icon" aria-hidden="true">🧮</span>
+        <h3>Comparateur d'exchanges</h3>
+        <p>Frais, régulation et profil idéal côte à côte, plus un simulateur qui estime le coût complet d'un achat : dépôt, trading, spread et retrait.</p>
+        <span class="read-more">Comparer →</span>
+      </a>
+      <a class="tool-card" href="/regulation/">
+        <span class="tool-icon" aria-hidden="true">🏛️</span>
+        <h3>Regulation Clock</h3>
+        <p>Le suivi des échéances réglementaires à venir, sourcé texte par texte.</p>
+        <span class="read-more">Voir les échéances →</span>
+      </a>
+      <a class="tool-card" href="/donnees/">
+        <span class="tool-icon" aria-hidden="true">📊</span>
+        <h3>Données du jour</h3>
+        <p>Les repères de marché mis à jour, sans commentaire ni promesse de performance.</p>
+        <span class="read-more">Consulter →</span>
+      </a>
+      <a class="tool-card" href="/lexique/">
+        <span class="tool-icon" aria-hidden="true">📖</span>
+        <h3>Lexique crypto</h3>
+        <p>Les termes techniques expliqués en français clair, pour lire l'actualité sans décrocher.</p>
+        <span class="read-more">Explorer →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="container-wide">
+    <div class="indep">
+      <h2>Une ligne indépendante</h2>
+      <p>
+        CryptoDesk ne publie <strong>ni articles sponsorisés, ni conseil en investissement</strong>.
+        Le site se finance par des liens d'affiliation vers les plateformes listées sur la page
+        partenaires : tu ne paies pas plus cher, et le classement du comparateur n'est pas
+        déterminé par les commissions. Toutes les sources sont citées dans les articles, et les
+        outils restent accessibles gratuitement, sans compte.
+      </p>
+      <p class="indep-links">
+        <a href="/partenaires/">Partenaires & transparence sur les commissions →</a>
+      </p>
     </div>
   </section>
 
@@ -124,6 +173,11 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
         <p class="newsletter-status" role="status" aria-live="polite"></p>
       </form>
     </div>
+    <p class="nl-support">
+      Tu préfères soutenir autrement ? Compare les plateformes sur le
+      <a href="/comparateur/">comparateur</a> et, si l'une te convient, ouvre ton compte via la page
+      <a href="/partenaires/">partenaires</a> : la commission finance la rédaction, sans surcoût pour toi.
+    </p>
   </section>
 
   <script src="/js/newsletter.js" defer></script>
@@ -213,6 +267,40 @@ const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
     .newsletter-status { min-height: 1.1rem; font-size: 0.85rem; margin-top: 0.4rem; }
     .newsletter-status.ok { color: var(--accent); }
     .newsletter-status.err { color: #f87171; }
+
+    .nl-support {
+      color: var(--text-muted); font-size: 0.85rem; line-height: 1.55;
+      max-width: 70ch; margin: 0.9rem 0 0;
+    }
+    .nl-support a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .nl-support a:hover { text-decoration: underline; }
+
+    /* ============ OUTILS GRATUITS ============ */
+    .tools-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 640px) { .tools-grid { grid-template-columns: 1fr 1fr; } }
+    .tool-card {
+      display: flex; flex-direction: column; gap: 0.35rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.3rem 1.5rem;
+      text-decoration: none; color: inherit; box-shadow: var(--shadow-sm);
+      transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+    }
+    .tool-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .tool-icon { font-size: 1.5rem; line-height: 1; }
+    .tool-card h3 { font-size: 1.05rem; font-weight: 700; }
+    .tool-card p { color: var(--text-muted); font-size: 0.9rem; flex: 1; }
+
+    /* ============ INDÉPENDANCE ============ */
+    .indep {
+      background: var(--bg-alt); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.6rem 1.8rem; margin-top: 2.5rem;
+    }
+    .indep h2 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .indep p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; max-width: 75ch; }
+    .indep strong { color: var(--text); }
+    .indep-links { margin-top: 0.8rem; }
+    .indep-links a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .indep-links a:hover { text-decoration: underline; }
 
     /* ============ SECTIONS ============ */
     .section-head {

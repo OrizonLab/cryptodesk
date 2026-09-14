@@ -24,6 +24,11 @@ const hasTime = pubDate.getUTCHours() !== 0 || pubDate.getUTCMinutes() !== 0;
 const pubTime = hasTime ? timeFmt.format(pubDate) : null;
 const frHref = frSlug ? `https://cryptodesk.fr/posts/${frSlug}/` : undefined;
 
+// Partage — liens « intent » natifs : aucun SDK ni pixel tiers chargé
+const postUrl = `https://cryptodesk.fr/en/posts/${post.slug}/`;
+const shareX = `https://x.com/intent/post?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(title)}`;
+const shareLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`;
+
 // JSON-LD Article
 const articleJsonLd = {
   '@context': 'https://schema.org',
@@ -84,6 +89,24 @@ const articleJsonLd = {
     <div class="prose">
       <slot />
     </div>
+
+    <section class="post-share" aria-label="Share this article">
+      <p class="share-title">📣 Share this article</p>
+      <div class="share-actions">
+        <a class="share-btn" href={shareX} target="_blank" rel="noopener noreferrer">Share on X</a>
+        <a class="share-btn" href={shareLinkedIn} target="_blank" rel="noopener noreferrer">Share on LinkedIn</a>
+        <button type="button" class="share-btn share-copy" data-share-copy data-share-url={postUrl}>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+      <p class="share-cta">
+        {/* Pas encore de version /en/ pour ces pages : on pointe les originaux FR (hreflang) */}
+        Go further: <a href="/newsletter/" hreflang="fr">the Le Desk newsletter</a> (English edition available) · <a href="/comparateur/" hreflang="fr">the exchange comparison</a>
+      </p>
+      <p class="share-funding">
+        Partner links fund the newsroom — they never change the price you pay.
+        <a href="/partenaires/" hreflang="fr">Transparency</a>
+      </p>
+    </section>
 
     {related.length > 0 && (
       <nav class="read-next" aria-label="Read next">
@@ -175,6 +198,35 @@ const articleJsonLd = {
       text-transform: uppercase; letter-spacing: 0.03em;
       margin-top: 0.3rem;
     }
+
+    /* ── Partage ── */
+    .post-share {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .share-title { font-weight: 700; margin-bottom: 0.6rem; font-size: 1rem; }
+    .share-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+    .share-btn {
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid var(--accent);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .share-btn:hover { background: var(--accent-soft); }
+    .share-status { font-size: 0.8rem; color: var(--text-muted); }
+    .share-cta { margin-top: 0.8rem; font-size: 0.88rem; color: var(--text-muted); }
+    .share-cta a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .share-cta a:hover { text-decoration: underline; }
+    .share-funding { margin-top: 0.35rem; font-size: 0.78rem; color: var(--text-muted); opacity: 0.8; }
+    .share-funding a { color: var(--text-muted); text-decoration: underline; }
 
     @media (max-width: 480px) {
       .nav-link { max-width: 100%; }

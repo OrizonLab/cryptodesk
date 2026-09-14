@@ -34,13 +34,43 @@
     const navLang = (navigator.language || '').toLowerCase().slice(0, 2);
     const wantsOther = pageLang === 'fr' ? navLang === 'en' : navLang === 'fr';
     if (wantsOther) {
+      // Construction par API DOM (pas d'innerHTML) : altHref vient du document,
+      // mais le texte reste inerte et l'URL passe par setAttribute.
       const banner = document.createElement('div');
       banner.className = 'lang-banner';
-      banner.innerHTML =
-        pageLang === 'fr'
-          ? '🌐 This article is available in <a href="' + altHref + '" hreflang="en">English →</a>'
-          : '🌐 Cet article est disponible en <a href="' + altHref + '" hreflang="fr">français →</a>';
+      const link = document.createElement('a');
+      if (pageLang === 'fr') {
+        banner.append('🌐 This article is available in ');
+        link.setAttribute('hreflang', 'en');
+        link.textContent = 'English →';
+      } else {
+        banner.append('🌐 Cet article est disponible en ');
+        link.setAttribute('hreflang', 'fr');
+        link.textContent = 'français →';
+      }
+      link.setAttribute('href', altHref);
+      banner.append(link);
       document.body.prepend(banner);
     }
   }
+
+  // ── Boutons « copier le lien » ───────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-share-copy]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const status = btn.parentElement
+          ? btn.parentElement.querySelector('.share-status')
+          : null;
+        const url = btn.getAttribute('data-share-url') || '';
+        navigator.clipboard.writeText(url).then(
+          () => {
+            if (status) status.textContent = 'Lien copié';
+          },
+          () => {
+            if (status) status.textContent = 'Copie impossible';
+          }
+        );
+      });
+    });
+  });
 })();

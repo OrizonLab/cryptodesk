@@ -46,6 +46,11 @@ const navItems = [
   { href: '/a-propos/', label: 'À propos' },
   { href: '/newsletter/', label: 'Newsletter', pill: true },
 ];
+
+// Bascule FR/EN de la navigation : pointe vers l'article équivalent quand il
+// existe (alternateHref), sinon vers l'accueil de l'autre édition.
+const frHref = isEn ? (alternateHref ?? '/') : null;
+const enHref = isEn ? null : (alternateHref ?? '/en/');
 ---
 
 <!doctype html>

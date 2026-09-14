@@ -8,8 +8,10 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 
 # Copie des fichiers de dépendances
-COPY package.json package-lock.json* ./
-RUN npm install --no-audit --no-fund
+# package-lock.json est requis (pas de glob) : `npm ci` installe exactement
+# les versions verrouillées et échoue si le lockfile manque ou diverge.
+COPY package.json package-lock.json ./
+RUN npm ci --no-audit --no-fund
 
 # Copie du code source
 COPY . .
