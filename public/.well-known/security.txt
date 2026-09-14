@@ -1,8 +1,9 @@
 # security.txt — points de contact sécurité CryptoDesk
-# Plus d'infos : https://securitytxt.org
+# Format RFC 9116 — https://securitytxt.org
+# Pas de champ Policy : aucune page de politique de divulgation n'est
+# publiée pour l'instant (le champ pointait vers une URL inexistante).
 
-Contact: mailto:contact@auratrade.app
+Contact: mailto:contact@cryptodesk.fr
 Expires: 2027-01-01T00:00:00.000Z
 Preferred-Languages: fr, en
 Canonical: https://cryptodesk.fr/.well-known/security.txt
-Policy: https://cryptodesk.fr/security.txt

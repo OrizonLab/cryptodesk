@@ -11,8 +11,15 @@
   const resultsEl = document.getElementById('calc-results');
 
   const fmt = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2 });
-  const fmtPct = (v) => (v == null ? '—' : v.toFixed(2) + ' %');
-  const fmtBtc = (v) => (v == null ? '—' : v.toFixed(6) + ' BTC');
+
+  // Fabrique d'éléments : le rendu passe par l'API DOM (textContent /
+  // setAttribute) plutôt que par innerHTML — aucune chaîne HTML concaténée.
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
 
   function netFor(f, amount, method, asset, withdraw) {
     if (f.card_pct == null) return null; // pas d'achat fiat (DeFi)
@@ -57,7 +64,7 @@
     const asset = form.elements.namedItem('asset').value;
     const withdraw = form.elements.namedItem('withdraw').value;
     if (!amount || amount <= 0) {
-      resultsEl.innerHTML = '<p class="calc-empty">Entrez un montant pour voir le coût réel par plateforme.</p>';
+      resultsEl.replaceChildren(el('p', 'calc-empty', 'Entrez un montant pour voir le coût réel par plateforme.'));
       return;
     }
     const rows = [];
@@ -69,29 +76,68 @@
     rows.sort((a, b) => a.totalFees - b.totalFees);
 
     const best = rows[0];
-    let html = '<div class="calc-best">Le moins coûteux pour ce scénario : <strong>' + best.p.name + '</strong> — ' +
-      fmt.format(best.totalFees) + ' de frais (' + best.pct.toFixed(1) + ' %), soit ' + fmt.format(best.net) + ' de crypto nette.</div>';
-    html += '<div class="calc-list">';
+    if (!best) {
+      resultsEl.replaceChildren(el('p', 'calc-empty', 'Aucune plateforme ne couvre ce scénario pour le moment.'));
+      return;
+    }
+
+    const bestEl = el('div', 'calc-best');
+    bestEl.append(
+      'Le moins coûteux pour ce scénario : ',
+      el('strong', null, best.p.name),
+      ' — ' + fmt.format(best.totalFees) + ' de frais (' + best.pct.toFixed(1) + ' %), soit ' +
+        fmt.format(best.net) + ' de crypto nette.'
+    );
+
+    const list = el('div', 'calc-list');
     rows.forEach((r) => {
       const p = r.p;
-      html += '<div class="calc-row' + (r === best ? ' best' : '') + '">';
-      html += '<div class="calc-row-head"><strong>' + p.name + '</strong><span>' + fmt.format(r.net) + ' nets</span></div>';
-      html += '<ul class="calc-detail">';
+      const row = el('div', 'calc-row' + (r === best ? ' best' : ''));
+
+      const head = el('div', 'calc-row-head');
+      head.append(el('strong', null, p.name), el('span', null, fmt.format(r.net) + ' nets'));
+      row.append(head);
+
+      const detail = el('ul', 'calc-detail');
       r.lines.forEach((l) => {
-        html += '<li><span>' + l.label + '</span><span>' + (typeof l.value === 'number' ? fmt.format(l.value) : l.value) + '</span></li>';
+        const li = el('li');
+        li.append(
+          el('span', null, l.label),
+          el('span', null, typeof l.value === 'number' ? fmt.format(l.value) : l.value)
+        );
+        detail.append(li);
       });
-      html += '<li class="calc-total"><span>Total des frais</span><span>' + fmt.format(r.totalFees) + ' (' + r.pct.toFixed(1) + ' %)</span></li>';
-      html += '</ul>';
+      const total = el('li', 'calc-total');
+      total.append(
+        el('span', null, 'Total des frais'),
+        el('span', null, fmt.format(r.totalFees) + ' (' + r.pct.toFixed(1) + ' %)')
+      );
+      detail.append(total);
+      row.append(detail);
+
       const link = fees.links && fees.links[r.key];
       if (link) {
-        html += '<a class="calc-cta" href="' + link.url + '" target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate="' + link.umami + '">' + link.cta + ' →</a>';
+        const cta = el('a', 'calc-cta', link.cta + ' →');
+        cta.setAttribute('href', link.url);
+        cta.setAttribute('target', '_blank');
+        cta.setAttribute('rel', 'noopener sponsored nofollow');
+        cta.dataset.umamiEvent = 'affiliate-click';
+        cta.dataset.umamiEventAffiliate = link.umami;
+        row.append(cta);
       }
-      html += '<p class="calc-note">' + (p.note || '') + '</p>';
-      html += '</div>';
+
+      row.append(el('p', 'calc-note', p.note || ''));
+      list.append(row);
     });
-    html += '</div>';
-    html += '<p class="calc-disclaimer">Estimations indicatives (frais vérifiés le ' + (fees.updated || '?') + '). Les frais réels varient selon le marché, la méthode et le moment. Consultez les sites officiels.</p>';
-    resultsEl.innerHTML = html;
+
+    const disclaimer = el(
+      'p',
+      'calc-disclaimer',
+      'Estimations indicatives (frais vérifiés le ' + (fees.updated || '?') +
+        '). Les frais réels varient selon le marché, la méthode et le moment. Consultez les sites officiels.'
+    );
+
+    resultsEl.replaceChildren(bestEl, list, disclaimer);
   }
 
   form.addEventListener('submit', (e) => { e.preventDefault(); run(); });
