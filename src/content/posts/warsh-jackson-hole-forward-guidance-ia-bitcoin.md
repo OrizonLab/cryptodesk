@@ -4,6 +4,7 @@ description: "Kevin Warsh, président de la Fed, a livré son premier grand disc
 pubDate: 2026-08-28T22:45:00Z
 tags: ["fed", "warsh", "jackson-hole", "bitcoin", "ia", "macro"]
 draft: false
+ogImage: "/og/warsh-jackson-hole-forward-guidance-ia-bitcoin.jpg"
 ---
 
 <div class="summary"><strong>En résumé :</strong> Kevin Warsh a livré vendredi son premier grand discours à Jackson Hole, intitulé « In Our Time ». Trois messages pour les marchés : la Fed n'émettra plus d'indications prospectives sur les taux (le forward guidance a « fait son temps ») ; l'inflation reste la « préoccupation prédominante » — PCE à 3,7 %, cible manquée depuis 65 mois, et « sinon, nous avons du travail à faire » ; et l'intelligence artificielle est devenue un « point de bascule de l'histoire », avec des ventes de tokens supérieures à 100 milliards de dollars par an. Après une première lecture décevante pour les traders (« pas de signal »), le discours a été réinterprété comme hawkish : la probabilité d'une hausse des taux le 16 septembre est passée de 35 % à 62 % (CME), le dollar a gagné 0,5 % et Bitcoin est retombé vers 77 500 $ après avoir touché 80 000 $ cette semaine.</div>
