@@ -5,6 +5,8 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  /** Texte alternatif de l'image OG (accessibilité + crawlers) — titre de l'article par défaut */
+  ogImageAlt?: string;
   ogType?: string;
   canonical?: string;
   /** Langue de la page ('fr' par défaut) — ajuste og:locale */
@@ -21,13 +23,17 @@ interface Props {
   };
 }
 
-const { title, description, ogImage, ogType, canonical, article, lang = 'fr', alternateHref } = Astro.props;
+const { title, description, ogImage, ogImageAlt, ogType, canonical, article, lang = 'fr', alternateHref } = Astro.props;
 const isEn = lang === 'en';
 const pageTitle = title ? `${title} — CryptoDesk` : 'CryptoDesk — Cryptos & Marchés Financiers';
 const pageDesc = description ?? 'CryptoDesk — analyses, actualités et décryptages sur les cryptomonnaies et les marchés financiers.';
 const pageUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
 // Normalise l'URL de l'image OG (évite le double slash quand Astro.site finit par /)
 const pageOgImage = ogImage ? new URL(ogImage, Astro.site).href : new URL('/og-default.png', Astro.site).href;
+// Type MIME de l'image OG (certains crawlers — X, LinkedIn — l'utilisent pour valider la carte)
+const ogImageType = pageOgImage.endsWith('.png') ? 'image/png' : 'image/jpeg';
+// Alt de l'image : titre de l'article par défaut (accessibilité + crawlers)
+const ogAlt = ogImageAlt ?? pageTitle;
 
 const navItems = [
   { href: '/', label: 'Accueil' },
@@ -65,9 +71,11 @@ const navItems = [
     <meta property="og:url" content={pageUrl} />
     <meta property="og:locale" content={isEn ? 'en_US' : 'fr_FR'} />
     <meta property="og:image" content={pageOgImage} />
+    <meta property="og:image:secure_url" content={pageOgImage} />
+    <meta property="og:image:type" content={ogImageType} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="CryptoDesk — Cryptos & Marchés Financiers" />
+    <meta property="og:image:alt" content={ogAlt} />
 
     {
       alternateHref && (
@@ -95,6 +103,7 @@ const navItems = [
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDesc} />
     <meta name="twitter:image" content={pageOgImage} />
+    <meta name="twitter:image:alt" content={ogAlt} />
 
     <!-- Flux RSS -->
     <link rel="alternate" type="application/rss+xml" title="CryptoDesk — RSS" href={`${Astro.site}/rss.xml`} />

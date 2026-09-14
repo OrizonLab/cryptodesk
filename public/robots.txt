@@ -1,6 +1,4 @@
----
-// robots.txt — autorise tout, bloque les doublons
----
+# robots.txt — autorise tout, bloque les doublons
 User-agent: *
 Allow: /
 
@@ -8,7 +6,26 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-# LLM crawlers (optionnel : les laisser accéder à llms.txt)
+# Robots des réseaux sociaux / messageries (cartes de partage — images OG)
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# LLM crawlers (former les modèles, générer des citations)
 User-agent: GPTBot
 Allow: /
 Allow: /llms.txt
