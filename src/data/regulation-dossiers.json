@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-07",
+  "updated": "2026-09-14",
   "intro": "Le Regulation Clock suit les 5 dossiers réglementaires qui changent le plus concrètement la vie des investisseurs crypto. Chaque dossier affiche son statut, la dernière action officielle, la prochaine étape datée et les sources primaires. Un moniteur automatique vérifie les sources officielles (Congress.gov, Federal Register, EUR-Lex) et signale les changements — il n'interprète jamais seul.",
   "dossiers": [
     {
@@ -54,17 +54,18 @@
       "name": "SEC / CFTC",
       "emoji": "⚖️",
       "scope": "États-Unis",
-      "status": "Réforme en cours — propositions SEC en commentaires (régime d'offre, transfer agents)",
+      "status": "Réforme en cours — première approbation (standards de cotation d'ETP crypto), propositions en commentaires",
       "statusLevel": "monitoring",
-      "lastAction": { "date": "2026-09-04", "text": "La SEC publie au Federal Register (2026-18190) une proposition de règles modernisant les agents de transfert (transfer agents), couvrant explicitement les agents « onchain », la tenue de registres sur blockchain (DLT) et les titres tokenisés." },
-      "nextStep": { "date": "À suivre", "text": "Périodes de commentaires publiques sur les propositions SEC (régime d'offre crypto et règles transfer agents), puis adoption des règles finales." },
+      "lastAction": { "date": "2026-09-09", "text": "La SEC approuve en accéléré (release 34-106268, dossier SR-NasdaqTX-2026-039, ordonnance du 3 septembre, Federal Register 2026-18291) l'amendement du standard de cotation Nasdaq Texas 5711(d) sur les Commodity-Based Trust Shares : définition des « digital commodities », buffer jusqu'à 15 % de l'actif net en actifs hors critères d'éligibilité et stratégies gérées activement." },
+      "nextStep": { "date": "À suivre", "text": "Périodes de commentaires publiques sur les propositions SEC (régime d'offre crypto et règles transfer agents) et nouvelles ordonnances d'approbation sur les standards de cotation d'ETP crypto, puis adoption des règles finales." },
       "whatChanges": "Qui régule quoi : la SEC (valeurs mobilières) et la CFTC (matières premières) se disputent la frontière. Chaque clarification change le risque juridique des plateformes et des jetons que vous détenez.",
       "polymarket": null,
       "timeline": [
         { "date": "2026-08-11", "event": "La CFTC annonce la réunion de l'IAC du 20 août (actifs numériques, IA, marchés de prédiction)." },
         { "date": "2026-08-12", "event": "La CFTC renouvelle l'Innovation Advisory Committee (Federal Register 2026-16423)." },
         { "date": "2026-08-21", "event": "La SEC publie sa proposition de régime d'offre dédié aux actifs crypto (Federal Register 2026-17183)." },
-        { "date": "2026-09-04", "event": "La SEC propose de nouvelles règles pour les transfer agents — agents « onchain », tenue de registres sur DLT, titres tokenisés (Federal Register 2026-18190)." }
+        { "date": "2026-09-04", "event": "La SEC propose de nouvelles règles pour les transfer agents — agents « onchain », tenue de registres sur DLT, titres tokenisés (Federal Register 2026-18190)." },
+        { "date": "2026-09-09", "event": "La SEC approuve en accéléré l'amendement du standard de cotation Nasdaq Texas 5711(d) sur les Commodity-Based Trust Shares — définition des « digital commodities », buffer de 15 % de l'actif net, stratégies gérées activement (Federal Register 2026-18291, release 34-106268)." }
       ],
       "sources": [
         { "label": "SEC — Crypto Task Force", "url": "https://www.sec.gov/crypto" },
@@ -72,10 +73,12 @@
         { "label": "Federal Register — Renouvellement IAC (2026-16423)", "url": "https://www.federalregister.gov/documents/2026/08/12/2026-16423/renewal-of-the-innovation-advisory-committee" },
         { "label": "Federal Register — Réunion IAC (2026-16328)", "url": "https://www.federalregister.gov/documents/2026/08/11/2026-16328/innovation-advisory-committee" },
         { "label": "Federal Register — Régime d'offre crypto SEC (2026-17183)", "url": "https://www.federalregister.gov/documents/2026/08/21/2026-17183/regulation-crypto-assets" },
-        { "label": "Federal Register — Transfer Agent Rules SEC (2026-18190)", "url": "https://www.federalregister.gov/documents/2026/09/04/2026-18190/transfer-agent-rules" }
+        { "label": "Federal Register — Transfer Agent Rules SEC (2026-18190)", "url": "https://www.federalregister.gov/documents/2026/09/04/2026-18190/transfer-agent-rules" },
+        { "label": "Federal Register — Approbation Nasdaq Texas 5711(d) (2026-18291)", "url": "https://www.federalregister.gov/documents/2026/09/09/2026-18291/self-regulatory-organizations-nasdaq-texas-llc-notice-of-filing-and-order-granting-accelerated" }
       ],
       "changes": [
-        { "date": "2026-08-24", "from": "Suivi en cours — enforcement et réforme des mandats", "to": "Réforme en cours — régime d'offre proposé par la SEC" }
+        { "date": "2026-08-24", "from": "Suivi en cours — enforcement et réforme des mandats", "to": "Réforme en cours — régime d'offre proposé par la SEC" },
+        { "date": "2026-09-14", "from": "Réforme en cours — propositions SEC en commentaires (régime d'offre, transfer agents)", "to": "Réforme en cours — première approbation (standards de cotation d'ETP crypto), propositions en commentaires" }
       ]
     },
     {
