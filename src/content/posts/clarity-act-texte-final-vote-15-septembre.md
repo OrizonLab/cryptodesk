@@ -4,7 +4,7 @@ description: "Les républicains du Sénat ont publié dimanche soir le texte fin
 pubDate: 2026-09-14T04:00:00Z
 tags: ["clarity-act", "etats-unis", "reglementation", "senat", "stablecoins", "defi"]
 draft: false
-ogImage: "/og/clarity-act-texte-final-635-pages-vote-15-septembre.jpg"
+ogImage: "/og/clarity-act-texte-final-vote-15-septembre.jpg"
 ---
 
 <div class="summary"><strong>En résumé :</strong> Dimanche soir, la sénatrice Cynthia Lummis — entourée des présidents de commission John Boozman et Tim Scott — a déposé le texte final du CLARITY Act : 635 pages, 126 modifications concédées aux démocrates après un an de négociations, et un nouveau chapitre sur l'éthique que Donald Trump a « volontairement » accepté. Le vote de clôture (*cloture*) se tient mardi 15 septembre à 14h15, heure de New York : il faut 60 voix, les républicains en ont 53 — donc au moins 7 démocrates. Si le texte échoue, Cynthia Lummis prévient que la première loi américaine de structure de marché crypto pourrait être repoussée de plusieurs années. Bitcoin évolue autour de 77 500 $ et XRP à 1,37 $ dans l'attente.</div>
