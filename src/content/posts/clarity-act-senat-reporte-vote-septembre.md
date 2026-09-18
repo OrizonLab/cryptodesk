@@ -1,6 +1,6 @@
 ---
 title: "CLARITY Act : le Sénat reporte le vote à septembre, les chances de promulgation tombent à 13,5 % sur Polymarket"
-description: "Le Sénat américain ne votera pas le CLARITY Act avant la pause d'août : John Thune confirme un report à septembre et promet de s'en occuper « dès le retour ». Les chances de promulgation en 2026 chutent à 13,5 % sur Polymarket, pendant que les baleines accumulent 1,2 Md$ de BTC et que les ETF engrangent 754 M$ en une semaine. Analyse Aave."
+description: "Le Sénat américain ne votera pas le CLARITY Act avant la pause d'août : John Thune confirme un report à septembre et promet de s'en occuper « dès le retour ». Les chances de promulgation en 2026 chutent à 13,5 % sur Polymarket, pendant que les baleines accumulent 1,2 Md$ de BTC et que les ETF engrangent 754 M$ en une semaine."
 pubDate: 2026-08-07T17:10:00Z
 tags: ["reglementation", "etats-unis", "clarity-act", "senat", "polymarket", "marches", "aave"]
 draft: false

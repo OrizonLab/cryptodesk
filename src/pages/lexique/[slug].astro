@@ -9,56 +9,58 @@ export async function getStaticPaths() {
 const { term } = Astro.props;
 const cat = CATEGORIES[term.category];
 
-// Bloc affilié contextuel selon la catégorie du terme
+// Bloc affilié contextuel selon la catégorie du terme.
+// ⚠️ CONFORMITÉ : uniquement des prestataires agréés MiCA (registre ESMA).
+// WEEX et Bitget ont été retirés le 18/09/2026 (absents du registre ESMA).
 const AFFILIATE: Record<string, { title: string; text: string; links: Array<{ name: string; url: string; label: string }> }> = {
   bitcoin: {
     title: 'Acheter du Bitcoin',
-    text: 'Pour acheter du Bitcoin ou épargner en BTC, voici les plateformes que nous utilisons :',
+    text: 'Pour acheter du Bitcoin ou épargner en BTC, voici les plateformes que nous utilisons — toutes agréées MiCA :',
     links: [
-      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Exchange européen régulé' },
-      { name: 'Bitstack', url: 'https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK', label: 'Épargne BTC au quotidien' },
-      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: "Jusqu'à 150 € de bonus" },
+      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Agréé MiCA — AFM (Pays-Bas)' },
+      { name: 'Bitstack', url: 'https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK', label: 'Agréé MiCA — AMF (France)' },
+      { name: 'Kraken Pro', url: 'https://proinvite.kraken.com/9f1e/wqrqgy6s', label: 'Agréé MiCA — Banque centrale d’Irlande' },
     ],
   },
   defi: {
     title: 'Explorer la DeFi',
-    text: 'Pour accéder à la DeFi (achat d\'ETH, stablecoins, protocoles), ces plateformes sont de bons points de départ :',
+    text: 'Pour accéder à la DeFi (achat d\'ETH, stablecoins, protocoles), ces plateformes agréées MiCA sont de bons points de départ :',
     links: [
-      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Spot + Web3 intégré' },
-      { name: 'Bitget', url: 'https://www.bitgetapps.com/referral/register?clacCode=W8JDT92M', label: 'Large choix de tokens' },
-      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Simple et régulé' },
+      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Agréé MiCA — MFSA (Malte) · spot & Web3' },
+      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Agréé MiCA — AFM (Pays-Bas)' },
+      { name: 'Kraken Pro', url: 'https://proinvite.kraken.com/9f1e/wqrqgy6s', label: 'Agréé MiCA — Irlande' },
     ],
   },
   trading: {
     title: 'Passer à la pratique',
-    text: 'Pour trader (spot, futures, ordres avancés), voici les plateformes adaptées :',
+    text: 'Pour débuter (achat/vente au comptant, ordres avancés), voici les plateformes adaptées — toutes agréées MiCA en Europe. Attention : les produits dérivés (futures, effet de levier) ne relèvent pas du passeport européen MiCA et exposent à un risque de perte totale :',
     links: [
-      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Futures & outils pro' },
-      { name: 'WEEX', url: 'https://weex.com/register?vipCode=4flde', label: 'Dérivés & copy trading' },
-      { name: 'Bitget', url: 'https://www.bitgetapps.com/referral/register?clacCode=W8JDT92M', label: 'Copy trading & futures' },
+      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Agréé MiCA — MFSA (Malte) · spot & Web3' },
+      { name: 'Kraken Pro', url: 'https://proinvite.kraken.com/9f1e/wqrqgy6s', label: 'Agréé MiCA — Irlande · ordres avancés' },
+      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Agréé MiCA — AFM (Pays-Bas)' },
     ],
   },
   securite: {
     title: 'Sécuriser ses cryptos',
-    text: 'La sécurité commence par un bon exchange et de bonnes pratiques. Ces plateformes sont régulées et fiables :',
+    text: 'La sécurité commence par un prestataire agréé et de bonnes pratiques. Ces plateformes sont agréées MiCA :',
     links: [
-      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Régulé (Pays-Bas), historique sain' },
-      { name: 'Bitstack', url: 'https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK', label: 'PSAN enregistré en France' },
-      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Programme de protection' },
+      { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Agréé MiCA — AFM (Pays-Bas), historique sain' },
+      { name: 'Bitstack', url: 'https://bitstack-app.com/referral/2softk0f6gUhcTpxoxAUqPd0gfK', label: 'Agréé MiCA — AMF (France)' },
+      { name: 'Kraken Pro', url: 'https://proinvite.kraken.com/9f1e/wqrqgy6s', label: 'Agréé MiCA — Irlande' },
     ],
   },
   marche: {
     title: 'Suivre le marché',
-    text: 'Pour acheter et suivre les actifs du marché, voici nos plateformes de référence :',
+    text: 'Pour acheter et suivre les actifs du marché, voici nos plateformes de référence — toutes agréées MiCA :',
     links: [
       { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Interface claire pour débuter' },
-      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Large choix d\'actifs' },
-      { name: 'Bitget', url: 'https://www.bitgetapps.com/referral/register?clacCode=W8JDT92M', label: 'Nouveaux tokens en premier' },
+      { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Large choix d\'actifs (spot)' },
+      { name: 'Kraken Pro', url: 'https://proinvite.kraken.com/9f1e/wqrqgy6s', label: 'Données de marché et ordres avancés' },
     ],
   },
   technique: {
     title: 'Comprendre en pratique',
-    text: 'La meilleure façon de comprendre la technologie, c\'est de l\'utiliser. Commencez avec :',
+    text: 'La meilleure façon de comprendre la technologie, c\'est de l\'utiliser. Commencez avec des plateformes agréées MiCA :',
     links: [
       { name: 'Bitvavo', url: 'https://bitvavo.com/invite?a=5CC31560CE', label: 'Achat simple, retraits vers wallet' },
       { name: 'OKX', url: 'https://my.okx.com/fr-fr/join/77244970', label: 'Testez la DeFi et le Web3' },
@@ -144,6 +146,7 @@ const breadcrumb = {
           </li>
         ))}
       </ul>
+      <p class="affiliate-risk">⚠️ <strong>Risque de perte totale du capital.</strong> Les crypto-actifs sont extrêmement volatils, exposés au piratage, et ne bénéficient d'aucune protection des dépôts (contrairement à un compte bancaire). N'investissez que ce que vous pouvez perdre — ceci n'est pas un conseil en investissement.</p>
       <p class="affiliate-note">
         Liens d'affiliation — sans surcoût pour vous, ils soutiennent le blog.
         <a href="/partenaires/"> Page Partenaires</a>
@@ -195,5 +198,17 @@ const breadcrumb = {
     .affiliate-list a:hover { text-decoration: underline; }
     .affiliate-note { margin-top: 0.75rem; font-size: 0.78rem; color: var(--text-muted); opacity: 0.8; }
     .affiliate-note a { color: var(--text-muted); text-decoration: underline; }
+    /* Avertissement risque accolé à l'offre — lisible, pas en petits caractères
+       (exigence de communication MiCA / ARPP Recommandation Crypto-actifs V3) */
+    .affiliate-risk {
+      margin-top: 0.85rem;
+      padding: 0.65rem 0.8rem;
+      background: var(--bg-alt);
+      border-left: 3px solid var(--accent);
+      border-radius: calc(var(--radius) / 2);
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
   </style>
 </BaseLayout>

@@ -126,7 +126,8 @@ const breadcrumbJsonLd = {
       <p class="affiliate-title">🏦 Nos exchanges partenaires</p>
       <p class="affiliate-intro">
         Tu veux acheter du crypto ? Passer par ces liens ne te coûte rien de plus
-        et soutient le blog :
+        et soutient le blog. Toutes les plateformes listées sont <strong>agréées MiCA</strong>
+        (registre ESMA) :
       </p>
       {topOffer && (
         <p class="affiliate-promo">
@@ -138,7 +139,8 @@ const breadcrumbJsonLd = {
           <li><a href={p.url} target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate={p.umami}>{p.name}</a> — {p.note}</li>
         ))}
       </ul>
-      <p class="affiliate-note">Liens d'affiliation — transparence : <a href="/partenaires/">voir la page Partenaires</a> · offres mises à jour automatiquement</p>
+      <p class="affiliate-risk">⚠️ <strong>Risque de perte totale du capital.</strong> Les crypto-actifs sont extrêmement volatils, exposés au piratage, et ne bénéficient d'aucune protection des dépôts (contrairement à un compte bancaire). N'investis que ce que tu peux perdre — ceci n'est pas un conseil en investissement.</p>
+      <p class="affiliate-note">Liens d'affiliation (commission perçue, sans surcoût pour toi) : <a href="/partenaires/">voir la page Partenaires</a> · offres mises à jour automatiquement</p>
     </aside>
 
     <section class="newsletter-box" aria-label="Newsletter">
@@ -311,6 +313,18 @@ const breadcrumbJsonLd = {
     .affiliate-list a:hover { text-decoration: underline; }
     .affiliate-note { margin-top: 0.75rem; font-size: 0.78rem; color: var(--text-muted); opacity: 0.8; }
     .affiliate-note a { color: var(--text-muted); text-decoration: underline; }
+    /* Avertissement risque accolé à l'offre — lisible, pas en petits caractères
+       (exigence de communication MiCA / ARPP Recommandation Crypto-actifs V3) */
+    .affiliate-risk {
+      margin-top: 0.85rem;
+      padding: 0.65rem 0.8rem;
+      background: var(--bg-alt);
+      border-left: 3px solid var(--accent);
+      border-radius: calc(var(--radius) / 2);
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
 
     /* ── Newsletter « Le Desk » ── */
     .newsletter-box {
