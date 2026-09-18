@@ -135,7 +135,8 @@ const breadcrumb = {
       ) : null
     }
 
-    <aside class="affiliate" aria-label="Partenaires">
+    <aside class="affiliate" aria-label="Publicité — partenaires">
+      <p class="affiliate-ad-label">Publicité — liens sponsorisés</p>
       <p class="affiliate-title">🏦 {aff.title}</p>
       <p class="affiliate-intro">{aff.text}</p>
       <ul class="affiliate-list">
@@ -198,6 +199,14 @@ const breadcrumb = {
     .affiliate-list a:hover { text-decoration: underline; }
     .affiliate-note { margin-top: 0.75rem; font-size: 0.78rem; color: var(--text-muted); opacity: 0.8; }
     .affiliate-note a { color: var(--text-muted); text-decoration: underline; }
+    /* Identification de la communication commerciale (distincte du contenu éditorial) */
+    .affiliate-ad-label {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-muted);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 0.15rem 0.6rem; margin-bottom: 0.6rem;
+    }
     /* Avertissement risque accolé à l'offre — lisible, pas en petits caractères
        (exigence de communication MiCA / ARPP Recommandation Crypto-actifs V3) */
     .affiliate-risk {

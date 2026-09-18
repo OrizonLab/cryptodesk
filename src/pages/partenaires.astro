@@ -48,15 +48,17 @@ const jsonLd = {
   {offers.length > 0 && (
     <section class="container">
       <div class="offers">
+        <p class="ad-label">Publicité — liens sponsorisés</p>
         <h2 class="offers-title">🔥 Offres du moment</h2>
         <p class="offers-sub">Les promotions de parrainage actives en ce moment — mises à jour automatiquement.</p>
         <div class="offers-grid">
           {offers.map((p) => (
-            <a class="offer-card" href={p.url} target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate={p.umami}>
+            <div class="offer-card">
               <span class="offer-name">{p.name}</span>
               <span class="offer-promo">{p.promo}</span>
-              <span class="offer-cta">{p.cta} →</span>
-            </a>
+              <span class="offer-risk">⚠️ Risque de perte totale du capital, aucune protection des dépôts.</span>
+              <a class="offer-cta" href={p.url} target="_blank" rel="noopener sponsored nofollow" data-umami-event="affiliate-click" data-umami-event-affiliate={p.umami}>{p.cta} →</a>
+            </div>
           ))}
         </div>
       </div>
@@ -70,7 +72,7 @@ const jsonLd = {
           <div class="card">
             <div class="card-head">
               <h2>{p.name}</h2>
-              <span class="pill">Partenaire</span>
+              <span class="pill">Publicité</span>
             </div>
             <p class="tagline">{p.tagline}</p>
             <p class="bonus">{p.bonus}</p>
@@ -95,10 +97,14 @@ const jsonLd = {
       <p>
         Conformément au règlement MiCA (applicable depuis le 1<sup>er</sup> juillet 2026), nous ne
         promouvons que des prestataires de services sur crypto-actifs <strong>agréés</strong>.
-        Chaque agrément est vérifié sur le registre public de l'ESMA avant publication, et revérifié
-        régulièrement. Deux partenaires qui ne figuraient pas dans ce registre (WEEX et Bitget) ont
-        été <strong>retirés du site le 18 septembre 2026</strong>, avant l'entrée en vigueur de toute
-        sanction.
+        Chaque agrément est vérifié sur le registre public de l'ESMA avant publication, puis
+        <strong>revérifié chaque semaine automatiquement</strong>. En cas de perte d'agrément
+        constatée, le partenaire est <strong>retiré du site sans délai</strong> — page Partenaires,
+        comparateur, simulateur, lexique et blocs d'articles. Deux partenaires qui ne figuraient pas
+        dans ce registre (WEEX et Bitget) ont été <strong>retirés le 18 septembre 2026</strong>,
+        avant l'entrée en vigueur de toute sanction. La trace de ces vérifications (dates, sources,
+        empreintes des fichiers du registre ESMA) est conservée dans notre
+        <a href="https://github.com/OrizonLab/cryptodesk/blob/main/compliance/verification-mica.md" rel="noopener">dossier de conformité public</a>.
       </p>
       <p class="small">
         ⚠️ Les plateformes citées sont des tiers : leurs conditions, leurs frais et leurs risques
@@ -146,20 +152,38 @@ const jsonLd = {
     @media (min-width: 640px) {
       .offers-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
     }
+    /* Identification de la communication commerciale (distincte de l'éditorial) */
+    .ad-label {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-muted);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 0.15rem 0.6rem; margin-bottom: 0.6rem;
+    }
     .offer-card {
       display: flex; flex-direction: column; gap: 0.4rem;
       background: var(--card);
       border: 1px solid var(--accent);
       border-radius: var(--radius);
       padding: 1.1rem 1.3rem;
-      text-decoration: none; color: inherit;
+      color: inherit;
       box-shadow: var(--shadow-sm);
       transition: transform 0.15s, box-shadow 0.15s;
     }
     .offer-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
     .offer-name { font-weight: 800; font-size: 1.05rem; color: var(--text); }
-    .offer-promo { color: var(--text-muted); font-size: 0.9rem; flex: 1; }
-    .offer-cta { color: var(--accent); font-weight: 700; font-size: 0.85rem; }
+    .offer-promo { color: var(--text-muted); font-size: 0.9rem; }
+    /* Avertissement risque accolé à l'offre (jamais l'offre sans le risque) */
+    .offer-risk {
+      font-size: 0.8rem; line-height: 1.4; font-weight: 600; color: var(--text);
+      background: var(--bg-alt); border-left: 3px solid var(--accent);
+      border-radius: calc(var(--radius) / 2); padding: 0.4rem 0.6rem;
+    }
+    .offer-cta {
+      color: var(--accent); font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; margin-top: 0.2rem;
+    }
+    .offer-cta:hover { text-decoration: underline; }
 
     .card {
       background: var(--card);

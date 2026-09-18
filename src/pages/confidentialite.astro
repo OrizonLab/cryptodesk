@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Contact public validé par l'éditeur le 18/09/2026 (cf. mentions légales).
+const EMAIL_CONTACT = 'contact@cryptodesk.fr';
+const DERNIERE_MAJ = '18 septembre 2026';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Politique de confidentialité — CryptoDesk',
+  url: 'https://cryptodesk.fr/confidentialite/',
+  inLanguage: 'fr-FR',
+};
+---
+
+<BaseLayout
+  title="Politique de confidentialité"
+  description="Politique de confidentialité de CryptoDesk : aucun cookie publicitaire, mesure d'audience sans cookie, newsletter en double opt-in, droits RGPD et suppression des données."
+  canonical="https://cryptodesk.fr/confidentialite/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="container legal">
+    <h1>Politique de confidentialité</h1>
+    <p class="legal-date">Dernière mise à jour : {DERNIERE_MAJ}</p>
+
+    <div class="legal-highlight">
+      <p>
+        <strong>En résumé :</strong> ce site ne dépose <strong>aucun cookie publicitaire ni traceur
+        tiers</strong>. Nous n'utilisons pas Google Analytics. La mesure d'audience fonctionne
+        <strong>sans cookie</strong> et <strong>sans conserver votre adresse IP</strong>. La seule
+        donnée personnelle que nous demandons est votre e-mail, si vous choisissez de vous abonner à
+        la newsletter.
+      </p>
+    </div>
+
+    <h2>Responsable du traitement</h2>
+    <p>
+      Le responsable du traitement est l'éditeur du site, joignable à l'adresse : {EMAIL_CONTACT}.
+      Pour toute question relative à vos données, écrivez à cette adresse.
+    </p>
+
+    <h2>Quelles données sont traitées ?</h2>
+
+    <h3>1. Mesure d'audience (auto-hébergée, sans cookie)</h3>
+    <ul>
+      <li><strong>Outil</strong> : Umami, auto-hébergé sur notre propre serveur (Union européenne).</li>
+      <li><strong>Aucun cookie</strong> n'est déposé, aucun identifiant publicitaire n'est créé, et
+        aucune donnée n'est transmise à un tiers.</li>
+      <li><strong>Votre adresse IP n'est pas conservée.</strong> Elle est utilisée de façon
+        transitoire pour la géolocalisation approximative (pays, ville) puis n'est pas enregistrée
+        dans notre base.</li>
+      <li><strong>Données enregistrées</strong> : pages consultées, source de la visite (site
+        référent ou paramètres de campagne), type d'appareil, système, navigateur, langue, pays/ville
+        approximatifs, horodatage. Ces informations sont agrégées et servent uniquement à comprendre
+        quels contenus sont lus.</li>
+      <li><strong>Base légale</strong> : intérêt légitime (art. 6.1.f RGPD) — mesure d'audience
+        anonyme, sans profilage ni suivi individuel.</li>
+    </ul>
+
+    <h3>2. Newsletter « Le Desk » (si vous vous abonnez)</h3>
+    <ul>
+      <li><strong>Données</strong> : adresse e-mail, langue choisie (FR/EN), date et preuve de votre
+        consentement (double opt-in), statut d'abonnement.</li>
+      <li><strong>Finalité</strong> : envoi de la lettre d'information hebdomadaire. Aucune autre
+        utilisation, aucune revente, aucun profilage publicitaire.</li>
+      <li><strong>Base légale</strong> : votre consentement (art. 6.1.a RGPD), recueilli par
+        double opt-in — vous devez confirmer votre adresse par e-mail avant tout envoi.</li>
+      <li><strong>Sous-traitant</strong> : Brevo (Sendinblue SAS, France), pour l'envoi des e-mails
+        et la gestion des listes. Les données restent dans l'Union européenne.</li>
+      <li><strong>Conservation</strong> : jusqu'à votre désinscription. Chaque e-mail contient un
+        lien de désinscription en un clic ; vous pouvez aussi demander la suppression à tout moment.</li>
+    </ul>
+
+    <h3>3. Liens d'affiliation</h3>
+    <p>
+      Certains liens vers des plateformes partenaires contiennent des paramètres de campagne (UTM)
+      et notre identifiant de parrainage, afin de savoir quelles pages génèrent des visites. Aucun
+      cookie tiers n'est déposé par notre site pour ce suivi : la mesure est faite par notre
+      analytics auto-hébergé, selon les mêmes règles que ci-dessus. Une fois sur le site du
+      partenaire, ce sont <strong>ses</strong> règles de confidentialité qui s'appliquent.
+    </p>
+
+    <h3>4. Ce que nous ne faisons pas</h3>
+    <ul>
+      <li>Aucun cookie publicitaire, aucun pixel de réseau social, aucun traceur tiers.</li>
+      <li>Aucune revente ni partage de données à des fins commerciales.</li>
+      <li>Aucun profilage publicitaire, aucune décision automatisée produisant des effets juridiques.</li>
+      <li>Aucune collecte de données sensibles.</li>
+    </ul>
+
+    <h2>Cookies et stockage local</h2>
+    <p>
+      Ce site ne dépose <strong>aucun cookie de mesure ou de publicité</strong>. Votre préférence de
+      thème (clair/sombre/système) est mémorisée dans le stockage local de votre navigateur
+      (<em>localStorage</em>) : cette information ne quitte jamais votre appareil et n'est pas
+      accessible par nos serveurs.
+    </p>
+
+    <h2>Durées de conservation</h2>
+    <ul>
+      <li><strong>Statistiques de visite</strong> : conservées sous forme agrégée et anonyme.</li>
+      <li><strong>Abonnement newsletter</strong> : jusqu'à désinscription, puis suppression de
+        l'adresse (les preuves de consentement peuvent être conservées pour répondre à une
+        obligation de démonstration).</li>
+    </ul>
+
+    <h2>Vos droits</h2>
+    <p>
+      Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, de
+      limitation, d'opposition et de portabilité de vos données. Pour l'exercer, écrivez à
+      {EMAIL_CONTACT} (réponse sous un mois). Vous pouvez également introduire une réclamation auprès
+      de la <a href="https://www.cnil.fr" rel="noopener">CNIL</a>.
+    </p>
+
+    <h2>Sécurité et hébergement</h2>
+    <p>
+      Le site et l'outil de mesure d'audience sont hébergés sur nos propres serveurs, dans l'Union
+      européenne. Les échanges avec le site sont chiffrés (HTTPS/HSTS). Les accès aux outils
+      d'administration sont protégés par mot de passe et limités au strict nécessaire.
+    </p>
+
+    <h2>Modifications</h2>
+    <p>
+      Cette politique peut être mise à jour pour refléter une évolution du site ou de la
+      réglementation ; la date de dernière mise à jour figure en haut de page.
+    </p>
+
+    <p class="legal-back"><a href="/mentions-legales/">← Mentions légales</a></p>
+  </article>
+
+  <style>
+    .legal { max-width: 72ch; padding: 3rem 0 4rem; }
+    .legal h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 0.4rem; }
+    .legal-date { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 2rem; }
+    .legal-highlight {
+      background: var(--bg-alt); border: 1px solid var(--accent);
+      border-radius: var(--radius); padding: 1rem 1.2rem; margin-bottom: 2rem;
+    }
+    .legal-highlight p { color: var(--text); }
+    .legal h2 {
+      font-size: 1.15rem; font-weight: 800; margin: 2rem 0 0.6rem;
+      padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+    .legal h3 { font-size: 1rem; font-weight: 700; margin: 1.2rem 0 0.4rem; }
+    .legal p, .legal li { color: var(--text-muted); line-height: 1.7; }
+    .legal ul { margin: 0.6rem 0 0.9rem; padding-left: 1.2rem; }
+    .legal li { margin-bottom: 0.35rem; }
+    .legal strong { color: var(--text); }
+    .legal a { color: var(--accent); }
+    .legal-back { margin-top: 2.5rem; }
+  </style>
+</BaseLayout>

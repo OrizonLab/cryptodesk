@@ -160,6 +160,11 @@ main { flex: 1; }
 .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.25rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
 .site-footer p { color: var(--text-muted); font-size: 0.85rem; }
 .footer-note { font-size: 0.78rem; opacity: 0.85; }
+/* Transparence IA (art. 50 du règlement européen sur l'IA) — mention visible en pied de page */
+.footer-ai {
+  margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border);
+  color: var(--text-muted); font-size: 0.76rem; line-height: 1.5; max-width: 90ch;
+}
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {

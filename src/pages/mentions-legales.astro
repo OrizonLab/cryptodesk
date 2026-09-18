@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Choix validés par l'éditeur le 18/09/2026 :
+//  - l'adresse publiée est celle de l'HÉBERGEUR (option LCEN art. 6-III-2,
+//    ouverte à l'éditeur personne physique non professionnel) ;
+//  - contact public : contact@cryptodesk.fr ;
+//  - l'adresse postale de l'hébergeur est affichée.
+// Obligations LCEN (loi du 21 juin 2004, art. 6-III) : identité de l'éditeur,
+// contact, directeur de la publication, hébergeur (nom + adresse + téléphone).
+// ─────────────────────────────────────────────────────────────────────────────
+const EDITEUR = 'OrizonLab — Nelson Cabral';
+const ADRESSE_EDITEUR = 'Hébergement : Hostinger International Limited, 61 Lordou Vironos Street, ' +
+  '6023 Larnaca, Chypre';
+const EMAIL_CONTACT = 'contact@cryptodesk.fr';
+const DIRECTEUR_PUBLICATION = 'Nelson Cabral';
+const HEBERGEUR = 'Hostinger International Limited';
+const HEBERGEUR_DETAILS = '61 Lordou Vironos Street, 6023 Larnaca, Chypre (Union européenne) — ' +
+  'serveur d’hébergement : srv990779.hstgr.cloud, datacenter de Paris (France) — ' +
+  'contact : abuse@hostinger.com · assistance : hostinger.fr/contact';
+const DERNIERE_MAJ = '18 septembre 2026';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Mentions légales — CryptoDesk',
+  url: 'https://cryptodesk.fr/mentions-legales/',
+  inLanguage: 'fr-FR',
+};
+---
+
+<BaseLayout
+  title="Mentions légales"
+  description="Mentions légales de CryptoDesk : éditeur, directeur de la publication, hébergeur, propriété intellectuelle, transparence sur l'usage de l'IA et communications commerciales."
+  canonical="https://cryptodesk.fr/mentions-legales/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="container legal">
+    <h1>Mentions légales</h1>
+    <p class="legal-date">Dernière mise à jour : {DERNIERE_MAJ}</p>
+
+    <h2>Éditeur du site</h2>
+    <ul>
+      <li><strong>Éditeur</strong> : {EDITEUR}</li>
+      <li><strong>Adresse</strong> : {ADRESSE_EDITEUR}</li>
+      <li><strong>Contact</strong> : {EMAIL_CONTACT}</li>
+      <li><strong>Directeur de la publication</strong> : {DIRECTEUR_PUBLICATION}</li>
+    </ul>
+    <p>
+      CryptoDesk est un site d'information indépendant consacré aux crypto-actifs et aux marchés
+      financiers. Il ne fournit ni conseil en investissement, ni service sur crypto-actifs, ni
+      recommandation personnalisée. Aucune des informations publiées ne constitue une offre ou une
+      sollicitation d'achat ou de vente.
+    </p>
+
+    <h2>Hébergeur</h2>
+    <ul>
+      <li><strong>Hébergeur</strong> : {HEBERGEUR}</li>
+      <li><strong>Détails</strong> : {HEBERGEUR_DETAILS}</li>
+    </ul>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      Les textes, illustrations, mises en page et éléments graphiques de ce site sont protégés par le
+      droit d'auteur. Toute reproduction ou représentation, totale ou partielle, sans autorisation
+      écrite préalable est interdite. Les citations courtes accompagnées d'un lien vers la page
+      d'origine sont autorisées. Les marques et logos de tiers cités appartiennent à leurs
+      propriétaires respectifs.
+    </p>
+
+    <h2>Usage d'outils automatisés (règlement européen sur l'intelligence artificielle)</h2>
+    <p>
+      Conformément à l'article 50 du règlement (UE) 2024/1689 sur l'intelligence artificielle, nous
+      informons les lecteurs que <strong>les articles de ce site sont produits à l'aide d'outils
+      automatisés d'analyse et de rédaction</strong> (collecte de sources publiques, synthèse,
+      rédaction assistée), puis <strong>révus, vérifiés et publiés sous la responsabilité éditoriale
+      de l'éditeur</strong>. Chaque article cite ses sources. Les illustrations sont générées par
+      des outils d'IA ; elles sont systématiquement contrôlées avant publication et ne représentent
+      jamais des personnes réelles ni des situations factuelles.
+    </p>
+    <p>
+      Signaler une erreur factuelle ou une imprécision : {EMAIL_CONTACT} — nous corrigeons les
+      erreurs documentées et pouvons ajouter une mention de correction en tête d'article.
+    </p>
+
+    <h2>Communications commerciales et liens d'affiliation</h2>
+    <p>
+      Certaines pages contiennent des <strong>communications commerciales</strong> clairement
+      identifiées comme telles : les blocs d'affiliation portent la mention
+      <strong>« Publicité — liens sponsorisés »</strong> et la page
+      <a href="/partenaires/">Partenaires</a> regroupe nos liens de parrainage. Lorsqu'un lecteur
+      ouvre un compte via l'un de ces liens, CryptoDesk perçoit une commission, <strong>sans
+      surcoût pour lui</strong>.
+    </p>
+    <p>
+      Nous ne promouvons que des prestataires de services sur crypto-actifs <strong>agréés au titre
+      du règlement MiCA</strong>, vérifiés sur le registre public de l'ESMA et sur la liste blanche
+      de l'AMF. Le contenu éditorial n'est ni vendu, ni soumis à validation par nos partenaires : le
+      classement et les analyses sont indépendants. Voir la
+      <a href="/partenaires/">page Partenaires</a> pour la liste des agréments et la méthodologie de
+      vérification.
+    </p>
+
+    <h2>Données personnelles</h2>
+    <p>
+      Ce site n'utilise <strong>aucun cookie publicitaire ni traceur tiers</strong>. Le détail des
+      traitements (mesure d'audience sans cookie, newsletter) figure dans notre
+      <a href="/confidentialite/">politique de confidentialité</a>.
+    </p>
+
+    <h2>Responsabilité</h2>
+    <p>
+      Les informations publiées sont fournies à titre informatif, à partir de sources jugées fiables
+      à leur date de publication. Les crypto-actifs sont des actifs très volatils : un investissement
+      peut entraîner la <strong>perte totale du capital</strong>, sans protection des dépôts. Chaque
+      lecteur reste seul responsable de ses décisions.
+    </p>
+  </article>
+
+  <style>
+    .legal { max-width: 72ch; padding: 3rem 0 4rem; }
+    .legal h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 0.4rem; }
+    .legal-date { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 2rem; }
+    .legal h2 {
+      font-size: 1.15rem; font-weight: 800; margin: 2rem 0 0.6rem;
+      padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+    .legal p, .legal li { color: var(--text-muted); line-height: 1.7; }
+    .legal ul { margin: 0.6rem 0 0.9rem; padding-left: 1.2rem; }
+    .legal li { margin-bottom: 0.35rem; }
+    .legal strong { color: var(--text); }
+    .legal a { color: var(--accent); }
+  </style>
+</BaseLayout>
