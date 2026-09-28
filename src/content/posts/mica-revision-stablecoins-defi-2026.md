@@ -1,12 +1,12 @@
 ---
 title: "MiCA clôt sa consultation : pourquoi les stablecoins et le prêt crypto pourraient être davantage encadrés"
-description: "La consultation européenne sur la révision de MiCA se termine le 30 septembre 2026. LEBA et lESCB proposent de nouvelles règles sur les stablecoins, le lending et la DeFi : voici ce que cela pourrait changer pour les utilisateurs européens."
+description: "La consultation européenne sur la révision de MiCA se termine le 30 septembre 2026. L’EBA et lESCB proposent de nouvelles règles sur les stablecoins, le lending et la DeFi : voici ce que cela pourrait changer pour les utilisateurs européens."
 pubDate: 2026-09-28T17:00:00Z
 tags: ["mica", "stablecoins", "defi", "europe", "regulation"]
 draft: false
 ---
 
-<div class="summary"><strong>En résumé :</strong> La Commission européenne clôt le 30 septembre sa consultation ciblée sur la révision de MiCA. LEBA propose d examiner lintégration du prêt et de lemprunt crypto dans le périmètre réglementé, tandis que lESCB veut revoir la composition des réserves de stablecoins et étendre linterdiction de rémunération. Ce ne sont pas encore des règles applicables : ce sont les premières positions officielles qui préparent la prochaine étape.</div>
+<div class="summary"><strong>En résumé :</strong> La Commission européenne clôt le 30 septembre sa consultation ciblée sur la révision de MiCA. L’EBA propose d examiner lintégration du prêt et de lemprunt crypto dans le périmètre réglementé, tandis que lESCB veut revoir la composition des réserves de stablecoins et étendre linterdiction de rémunération. Ce ne sont pas encore des règles applicables : ce sont les premières positions officielles qui préparent la prochaine étape.</div>
 
 La révision de MiCA nest plus un sujet abstrait réservé aux juristes. La consultation ouverte par la Commission européenne arrive à son terme le 30 septembre 2026, et les réponses déjà publiées dessinent une question très concrète : jusqu où le cadre européen doit il suivre les produits qui ressemblent à des services financiers, même lorsqu ils sont présentés comme des interfaces crypto ou des protocoles décentralisés ?
 
@@ -18,11 +18,11 @@ La Commission a lancé le 20 mai 2026 une consultation ciblée sur la révision 
 
 Il ne sagit pas encore dun vote ni dune nouvelle obligation pour les particuliers. La Commission doit dabord analyser les contributions, puis décider sil faut publier des propositions législatives. Larticle 140 de MiCA prévoit un rapport sur lapplication du règlement au plus tard le 30 juin 2027, accompagné si nécessaire dun projet de texte. Le calendrier est donc long, mais les réponses déposées maintenant peuvent influencer la prochaine version du cadre européen.
 
-## LEBA veut traiter le prêt crypto comme un vrai service
+## L’EBA veut traiter le prêt crypto comme un vrai service
 
-Le point le plus directement opérationnel vient de lAutorité bancaire européenne, dans sa réponse du 24 septembre. LEBA invite la Commission à examiner lajout de lintermédiation du prêt et de lemprunt crypto à la liste des services couverts par MiCA. Elle vise aussi les prestataires qui donnent à leurs clients accès à des protocoles de prêt DeFi.
+Le point le plus directement opérationnel vient de lAutorité bancaire européenne, dans sa réponse du 24 septembre. L’EBA invite la Commission à examiner lajout de lintermédiation du prêt et de lemprunt crypto à la liste des services couverts par MiCA. Elle vise aussi les prestataires qui donnent à leurs clients accès à des protocoles de prêt DeFi.
 
-Le raisonnement est simple : pour un utilisateur, la différence entre une plateforme centralisée et une application qui route une transaction vers un protocole nest pas toujours visible. Dans les deux cas, il peut déposer des actifs, fournir une garantie, emprunter un stablecoin et subir une modification des règles de liquidation. LEBA cite notamment le manque dinformation sur les frais, les taux, les rendements et les changements de collatéral.
+Le raisonnement est simple : pour un utilisateur, la différence entre une plateforme centralisée et une application qui route une transaction vers un protocole nest pas toujours visible. Dans les deux cas, il peut déposer des actifs, fournir une garantie, emprunter un stablecoin et subir une modification des règles de liquidation. L’EBA cite notamment le manque dinformation sur les frais, les taux, les rendements et les changements de collatéral.
 
 Lautorité ne demande pas nécessairement une interdiction. Elle recommande une analyse coûts bénéfices et évoque des protections possibles : évaluation de ladéquation du produit au profil du client, plafonds de levier et exigences dinformation. Ces options restent à létude. Elles montrent néanmoins que les interfaces qui simplifient laccès au lending pourraient devenir le point de contact réglementaire, même lorsque le protocole sous jacent se présente comme décentralisé.
 
@@ -32,15 +32,15 @@ Dans sa réponse à la consultation, le Système européen de banques centrales,
 
 La proposition est de définir des poches dactifs qui arrivent à échéance sous un jour ou sous cinq jours. Lobjectif est de mieux mesurer la liquidité réellement disponible en cas de demandes de remboursement massives. Une réserve déposée auprès dune banque nest pas automatiquement liquide si elle est immobilisée dans un dépôt à terme ou concentrée auprès dun nombre réduit de contreparties.
 
-LESCB soutient aussi le maintien de linterdiction de verser des intérêts ou une rémunération sur les jetons de monnaie électronique. Mais il souhaite que cette logique couvre également les formes indirectes de rémunération proposées via le staking, le lending ou le borrowing. Son argument : un produit qui promet un rendement sur un stablecoin peut produire un effet économique proche dun intérêt, même sil utilise une architecture différente.
+L’ESCB soutient aussi le maintien de linterdiction de verser des intérêts ou une rémunération sur les jetons de monnaie électronique. Mais il souhaite que cette logique couvre également les formes indirectes de rémunération proposées via le staking, le lending ou le borrowing. Son argument : un produit qui promet un rendement sur un stablecoin peut produire un effet économique proche dun intérêt, même sil utilise une architecture différente.
 
 ## Des chiffres encore modestes, mais une direction claire
 
-La réponse de LEBA fournit un indicateur utile sur la maturité du marché réglementé. Au 1er septembre 2026, 39 jetons de monnaie électronique avaient été émis sous MiCA, dont 36 par des établissements de monnaie électronique. Aucun jeton de référence dactifs, ou ART, navait encore été autorisé dans le cadre du titre III.
+La réponse de L’EBA fournit un indicateur utile sur la maturité du marché réglementé. Au 1er septembre 2026, 39 jetons de monnaie électronique avaient été émis sous MiCA, dont 36 par des établissements de monnaie électronique. Aucun jeton de référence dactifs, ou ART, navait encore été autorisé dans le cadre du titre III.
 
 Ces chiffres ne signifient pas que les stablecoins ont disparu dEurope. Ils indiquent plutôt que le marché des émissions directement placées sous le régime MiCA reste étroit, alors que les usages de règlement, de trading et de finance tokenisée continuent de se développer. Pour les autorités, cest précisément une fenêtre pour corriger les angles morts avant que les volumes ne deviennent systémiques.
 
-Le risque identifié porte aussi sur les montages de multi émission depuis des pays tiers. LEBA estime quun régime de supervision dédié pourrait être nécessaire si ces dispositifs se développent, avec des garanties de remboursement applicables aux détenteurs européens et une coopération renforcée entre superviseurs.
+Le risque identifié porte aussi sur les montages de multi émission depuis des pays tiers. L’EBA estime quun régime de supervision dédié pourrait être nécessaire si ces dispositifs se développent, avec des garanties de remboursement applicables aux détenteurs européens et une coopération renforcée entre superviseurs.
 
 ## Pontes : une alternative européenne au règlement en stablecoins
 
