@@ -1,6 +1,6 @@
 ---
 title: "The CLARITY Act Failed. Now Washington’s Crypto Rulebook Moves to the Agencies"
-description: "The Senate’s 50-49 procedural vote stopped the CLARITY Act short of the 60 votes needed to advance. For American crypto users and builders, the next fight is over SEC and CFTC rules, not another congressional headline."
+description: "The Senate’s 49-50 procedural vote stopped the CLARITY Act short of the 60 votes needed to advance. For American crypto users and builders, the next fight is over SEC and CFTC rules, not another congressional headline."
 pubDate: 2026-09-20T22:45:00Z
 tags: ["crypto-regulation", "sec", "cftc", "bitcoin", "us-policy"]
 draft: false
@@ -12,7 +12,7 @@ ogImage: "/og/after-clarity-act-failure-sec-cftc-rulebook.jpg"
 
 The most important number in Washington’s crypto debate is no longer a token price. It is 60.
 
-That was the number of Senate votes the Digital Asset Market CLARITY Act needed to clear its procedural hurdle on September 15. The motion received 50 votes in favor and 49 against, according to reporting from Reuters and CNBC, leaving the legislation ten votes short of the threshold. The Senate never reached a final vote on the bill itself, but the political conclusion is difficult to miss: no further CLARITY Act vote is expected during this session.
+That was the number of Senate votes the Digital Asset Market CLARITY Act needed to clear its procedural hurdle on September 15. The motion received 49 votes in favor and 50 against, with one senator not voting, according to reporting from Reuters and CNBC, leaving the legislation ten votes short of the threshold. The Senate never reached a final vote on the bill itself, but the political conclusion is difficult to miss: no further CLARITY Act vote is expected during this session.
 
 For Americans who use crypto products, build protocols or work at financial institutions, the failure creates an awkward split-screen. Congress did not deliver a durable market-structure law. At the same time, the SEC and the Commodity Futures Trading Commission are already moving under the authority they have. The next phase will therefore be shaped by agency proposals, exemptions, enforcement priorities and court challenges — rather than by one comprehensive statute.
 
