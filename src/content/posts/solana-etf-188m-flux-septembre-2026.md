@@ -4,6 +4,7 @@ description: "Les ETF spot Solana américains ont attiré près de 188 millions 
 pubDate: 2026-09-28T09:30:00Z
 tags: ["solana", "etf", "marches", "etats-unis"]
 draft: false
+ogImage: "/og/solana-etf-188m-flux-septembre-2026.jpg"
 ---
 
 Les ETF spot Solana cotés aux États-Unis ont attiré environ **188 millions de dollars nets** durant la semaine du 21 au 25 septembre. C’est l’une des semaines les plus fortes depuis le lancement de ces produits — mais pas nécessairement un record absolu : le total rapporté reste inférieur aux quelque 199 millions collectés pendant leur première semaine de cotation, fin octobre 2025.[1][2]
