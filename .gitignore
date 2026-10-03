@@ -18,6 +18,10 @@ logs/
 *.log
 npm-debug.log*
 
+# Python helper scripts and tests
+__pycache__/
+*.py[cod]
+
 # OS
 .DS_Store
 Thumbs.db
