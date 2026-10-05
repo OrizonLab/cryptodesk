@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-28",
+  "updated": "2026-10-05",
   "intro": "Le Regulation Clock suit les 5 dossiers réglementaires qui changent le plus concrètement la vie des investisseurs crypto. Chaque dossier affiche son statut, la dernière action officielle, la prochaine étape datée et les sources primaires. Un moniteur automatique vérifie les sources officielles (Congress.gov, Federal Register, EUR-Lex) et signale les changements — il n'interprète jamais seul.",
   "dossiers": [
     {
@@ -34,16 +34,21 @@
       "scope": "États-Unis",
       "status": "Mise en œuvre — règles d'application proposées par le Trésor",
       "statusLevel": "monitoring",
-      "lastAction": { "date": "2026-08-18", "text": "Le Trésor publie au Federal Register (2026-16796) ses règles proposées pour mettre en œuvre l'article 3 du GENIUS Act : interdictions et exigences applicables à l'émission, l'offre et la vente de stablecoins de paiement." },
-      "nextStep": { "date": "À suivre", "text": "Finalisation des règles du Trésor et entrée en vigueur des exigences pour les émetteurs de stablecoins." },
+      "lastAction": { "date": "2026-09-30", "text": "Trois actions officielles liées à la mise en œuvre du GENIUS Act sont publiées au Federal Register : la Réserve fédérale propose ses règles de responsabilité (2026-19860) et ses procédures d'approbation pour les filiales de banques membres émettrices de stablecoins de paiement (2026-19899) ; le Trésor publie les formulaires et procédures du Stablecoin Certification Review Committee (2026-19966)." },
+      "nextStep": { "date": "À suivre", "text": "Suivre les commentaires, la finalisation des règles de la Réserve fédérale et les procédures du Stablecoin Certification Review Committee." },
       "whatChanges": "Un régime fédéral pour les stablecoins : exigences de réserves, autorisation des émetteurs, règles de transparence. Ça change directement quels stablecoins sont sûrs à détenir et quelles plateformes peuvent les distribuer en Europe comme aux US.",
       "polymarket": null,
       "timeline": [
-        { "date": "2026-08-18", "event": "Le Trésor publie ses règles proposées d'application du GENIUS Act (Federal Register 2026-16796)." }
+        { "date": "2026-08-18", "event": "Le Trésor publie ses règles proposées d'application du GENIUS Act (Federal Register 2026-16796)." },
+        { "date": "2026-09-29", "event": "La Réserve fédérale propose ses règles de mise en œuvre de ses responsabilités au titre du GENIUS Act (Federal Register 2026-19860) et ses procédures d'approbation pour les filiales de banques membres émettrices de stablecoins de paiement (Federal Register 2026-19899)." },
+        { "date": "2026-09-30", "event": "Le Trésor publie les formulaires et procédures de revue des certifications d'État par le Stablecoin Certification Review Committee (Federal Register 2026-19966)." }
       ],
       "sources": [
         { "label": "Congress.gov — GENIUS Act (S.795)", "url": "https://www.congress.gov/bill/119th-congress/senate-bill/795" },
-        { "label": "Federal Register — Règles GENIUS Act (2026-16796)", "url": "https://www.federalregister.gov/documents/2026/08/18/2026-16796/genius-act-regulations-on-payment-stablecoin-issuance-offer-and-sale" }
+        { "label": "Federal Register — Règles GENIUS Act (2026-16796)", "url": "https://www.federalregister.gov/documents/2026/08/18/2026-16796/genius-act-regulations-on-payment-stablecoin-issuance-offer-and-sale" },
+        { "label": "Federal Register — Responsabilités de la Réserve fédérale au titre du GENIUS Act (2026-19860)", "url": "https://www.federalregister.gov/documents/2026/09/29/2026-19860/implementing-the-federal-reserve-boards-responsibilities-under-the-genius-act" },
+        { "label": "Federal Register — Approbation des filiales bancaires émettrices de stablecoins (2026-19899)", "url": "https://www.federalregister.gov/documents/2026/09/29/2026-19899/application-procedures-for-board-supervised-insured-depository-institutions-seeking-approval-for-a-subsidiary-to-issue-payment-stablecoins" },
+        { "label": "Federal Register — Procédures du Stablecoin Certification Review Committee (2026-19966)", "url": "https://www.federalregister.gov/documents/2026/09/30/2026-19966/forms-and-procedures-for-review-of-state-certifications-by-the-stablecoin-certification-review" }
       ],
       "changes": [
         { "date": "2026-08-24", "from": "Suivi en cours — statut à confirmer par le moniteur", "to": "Mise en œuvre — règles d'application proposées par le Trésor" }
@@ -116,21 +121,23 @@
       "scope": "Global",
       "status": "Suivi en cours — procédures et agréments",
       "statusLevel": "monitoring",
-      "lastAction": { "date": "2026-09-24", "text": "Le Federal Register publie trois actions officielles concernant des plateformes et produits dérivés : exemption conditionnelle temporaire de la SEC pour certaines plateformes DLT et certains fournisseurs de liquidité de titres NMS tokenisés (2026-19388), changement de règles de cotation de KalshiEX (2026-19409) et proposition de Coinbase Derivatives sur la marge client (2026-19512)." },
-      "nextStep": { "date": "À suivre", "text": "Suivre les commentaires et suites réglementaires des trois documents officiels, ainsi que les prochaines décisions d'agrément ou d'enforcement." },
+      "lastAction": { "date": "2026-10-05", "text": "FinCEN publie au Federal Register une proposition de mesure spéciale interdisant la transmission de fonds concernant des transactions impliquant les sous-agents du réseau A7 (document 2026-20371)." },
+      "nextStep": { "date": "À suivre", "text": "Suivre la période de commentaires et les suites données à la proposition de mesure spéciale de FinCEN." },
       "whatChanges": "Chaque sanction ou agrément détermine les plateformes fiables où investir : gel de comptes, retraits bloqués, obligations de reporting. Suivre ce dossier protège votre capital.",
       "polymarket": null,
       "timeline": [
         { "date": "2026-09-22", "event": "La SEC accorde une exemption conditionnelle temporaire pour certaines plateformes de négociation sur registre distribué et certains fournisseurs de liquidité de titres NMS tokenisés (Federal Register 2026-19388)." },
         { "date": "2026-09-23", "event": "KalshiEX rend immédiatement effectif un changement de règles relatif aux standards de cotation de produits futures sur titres (Federal Register 2026-19409)." },
-        { "date": "2026-09-24", "event": "Coinbase Derivatives dépose une proposition de changement de règles relative aux exigences de marge client pour des produits futures sur titres (Federal Register 2026-19512)." }
+        { "date": "2026-09-24", "event": "Coinbase Derivatives dépose une proposition de changement de règles relative aux exigences de marge client pour des produits futures sur titres (Federal Register 2026-19512)." },
+        { "date": "2026-10-05", "event": "FinCEN publie une proposition de mesure spéciale interdisant la transmission de fonds concernant des transactions impliquant les sous-agents du réseau A7 (Federal Register 2026-20371)." }
       ],
       "sources": [
         { "label": "AMF — registre PSAN/DASP", "url": "https://www.amf-france.org/fr/psan" },
         { "label": "Federal Register — crypto assets", "url": "https://www.federalregister.gov/search?conditions%5Bterm%5D=crypto+asset" }
         ,{ "label": "Federal Register — Exemption conditionnelle pour plateformes DLT et titres NMS tokenisés (2026-19388)", "url": "https://www.federalregister.gov/documents/2026/09/22/2026-19388/order-granting-temporary-conditional-exemptive-relief-pursuant-to-section-36a1-of-the-securities" }
         ,{ "label": "Federal Register — KalshiEX, standards de cotation de security futures (2026-19409)", "url": "https://www.federalregister.gov/documents/2026/09/23/2026-19409/self-regulatory-organizations-kalshiex-llc-notice-of-filing-and-immediate-effectiveness-of-a" }
-        ,{ "label": "Federal Register — Coinbase Derivatives, marge client de security futures (2026-19512)", "url": "https://www.federalregister.gov/documents/2026/09/24/2026-19512/self-regulatory-organizations-coinbase-derivatives-llc-notice-of-filing-of-a-proposed-rule-change" }
+        ,{ "label": "Federal Register — Coinbase Derivatives, marge client de security futures (2026-19512)", "url": "https://www.federalregister.gov/documents/2026/09/24/2026-19512/self-regulatory-organizations-coinbase-derivatives-llc-notice-of-filing-of-a-proposed-rule-change" },
+        { "label": "Federal Register — Mesure spéciale FinCEN concernant le réseau A7 (2026-20371)", "url": "https://www.federalregister.gov/documents/2026/10/05/2026-20371/proposal-of-special-measure-prohibiting-the-transmittal-of-funds-regarding-transactions-involving" }
       ],
       "changes": []
     }
