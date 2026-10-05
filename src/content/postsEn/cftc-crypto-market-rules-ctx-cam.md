@@ -60,3 +60,9 @@ Three details will matter most as the process advances. First, the final definit
 For American customers, the immediate consequence is simple: more documents, more comments and more waiting before any new federal crypto-market pathway becomes real. The important development is that the CFTC has moved from broad promises of future clarity to a named regulatory proposal with a public process attached to it.
 
 This article is informational only and is not investment advice. Crypto assets and leveraged products are high-risk and can result in losses exceeding the amount initially posted.
+## Sources
+
+- [CFTC: Regulation Crypto Asset Transactions and Regulation Crypto Asset Markets (advance notice of proposed rulemaking)](https://www.cftc.gov/media/14716/ANPRM_CTX-CAM_asapproved/download)
+- [CFTC Chairman Michael S. Selig: remarks on the proposed framework](https://www.cftc.gov/PressRoom/SpeechesTestimony/opaselig12)
+- [Federal Reserve: October 2026 calendar and FOMC minutes date](https://www.federalreserve.gov/newsevents/2026-october.htm)
+- [SoSoValue ETF flow data, as reported October 5](https://cointelegraph.com/markets/2026/bitcoin-etf-third-inflow-week-ether-funds-red)
