@@ -1,6 +1,6 @@
 ---
-title: "Bitcoins Rebound Has a $681 Million Problem"
-description: "U.S. spot Bitcoin ETFs lost roughly $681 million last week even as Bitcoin recovered above $83,000. The split between price and institutional flows is the markets clearest test after a hawkish Fed reset."
+title: "Bitcoin's Rebound Has a $681 Million Problem"
+description: "U.S. spot Bitcoin ETFs lost roughly $681 million last week even as Bitcoin recovered above $83,000. The split between price and institutional flows is the market's clearest test after a hawkish Fed reset."
 pubDate: 2026-10-12T22:45:00Z
 tags: ["bitcoin", "etf", "fed", "macro", "markets"]
 draft: false
@@ -27,11 +27,11 @@ This is not a call on where Bitcoin goes next. It is a question about market str
 
 ## The Federal Reserve is not offering an easy backdrop
 
-The macro backdrop has also become less forgiving. The Federal Reserves September 15–16 minutes, released October 7, show that the committee raised the federal funds target range by 25 basis points to 3.75%–4%. The minutes describe resilient domestic spending and solid growth, but also inflation that remained elevated relative to the Feds 2% goal.
+The macro backdrop has also become less forgiving. The Federal Reserve's September 15–16 minutes, released October 7, show that the committee raised the federal funds target range by 25 basis points to 3.75%–4%. The minutes describe resilient domestic spending and solid growth, but also inflation that remained elevated relative to the Fed's 2% goal.
 
 Governor Christopher Waller made the policy signal more explicit in an October 8 speech. He said 16 of the 18 participants who submitted projections expected at least one more rate hike during the two remaining meetings of 2026. Waller also said futures markets were pricing an 85% chance of at least one hike by the December meeting, based on prices he cited in his remarks.
 
-That is a difficult setup for liquidity-sensitive assets. Higher expected short-term rates can support the dollar and raise the opportunity cost of holding volatile assets. It does not mechanically determine Bitcoins price, and crypto markets can rally during restrictive policy. But it means that a rally needs to withstand a macro test as well as a flow test.
+That is a difficult setup for liquidity-sensitive assets. Higher expected short-term rates can support the dollar and raise the opportunity cost of holding volatile assets. It does not mechanically determine Bitcoin's price, and crypto markets can rally during restrictive policy. But it means that a rally needs to withstand a macro test as well as a flow test.
 
 ## Prediction markets show a narrower path
 
@@ -43,10 +43,10 @@ The data should be read carefully. Prediction-market liquidity varies by contrac
 
 ## What to watch after the close
 
-There are three practical checks for U.S. readers this week. First, watch whether the next reported ETF session produces broad inflows or merely one funds isolated creation. Concentration matters: a single large print can mask weak participation elsewhere. Second, compare ETF demand with spot volume and futures positioning. A move powered mainly by derivatives can reverse differently from one supported by persistent spot buying. Third, track the Feds communication and the dollar, because a hawkish repricing can challenge risk assets even if crypto-specific headlines remain quiet.
+There are three practical checks for U.S. readers this week. First, watch whether the next reported ETF session produces broad inflows or merely one fund's isolated creation. Concentration matters: a single large print can mask weak participation elsewhere. Second, compare ETF demand with spot volume and futures positioning. A move powered mainly by derivatives can reverse differently from one supported by persistent spot buying. Third, track the Fed's communication and the dollar, because a hawkish repricing can challenge risk assets even if crypto-specific headlines remain quiet.
 
-The most important conclusion is not that Bitcoins rebound is false. It is that the rebound has not yet received a clean institutional receipt. A $681 million weekly outflow, a hawkish rate path, and sharply lower probabilities for the highest near-term thresholds create a real tension: price has improved, but the evidence of durable demand has not caught up.
+The most important conclusion is not that Bitcoin's rebound is false. It is that the rebound has not yet received a clean institutional receipt. A $681 million weekly outflow, a hawkish rate path, and sharply lower probabilities for the highest near-term thresholds create a real tension: price has improved, but the evidence of durable demand has not caught up.
 
 Until that changes, the responsible reading is conditional. Bitcoin is holding up, but the market still needs to show whether U.S. ETF buyers are returning—or whether other participants are carrying the move for now.
 
-Sources: [Federal Reserve minutes](https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm), [Governor Wallers October 8 speech](https://www.federalreserve.gov/newsevents/speech/waller20261008a.htm), [SoSoValue fund-flow data](https://www.sosovalue.com/data-center/crypto-fund-flows). Polymarket probabilities are indicative and not investment advice.
+Sources: [Federal Reserve minutes](https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm), [Governor Waller's October 8 speech](https://www.federalreserve.gov/newsevents/speech/waller20261008a.htm), [SoSoValue fund-flow data](https://www.sosovalue.com/data-center/crypto-fund-flows). Polymarket probabilities are indicative and not investment advice.
