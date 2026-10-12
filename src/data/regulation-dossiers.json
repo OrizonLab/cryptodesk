@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-05",
+  "updated": "2026-10-12",
   "intro": "Le Regulation Clock suit les 5 dossiers réglementaires qui changent le plus concrètement la vie des investisseurs crypto. Chaque dossier affiche son statut, la dernière action officielle, la prochaine étape datée et les sources primaires. Un moniteur automatique vérifie les sources officielles (Congress.gov, Federal Register, EUR-Lex) et signale les changements — il n'interprète jamais seul.",
   "dossiers": [
     {
@@ -61,8 +61,8 @@
       "scope": "États-Unis",
       "status": "Réforme en cours — première approbation (standards de cotation d'ETP crypto), propositions en commentaires",
       "statusLevel": "monitoring",
-      "lastAction": { "date": "2026-09-24", "text": "Trois actions SEC officiellement publiées au Federal Register : la SEC accorde le 22 septembre une exemption conditionnelle temporaire pour certaines plateformes de négociation sur registre distribué et certains fournisseurs de liquidité de titres NMS tokenisés (2026-19388) ; KalshiEX rend immédiatement effectif un changement de règles sur les standards de cotation de produits futures sur titres (2026-19409) ; Coinbase Derivatives dépose une proposition sur les exigences de marge client pour ces produits (2026-19512)." },
-      "nextStep": { "date": "À suivre", "text": "Suivre la période de commentaires et les suites données à l'exemption conditionnelle temporaire pour les plateformes DLT et les fournisseurs de liquidité, ainsi que les propositions de règles concernant les produits futures sur titres." },
+      "lastAction": { "date": "2026-10-07", "text": "Deux actions officielles sont publiées au Federal Register : la SEC propose de nouvelles règles de conservation pour les conseillers et fonds réglementés concernant les actifs crypto (2026-20466) ; Investors Exchange LLC rend immédiatement effectifs des standards de cotation et critères de retrait pour des options sur trusts de matières premières détenant un ou plusieurs actifs crypto, et modifie les limites applicables aux options sur l'iShares Bitcoin Trust ETF (2026-20505)." },
+      "nextStep": { "date": "À suivre", "text": "Suivre les périodes de commentaires et les suites données à la proposition de règles de conservation crypto de la SEC, ainsi que l'application des standards et limites d'options publiés par Investors Exchange LLC." },
       "whatChanges": "Qui régule quoi : la SEC (valeurs mobilières) et la CFTC (matières premières) se disputent la frontière. Chaque clarification change le risque juridique des plateformes et des jetons que vous détenez.",
       "polymarket": null,
       "timeline": [
@@ -74,6 +74,8 @@
         ,{ "date": "2026-09-22", "event": "La SEC accorde une exemption conditionnelle temporaire pour l'utilisation de certaines plateformes de négociation sur registre distribué pour des titres NMS tokenisés et pour certains fournisseurs de liquidité (Federal Register 2026-19388)." }
         ,{ "date": "2026-09-23", "event": "KalshiEX rend immédiatement effectif un changement de règles relatif aux standards de cotation de produits futures sur titres (Federal Register 2026-19409)." }
         ,{ "date": "2026-09-24", "event": "Coinbase Derivatives dépose une proposition de changement de règles relative aux exigences de marge client pour des produits futures sur titres (Federal Register 2026-19512)." }
+        ,{ "date": "2026-10-06", "event": "La SEC propose de nouvelles règles de conservation pour les conseillers et fonds réglementés concernant les actifs crypto (Federal Register 2026-20466)." }
+        ,{ "date": "2026-10-07", "event": "Investors Exchange LLC rend immédiatement effectifs des standards de cotation et critères de retrait pour des options sur trusts de matières premières détenant des actifs crypto, et modifie les limites applicables aux options sur l'iShares Bitcoin Trust ETF (Federal Register 2026-20505)." }
       ],
       "sources": [
         { "label": "SEC — Crypto Task Force", "url": "https://www.sec.gov/crypto" },
@@ -86,6 +88,8 @@
         ,{ "label": "Federal Register — Exemption conditionnelle pour plateformes DLT et titres NMS tokenisés (2026-19388)", "url": "https://www.federalregister.gov/documents/2026/09/22/2026-19388/order-granting-temporary-conditional-exemptive-relief-pursuant-to-section-36a1-of-the-securities" }
         ,{ "label": "Federal Register — KalshiEX, standards de cotation de security futures (2026-19409)", "url": "https://www.federalregister.gov/documents/2026/09/23/2026-19409/self-regulatory-organizations-kalshiex-llc-notice-of-filing-and-immediate-effectiveness-of-a" }
         ,{ "label": "Federal Register — Coinbase Derivatives, marge client de security futures (2026-19512)", "url": "https://www.federalregister.gov/documents/2026/09/24/2026-19512/self-regulatory-organizations-coinbase-derivatives-llc-notice-of-filing-of-a-proposed-rule-change" }
+        ,{ "label": "Federal Register — Règles de conservation crypto SEC (2026-20466)", "url": "https://www.federalregister.gov/documents/2026/10/06/2026-20466/adviser-and-regulated-fund-custody-rules-crypto-custody-rules" }
+        ,{ "label": "Federal Register — Investors Exchange LLC, options sur trusts crypto (2026-20505)", "url": "https://www.federalregister.gov/documents/2026/10/07/2026-20505/self-regulatory-organizations-investors-exchange-llc-notice-of-filing-and-immediate-effectiveness-of-a" }
       ],
       "changes": [
         { "date": "2026-08-24", "from": "Suivi en cours — enforcement et réforme des mandats", "to": "Réforme en cours — régime d'offre proposé par la SEC" },
@@ -121,8 +125,8 @@
       "scope": "Global",
       "status": "Suivi en cours — procédures et agréments",
       "statusLevel": "monitoring",
-      "lastAction": { "date": "2026-10-05", "text": "FinCEN publie au Federal Register une proposition de mesure spéciale interdisant la transmission de fonds concernant des transactions impliquant les sous-agents du réseau A7 (document 2026-20371)." },
-      "nextStep": { "date": "À suivre", "text": "Suivre la période de commentaires et les suites données à la proposition de mesure spéciale de FinCEN." },
+      "lastAction": { "date": "2026-10-06", "text": "FinCEN retire au Federal Register sa proposition de mesure spéciale concernant le mélange de monnaies virtuelles convertibles, comme catégorie de transactions présentant une préoccupation majeure de blanchiment (document 2026-20429)." },
+      "nextStep": { "date": "À suivre", "text": "Suivre les prochaines mesures officielles de FinCEN concernant le mélange de monnaies virtuelles convertibles et les obligations applicables aux plateformes." },
       "whatChanges": "Chaque sanction ou agrément détermine les plateformes fiables où investir : gel de comptes, retraits bloqués, obligations de reporting. Suivre ce dossier protège votre capital.",
       "polymarket": null,
       "timeline": [
@@ -130,6 +134,7 @@
         { "date": "2026-09-23", "event": "KalshiEX rend immédiatement effectif un changement de règles relatif aux standards de cotation de produits futures sur titres (Federal Register 2026-19409)." },
         { "date": "2026-09-24", "event": "Coinbase Derivatives dépose une proposition de changement de règles relative aux exigences de marge client pour des produits futures sur titres (Federal Register 2026-19512)." },
         { "date": "2026-10-05", "event": "FinCEN publie une proposition de mesure spéciale interdisant la transmission de fonds concernant des transactions impliquant les sous-agents du réseau A7 (Federal Register 2026-20371)." }
+        ,{ "date": "2026-10-06", "event": "FinCEN retire sa proposition de mesure spéciale concernant le mélange de monnaies virtuelles convertibles (Federal Register 2026-20429)." }
       ],
       "sources": [
         { "label": "AMF — registre PSAN/DASP", "url": "https://www.amf-france.org/fr/psan" },
@@ -138,6 +143,7 @@
         ,{ "label": "Federal Register — KalshiEX, standards de cotation de security futures (2026-19409)", "url": "https://www.federalregister.gov/documents/2026/09/23/2026-19409/self-regulatory-organizations-kalshiex-llc-notice-of-filing-and-immediate-effectiveness-of-a" }
         ,{ "label": "Federal Register — Coinbase Derivatives, marge client de security futures (2026-19512)", "url": "https://www.federalregister.gov/documents/2026/09/24/2026-19512/self-regulatory-organizations-coinbase-derivatives-llc-notice-of-filing-of-a-proposed-rule-change" },
         { "label": "Federal Register — Mesure spéciale FinCEN concernant le réseau A7 (2026-20371)", "url": "https://www.federalregister.gov/documents/2026/10/05/2026-20371/proposal-of-special-measure-prohibiting-the-transmittal-of-funds-regarding-transactions-involving" }
+        ,{ "label": "Federal Register — Retrait de la mesure spéciale FinCEN sur le mélange de monnaies virtuelles (2026-20429)", "url": "https://www.federalregister.gov/documents/2026/10/06/2026-20429/proposal-of-special-measure-regarding-convertible-virtual-currency-mixing-as-a-class-of-transactions" }
       ],
       "changes": []
     }
