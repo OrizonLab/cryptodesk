@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12",
+  "updated": "2026-10-19",
   "intro": "Le Regulation Clock suit les 5 dossiers réglementaires qui changent le plus concrètement la vie des investisseurs crypto. Chaque dossier affiche son statut, la dernière action officielle, la prochaine étape datée et les sources primaires. Un moniteur automatique vérifie les sources officielles (Congress.gov, Federal Register, EUR-Lex) et signale les changements — il n'interprète jamais seul.",
   "dossiers": [
     {
@@ -61,7 +61,7 @@
       "scope": "États-Unis",
       "status": "Réforme en cours — première approbation (standards de cotation d'ETP crypto), propositions en commentaires",
       "statusLevel": "monitoring",
-      "lastAction": { "date": "2026-10-07", "text": "Deux actions officielles sont publiées au Federal Register : la SEC propose de nouvelles règles de conservation pour les conseillers et fonds réglementés concernant les actifs crypto (2026-20466) ; Investors Exchange LLC rend immédiatement effectifs des standards de cotation et critères de retrait pour des options sur trusts de matières premières détenant un ou plusieurs actifs crypto, et modifie les limites applicables aux options sur l'iShares Bitcoin Trust ETF (2026-20505)." },
+      "lastAction": { "date": "2026-10-19", "text": "La CFTC publie une proposition visant à inclure explicitement les contrats événementiels dans la définition des swaps (2026-21377) et adopte une règle finale intérimaire excluant de cette définition les produits de jeu de type casino (2026-21376). Le Federal Register publie aussi un dépôt Cboe BZX sur les critères de cotation d'options sur trusts de matières premières multi-actifs crypto et les ETF (2026-21128), ainsi qu'une approbation accélérée de la Cboe concernant des options binaires liées à des indicateurs clés de performance (2026-21149)." },
       "nextStep": { "date": "À suivre", "text": "Suivre les périodes de commentaires et les suites données à la proposition de règles de conservation crypto de la SEC, ainsi que l'application des standards et limites d'options publiés par Investors Exchange LLC." },
       "whatChanges": "Qui régule quoi : la SEC (valeurs mobilières) et la CFTC (matières premières) se disputent la frontière. Chaque clarification change le risque juridique des plateformes et des jetons que vous détenez.",
       "polymarket": null,
@@ -76,6 +76,9 @@
         ,{ "date": "2026-09-24", "event": "Coinbase Derivatives dépose une proposition de changement de règles relative aux exigences de marge client pour des produits futures sur titres (Federal Register 2026-19512)." }
         ,{ "date": "2026-10-06", "event": "La SEC propose de nouvelles règles de conservation pour les conseillers et fonds réglementés concernant les actifs crypto (Federal Register 2026-20466)." }
         ,{ "date": "2026-10-07", "event": "Investors Exchange LLC rend immédiatement effectifs des standards de cotation et critères de retrait pour des options sur trusts de matières premières détenant des actifs crypto, et modifie les limites applicables aux options sur l'iShares Bitcoin Trust ETF (Federal Register 2026-20505)." }
+        ,{ "date": "2026-10-16", "event": "Le Federal Register publie un dépôt Cboe BZX sur les critères génériques de cotation et de maintien pour des options sur trusts de matières premières détenant plusieurs actifs crypto, ainsi que sur la cotation d'options sur ETF (Federal Register 2026-21128)." }
+        ,{ "date": "2026-10-16", "event": "La Cboe obtient l'approbation accélérée d'une modification autorisant la cotation d'options binaires sur des indicateurs clés de performance déclarés par certains émetteurs d'actions (Federal Register 2026-21149)." }
+        ,{ "date": "2026-10-19", "event": "La CFTC propose d'inclure explicitement les contrats événementiels dans la définition des swaps (Federal Register 2026-21377) et adopte une règle finale intérimaire excluant les produits de jeu de type casino de cette définition (Federal Register 2026-21376)." }
       ],
       "sources": [
         { "label": "SEC — Crypto Task Force", "url": "https://www.sec.gov/crypto" },
@@ -90,6 +93,10 @@
         ,{ "label": "Federal Register — Coinbase Derivatives, marge client de security futures (2026-19512)", "url": "https://www.federalregister.gov/documents/2026/09/24/2026-19512/self-regulatory-organizations-coinbase-derivatives-llc-notice-of-filing-of-a-proposed-rule-change" }
         ,{ "label": "Federal Register — Règles de conservation crypto SEC (2026-20466)", "url": "https://www.federalregister.gov/documents/2026/10/06/2026-20466/adviser-and-regulated-fund-custody-rules-crypto-custody-rules" }
         ,{ "label": "Federal Register — Investors Exchange LLC, options sur trusts crypto (2026-20505)", "url": "https://www.federalregister.gov/documents/2026/10/07/2026-20505/self-regulatory-organizations-investors-exchange-llc-notice-of-filing-and-immediate-effectiveness-of-a" }
+        ,{ "label": "Federal Register — Cboe BZX, options sur trusts crypto multi-actifs et ETF (2026-21128)", "url": "https://www.federalregister.gov/documents/2026/10/16/2026-21128/self-regulatory-organizations-cboe-bzx-exchange-inc-notice-of-filing-and-immediate-effectiveness-of" }
+        ,{ "label": "Federal Register — Cboe, options binaires sur indicateurs clés de performance (2026-21149)", "url": "https://www.federalregister.gov/documents/2026/10/16/2026-21149/self-regulatory-organizations-cboe-exchange-inc-notice-of-filing-of-amendment-no-1-and-order" }
+        ,{ "label": "Federal Register — CFTC, inclusion des contrats événementiels dans les swaps (2026-21377)", "url": "https://www.federalregister.gov/documents/2026/10/19/2026-21377/further-definition-of-swap-inclusions" }
+        ,{ "label": "Federal Register — CFTC, exclusion des produits de jeu de type casino (2026-21376)", "url": "https://www.federalregister.gov/documents/2026/10/19/2026-21376/further-definition-of-swap-to-exclude-casino-style-gambling-products" }
       ],
       "changes": [
         { "date": "2026-08-24", "from": "Suivi en cours — enforcement et réforme des mandats", "to": "Réforme en cours — régime d'offre proposé par la SEC" },
@@ -125,7 +132,7 @@
       "scope": "Global",
       "status": "Suivi en cours — procédures et agréments",
       "statusLevel": "monitoring",
-      "lastAction": { "date": "2026-10-06", "text": "FinCEN retire au Federal Register sa proposition de mesure spéciale concernant le mélange de monnaies virtuelles convertibles, comme catégorie de transactions présentant une préoccupation majeure de blanchiment (document 2026-20429)." },
+      "lastAction": { "date": "2026-10-19", "text": "Le Federal Register publie un dépôt Cboe BZX sur les critères de cotation d'options sur trusts de matières premières multi-actifs crypto et les ETF (2026-21128), ainsi qu'une approbation accélérée de la Cboe concernant des options binaires liées à des indicateurs clés de performance (2026-21149)." },
       "nextStep": { "date": "À suivre", "text": "Suivre les prochaines mesures officielles de FinCEN concernant le mélange de monnaies virtuelles convertibles et les obligations applicables aux plateformes." },
       "whatChanges": "Chaque sanction ou agrément détermine les plateformes fiables où investir : gel de comptes, retraits bloqués, obligations de reporting. Suivre ce dossier protège votre capital.",
       "polymarket": null,
@@ -135,6 +142,8 @@
         { "date": "2026-09-24", "event": "Coinbase Derivatives dépose une proposition de changement de règles relative aux exigences de marge client pour des produits futures sur titres (Federal Register 2026-19512)." },
         { "date": "2026-10-05", "event": "FinCEN publie une proposition de mesure spéciale interdisant la transmission de fonds concernant des transactions impliquant les sous-agents du réseau A7 (Federal Register 2026-20371)." }
         ,{ "date": "2026-10-06", "event": "FinCEN retire sa proposition de mesure spéciale concernant le mélange de monnaies virtuelles convertibles (Federal Register 2026-20429)." }
+        ,{ "date": "2026-10-16", "event": "Le Federal Register publie un dépôt Cboe BZX sur les critères génériques de cotation et de maintien pour des options sur trusts de matières premières détenant plusieurs actifs crypto, ainsi que sur la cotation d'options sur ETF (Federal Register 2026-21128)." }
+        ,{ "date": "2026-10-16", "event": "La Cboe obtient l'approbation accélérée d'une modification autorisant la cotation d'options binaires sur des indicateurs clés de performance déclarés par certains émetteurs d'actions (Federal Register 2026-21149)." }
       ],
       "sources": [
         { "label": "AMF — registre PSAN/DASP", "url": "https://www.amf-france.org/fr/psan" },
@@ -144,6 +153,8 @@
         ,{ "label": "Federal Register — Coinbase Derivatives, marge client de security futures (2026-19512)", "url": "https://www.federalregister.gov/documents/2026/09/24/2026-19512/self-regulatory-organizations-coinbase-derivatives-llc-notice-of-filing-of-a-proposed-rule-change" },
         { "label": "Federal Register — Mesure spéciale FinCEN concernant le réseau A7 (2026-20371)", "url": "https://www.federalregister.gov/documents/2026/10/05/2026-20371/proposal-of-special-measure-prohibiting-the-transmittal-of-funds-regarding-transactions-involving" }
         ,{ "label": "Federal Register — Retrait de la mesure spéciale FinCEN sur le mélange de monnaies virtuelles (2026-20429)", "url": "https://www.federalregister.gov/documents/2026/10/06/2026-20429/proposal-of-special-measure-regarding-convertible-virtual-currency-mixing-as-a-class-of-transactions" }
+        ,{ "label": "Federal Register — Cboe BZX, options sur trusts crypto multi-actifs et ETF (2026-21128)", "url": "https://www.federalregister.gov/documents/2026/10/16/2026-21128/self-regulatory-organizations-cboe-bzx-exchange-inc-notice-of-filing-and-immediate-effectiveness-of" }
+        ,{ "label": "Federal Register — Cboe, options binaires sur indicateurs clés de performance (2026-21149)", "url": "https://www.federalregister.gov/documents/2026/10/16/2026-21149/self-regulatory-organizations-cboe-exchange-inc-notice-of-filing-of-amendment-no-1-and-order" }
       ],
       "changes": []
     }
