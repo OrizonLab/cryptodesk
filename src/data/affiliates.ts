@@ -134,7 +134,7 @@ export const affiliates: Affiliate[] = [
     cta: 'Rejoindre Kraken Pro',
     note: 'Code de parrainage : t9rfwd87.',
     umami: 'kraken',
-    promo: '20 € en BTC pour le filleul après inscription, dépôt et trading (conditions et délai variables, affichés dans l’application, code t9rfwd87)',
+    promo: '20 € en BTC pour le filleul après inscription, dépôt en euros et trading de crypto (conditions affichées dans l’application, à remplir sous 30 jours, code t9rfwd87)',
     featured: true,
     active: true,
     mica: 'Payward Europe Solutions Limited — autorité : Central Bank of Ireland (Irlande) — LEI 254900641D8KNHUZYX24 — agrément notifié le 25/06/2025, passeport européen (dont la France)',
